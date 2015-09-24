@@ -406,6 +406,7 @@ private void displayQuestions(){
                 showCorrectAnswer(1);
             }
             disableOptionButtons();
+            explanationButton.setEnabled(true);
             questionButton.setVisibility(View.INVISIBLE);
             imageButton.setVisibility(View.INVISIBLE);
             explanationButton.setVisibility(View.VISIBLE);
@@ -421,6 +422,7 @@ private void displayQuestions(){
                 optionTwo.setBackgroundColor(Color.parseColor("#F44336"));
                 showCorrectAnswer(2);
             }
+            explanationButton.setEnabled(true);
             disableOptionButtons();
             questionButton.setVisibility(View.INVISIBLE);
             imageButton.setVisibility(View.INVISIBLE);
@@ -439,6 +441,7 @@ private void displayQuestions(){
                 optionThree.setBackgroundColor(Color.parseColor("#F44336"));
                 showCorrectAnswer(3);
             }
+            explanationButton.setEnabled(true);
             disableOptionButtons();
             questionButton.setVisibility(View.INVISIBLE);
             imageButton.setVisibility(View.INVISIBLE);
@@ -457,6 +460,7 @@ private void displayQuestions(){
                 optionFour.setBackgroundColor(Color.parseColor("#F44336"));
                 showCorrectAnswer(4);
             }
+            explanationButton.setEnabled(true);
             disableOptionButtons();
             questionButton.setVisibility(View.INVISIBLE);
             imageButton.setVisibility(View.INVISIBLE);
@@ -474,6 +478,7 @@ private void displayQuestions(){
                 optionFive.setBackgroundColor(Color.parseColor("#F44336"));
                 showCorrectAnswer(5);
             }
+            explanationButton.setEnabled(true);
             disableOptionButtons();
             questionButton.setVisibility(View.INVISIBLE);
             imageButton.setVisibility(View.INVISIBLE);
@@ -485,7 +490,7 @@ private void displayQuestions(){
         @Override
         public void onClick(View view) {
             displayQuestions();
-
+            explanationButton.setEnabled(false);
             explainText.setVisibility(View.INVISIBLE);
             explainScroll.setVisibility(View.INVISIBLE);
             explainScroll.scrollTo(0,0);
@@ -499,8 +504,8 @@ private void displayQuestions(){
             optionFive.setVisibility(View.VISIBLE);
             questionImage.setVisibility(View.INVISIBLE);
             questionButton.setVisibility(View.INVISIBLE);
-            imageButton.setVisibility(View.VISIBLE);
-            explanationButton.setVisibility(View.INVISIBLE);
+          //  imageButton.setVisibility(View.VISIBLE);
+            explanationButton.setVisibility(View.VISIBLE);
             viewStatus = false;
             optionOne.setBackgroundColor(Color.parseColor("#D8D8D8"));
             optionTwo.setBackgroundColor(Color.parseColor("#D8D8D8"));

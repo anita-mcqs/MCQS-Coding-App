@@ -117,8 +117,8 @@
         android:layout_height="wrap_content"
         android:text="Explanation"
         android:background="#607D8B"
-        android:enabled="true"
-        android:visibility="invisible"
+        android:enabled="false"
+
         android:layout_marginRight="2dp"
         android:id="@+id/buttonExplanation"
         android:layout_alignBottom="@+id/button6"
@@ -159,6 +159,7 @@
             android:layout_weight=".4"
             android:layout_height="wrap_content"
             android:text="Image"
+            android:visibility="invisible"
             android:background="#607D8B"
             android:enabled="true"
             android:layout_marginRight="2dp"
