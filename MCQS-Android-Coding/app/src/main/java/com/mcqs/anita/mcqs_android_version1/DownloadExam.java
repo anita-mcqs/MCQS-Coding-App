@@ -2,13 +2,24 @@ package com.mcqs.anita.mcqs_android_version1;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by david-MCQS on 23/09/2015.
@@ -20,8 +31,12 @@ public class DownloadExam extends AppCompatActivity {
     TextView txtDescription;
     String description;
     String name;
+    Button downloadButton;
+    private String downloadedJSONTxt="";
+    private static String packageURL= "http://192.168.1.7:4444/question/exam/3";//PHP Exam      //test download JSON
+ //   private static String packageURL= "http://192.168.1.7:4444/question/list";//PHP Exam      //test download JSON
     int id;
-  //  Button downloadExam;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,12 +56,29 @@ public class DownloadExam extends AppCompatActivity {
 
         txtName = (TextView) findViewById(R.id.textViewExamName);
         txtDescription = (TextView) findViewById(R.id.textViewExamDescription);
+        downloadButton = (Button) findViewById(R.id.button);
 
         txtName.setText(name);
         txtDescription.setText(description);
 
 
+        downloadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    String test = new DownloadQuestion().execute(packageURL).get();
+                }
+                catch (InterruptedException e)
+                {
+                    e.printStackTrace();
+                }
+                catch (ExecutionException e)
+                {
+                    e.printStackTrace();
+                }
 
+            }
+        });
 
 
     }
@@ -75,6 +107,32 @@ public class DownloadExam extends AppCompatActivity {
         //  }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+    private class DownloadQuestion extends AsyncTask<String, Integer, String> {
+
+
+        @Override
+        protected String doInBackground(String... urls){
+            MyJSONParser jsonParser = new MyJSONParser();
+            JSONObject myJSON = jsonParser.getJSONFromUrl(packageURL);
+            if(myJSON==null){
+                System.out.println("json null");
+            }
+            downloadedJSONTxt = myJSON.toString();
+
+            System.out.println("myJSON: " + downloadedJSONTxt);
+            return downloadedJSONTxt;
+        }
+
+        protected void onPostExecute(String result)
+        {
+            downloadedJSONTxt = result;
+        }
+
+
     }
 
 }

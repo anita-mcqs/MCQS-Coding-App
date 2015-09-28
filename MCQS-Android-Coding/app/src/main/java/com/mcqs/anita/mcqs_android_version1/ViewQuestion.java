@@ -116,20 +116,20 @@ public class ViewQuestion extends AppCompatActivity  {
         jsonArraySize = jsonParser.parse(myJSONString).getAsJsonArray().size();
 
 
-        //images
-        int count = 0;
-        String toPathImages = "/data/data/" + getPackageName() + "/files/images";
-        File f = new File(toPathImages);
-        File[] files = f.listFiles();
-        if (files != null) {
-            for (int i = 0; i < files.length; i++) {
-                count++;
-                File file = files[i];
-              //  System.out.println("file " + file);
-            }
-        } else {
-            System.out.println("null images folder????");
-        }
+//        //images
+//        int count = 0;
+//        String toPathImages = "/data/data/" + getPackageName() + "/files/images";
+//        File f = new File(toPathImages);
+//        File[] files = f.listFiles();
+//        if (files != null) {
+//            for (int i = 0; i < files.length; i++) {
+//                count++;
+//                File file = files[i];
+//              //  System.out.println("file " + file);
+//            }
+//        } else {
+//            System.out.println("null images folder????");
+//        }
 
 
 
@@ -137,19 +137,28 @@ public class ViewQuestion extends AppCompatActivity  {
         for(int i=0; i<jsonArraySize;i++){
 
             Question myQuestion = new Question();
-            QuestionOptions[] questionOptions = new QuestionOptions[5];
+
             String background = "";
             String question = "";
             String core = "";
             String explanation = "";
 
-            File file = files[i];
+          //  File file = files[i];
 
-            String path = file.getPath();
-            myQuestion.setImagePath(path);
-            myQuestion.setIndex(i);
+          //  String path = file.getPath();
+         //   myQuestion.setImagePath(path);
+          //  myQuestion.setIndex(i);
 
 
+            //incorrect answers
+            int length = jsonParser.parse(myJSONString)
+                    .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("options").get(0).getAsJsonObject().getAsJsonArray("incorrectAnswers").get(0)
+                    .getAsJsonObject().getAsJsonArray("incorrectAnswer").size();
+
+            QuestionOptions[] questionOptions = new QuestionOptions[length+1];
+            if(length>4){
+                System.out.println("Question Options: "+ length+ " Question No: " +i);
+            }
             //correct answer
             String correctAnswer = jsonParser.parse(myJSONString)
                     .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("options").get(0).getAsJsonObject().getAsJsonArray("correctAnswers").get(0)
@@ -161,10 +170,7 @@ public class ViewQuestion extends AppCompatActivity  {
             QuestionOptions corr = new QuestionOptions(correctAnswer, true);
             questionOptions[0] = corr;
 
-            //incorrect answers
-            int length = jsonParser.parse(myJSONString)
-                    .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("options").get(0).getAsJsonObject().getAsJsonArray("incorrectAnswers").get(0)
-                    .getAsJsonObject().getAsJsonArray("incorrectAnswer").size();
+
 
             for(int j=0; j<length; j++){
                 String myIncorrectOption = jsonParser.parse(myJSONString)
@@ -241,7 +247,7 @@ public class ViewQuestion extends AppCompatActivity  {
         InputStream in = null;
         OutputStream out = null;
         String toPath = "/data/data/" + getPackageName()+"/files/";
-        String toPathImages = "/data/data/" + getPackageName()+"/files/images";
+       // String toPathImages = "/data/data/" + getPackageName()+"/files/images";
         Boolean fileThere = fileExistance("myJSON.txt");
         if(fileThere==true)
         {
@@ -250,7 +256,7 @@ public class ViewQuestion extends AppCompatActivity  {
         else
         {
             copyAssetFolder(assetMgr, "json", toPath);
-            copyAssetFolder(assetMgr, "myImages", toPathImages);
+          //  copyAssetFolder(assetMgr, "myImages", toPathImages);
         }
 
     }
@@ -333,7 +339,7 @@ private void displayQuestions(){
     String displayQuestionString = displayQuestion.getQuestion();
     String displayCoreString = displayQuestion.getCore();
     String displayExplanationString = displayQuestion.getExplanation();
-    String displayImagePath = displayQuestion.getImagePath();
+  //  String displayImagePath = displayQuestion.getImagePath();
     QuestionOptions[] questionOptions = displayQuestion.getQuestionOptions();
     myOptions = new ArrayList<QuestionOptions>(Arrays.asList(questionOptions));
     Collections.shuffle(myOptions);//shuffle options
@@ -363,8 +369,11 @@ private void displayQuestions(){
     //settings.setSupportZoom(true);
 
    // String html = "<html><head></head><body><center><img width=\""+ "100%" +"\" src=\""+ "file://"+displayImagePath + "\"></center></body></html>";
-    File file = new File(displayImagePath);
-    questionImage.setImageURI(Uri.fromFile(file));
+    //File file = new File(displayImagePath);
+    //questionImage.setImageURI(Uri.fromFile(file));
+
+
+
    // questionImage.loadUrl(displayImagePath);
   //  questionImage.loadDataWithBaseURL("", html, "text/html", "utf-8", "");
     // int height = questionImage.getMaxHeight();

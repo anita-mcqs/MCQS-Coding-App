@@ -56,12 +56,12 @@ public class MyJSONParser {
              conn = (HttpURLConnection) myURL.openConnection();
 
              /* optional request header */
-           // conn.setRequestProperty("Content-Type", "application/json");
+            conn.setRequestProperty("Content-Type", "application/json");
                 /* optional request header */
-         //   conn.setRequestProperty("Accept", "application/json");
-           // conn.setRequestProperty("Cookie", "McqsUserSessionUserId=224;");
-           // conn.setReadTimeout(10000 /* milliseconds */);
-          //  conn.setConnectTimeout(15000 /* milliseconds */);
+            conn.setRequestProperty("Accept", "application/json");
+            conn.setRequestProperty("Cookie", "connect.sid=s%3ARwR-QRxNNSrEH4FT34DPRuPkFeQGVLMM.s6NSVwZ6B8nqmqostgg9VpEircbA87gDrPJcoctmm4s;");
+            conn.setReadTimeout(10000 /* milliseconds */);
+           conn.setConnectTimeout(15000 /* milliseconds */);
             conn.setRequestMethod("GET");
             conn.setDoInput(true);
             conn.setDoOutput(true);
@@ -89,7 +89,8 @@ public class MyJSONParser {
 
 
             int statusCode = conn.getResponseCode();
-            System.out.println("code: " + statusCode);
+            URL myURL2 = conn.getURL();
+            System.out.println("code: " + statusCode+ " URL "+ myURL2.getPath());
 
             /* 200 represents HTTP OK */
             if(statusCode == 200){
@@ -109,7 +110,7 @@ public class MyJSONParser {
 
 
                     outPut = sb.toString();
-                    //System.out.print("myJSONParser: "+ outPut);
+                    System.out.print("myJSONParser: "+ outPut);
                     Log.e("JSON", outPut);
 
                 } catch (Exception e) {
