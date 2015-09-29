@@ -62,6 +62,7 @@ public class ViewQuestion extends AppCompatActivity  {
     private int count=1;
     private int jsonArraySize1;
     private int myCount=3;
+    private Question displayQ = new Question();
 
 
     @Override
@@ -85,11 +86,9 @@ public class ViewQuestion extends AppCompatActivity  {
         JsonParser jsonParser = new JsonParser();
         jsonArraySize1 = jsonParser.parse(myJSONString).getAsJsonArray().size();
         //parse json as you go
-        parseJSONFile(myJSONString,0,2);//parse first 3 questions
+        displayQ = parseJSONFile(myJSONString);//parse random question
 
-
-
-        displayQuestions();
+        displayQuestions(displayQ);
 
     }
 
@@ -98,17 +97,18 @@ public class ViewQuestion extends AppCompatActivity  {
 
 
     //parse entire JSON File - first 5 nodes
-    private void parseJSONFile(String myJSONString, int start, int finish) {
+    private Question parseJSONFile(String myJSONString) {
         //questionList - array of questions
         int jsonArraySize;
 
         JsonParser jsonParser = new JsonParser();
         jsonArraySize = jsonParser.parse(myJSONString).getAsJsonArray().size();
+        int choice = (int) (Math.random() * jsonArraySize);//random question
         System.out.println("JSONArraySize: " + jsonArraySize);
 
 
         //JSON - for(int i=0; i<jsonArraySize;i++){
-        for(int i=start; i<finish;i++){
+      //  for(int i=start; i<finish;i++){
 
             Question myQuestion = new Question();
 
@@ -120,16 +120,16 @@ public class ViewQuestion extends AppCompatActivity  {
 
             //incorrect answers
             int length = jsonParser.parse(myJSONString)
-                    .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("options").get(0).getAsJsonObject().getAsJsonArray("incorrectAnswers").get(0)
+                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("options").get(0).getAsJsonObject().getAsJsonArray("incorrectAnswers").get(0)
                     .getAsJsonObject().getAsJsonArray("incorrectAnswer").size();
 
             QuestionOptions[] questionOptions = new QuestionOptions[length+1];
             if(length>4){
-                System.out.println("Question Options: "+ length+ " Question No: " +i);
+                System.out.println("Question Options: "+ length+ " Question No: " +choice);
             }
             //correct answer
             String correctAnswer = jsonParser.parse(myJSONString)
-                    .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("options").get(0).getAsJsonObject().getAsJsonArray("correctAnswers").get(0)
+                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("options").get(0).getAsJsonObject().getAsJsonArray("correctAnswers").get(0)
                     .getAsJsonObject().getAsJsonArray("correctAnswer").get(0).getAsJsonObject().get("_").getAsString();
 
            //System.out.println("correct: " + correctAnswer);
@@ -142,7 +142,7 @@ public class ViewQuestion extends AppCompatActivity  {
 
             for(int j=0; j<length; j++){
                 String myIncorrectOption = jsonParser.parse(myJSONString)
-                        .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("options").get(0).getAsJsonObject().getAsJsonArray("incorrectAnswers").get(0)
+                        .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("options").get(0).getAsJsonObject().getAsJsonArray("incorrectAnswers").get(0)
                         .getAsJsonObject().getAsJsonArray("incorrectAnswer").get(j).getAsJsonObject().get("_").getAsString();
                 QuestionOptions incorr = new QuestionOptions(myIncorrectOption, false);
                 questionOptions[j+1] = incorr;
@@ -152,27 +152,29 @@ public class ViewQuestion extends AppCompatActivity  {
 
             //explanation
             explanation = jsonParser.parse(myJSONString)
-                    .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("explanation").get(0).getAsString();
+                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("explanation").get(0).getAsString();
             myQuestion.setExplanation(explanation);
 
             //core
             core = jsonParser.parse(myJSONString)
-                    .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("core").get(0).getAsString();
+                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("core").get(0).getAsString();
             myQuestion.setCore(core);
 
             //question
             question = jsonParser.parse(myJSONString)
-                    .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("question").get(0).getAsString();
+                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("question").get(0).getAsString();
             myQuestion.setQuestion(question);
 
             //background
             background = jsonParser.parse(myJSONString)
-                    .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("background").get(0).getAsString();
+                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("background").get(0).getAsString();
             myQuestion.setBackground(background);
 
-            questionList.add(myQuestion);
+          //  questionList.add(myQuestion);
           //  System.out.println("questionlistsize: "+ questionList.size());
-        }
+        //}
+
+        return myQuestion;
     }
 
 
@@ -297,11 +299,12 @@ public class ViewQuestion extends AppCompatActivity  {
 
 
 
-private void displayQuestions(){
+private void displayQuestions(Question myQ){
 
     int questionNumbers = questionList.size();
     int choice = (int) (Math.random() * questionNumbers);//random question
-    Question displayQuestion = questionList.get(choice);
+    //Question displayQuestion = questionList.get(choice);
+    Question displayQuestion = myQ;
  //   Question displayQuestion = parseJSONQuestion(myJSONString);
     String displayBackgroundString = displayQuestion.getBackground();
     String displayQuestionString = displayQuestion.getQuestion();
@@ -329,7 +332,7 @@ private void displayQuestions(){
     questionImage = (ImageView) findViewById(R.id.imageView);
 
 
-    String myQuestion = displayBackgroundString+"\n"+displayQuestionString;
+    final String myQuestion = displayBackgroundString+"\n"+displayQuestionString;
     String myExplanation = displayCoreString+"\n"+displayExplanationString;
     myQuestion.replaceAll("\\s+", "\n");
     myQuestion.replaceAll("\\s+", System.getProperty("line.separator"));
@@ -447,10 +450,9 @@ private void displayQuestions(){
     nextButton.setOnClickListener(new OnClickListener(){
         @Override
         public void onClick(View view) {
-            displayQuestions();
 
-            nextParseJson(myCount);
-
+            displayQ = parseJSONFile(myJSONString);
+            displayQuestions(displayQ);
 
             explanationButton.setEnabled(false);
             explainText.setVisibility(View.INVISIBLE);
@@ -560,96 +562,7 @@ private void displayQuestions(){
     });
 }
 
-private void nextParseJson(int count1){
 
-System.out.println("count: "+ myCount);
-  //  if(count1==1){
-    if(myCount<jsonArraySize1){
-        //do nothing - outside json array
-        parseJSONFile(myJSONString, myCount, myCount + 1);
-        myCount++;
-    }else {
-
-    }
-        //count=2;//count = 2
-   // }
-//    else if(count1==2){
-//        parseJSONFile(myJSONString, 11,15);
-//        count=3;//count = 3
-//    }
-//    else if(count1==3){
-//        parseJSONFile(myJSONString, 16,20);
-//        count++;//count = 4
-//    }
-//    else if(count1==4){
-//        parseJSONFile(myJSONString, 21,25);
-//        count++;//count = 5
-//    }
-//    else if(count1==5){
-//        parseJSONFile(myJSONString, 26,30);
-//        count++;//count = 6
-//    }
-//    else if(count1==6){
-//        parseJSONFile(myJSONString, 31,35);
-//        count++;//count = 7
-//    }
-//    else if(count1==7){
-//        parseJSONFile(myJSONString, 36,40);
-//        count++;//count = 8
-//    }
-//    else if(count1==8){
-//        parseJSONFile(myJSONString, 41,45);
-//        count++;//count = 9
-//    }
-//    else if(count1==9){
-//        parseJSONFile(myJSONString, 46,50);
-//        count++;//count = 10
-//    }
-//    else if(count1==10){
-//        parseJSONFile(myJSONString, 51,55);
-//        count++;//count = 11
-//    }
-//    else if(count1==11){
-//        parseJSONFile(myJSONString, 56,60);
-//        count++;//count = 12
-//    }
-//    else if(count1==12){
-//        parseJSONFile(myJSONString, 61,65);
-//        count++;//count = 13
-//    }
-//    else if(count1==13){
-//        parseJSONFile(myJSONString, 66,70);
-//        count++;//count = 14
-//    }
-//    else if(count1==14){
-//        parseJSONFile(myJSONString, 71,75);
-//        count++;//count = 15
-//    }
-//    else if(count1==15){
-//        parseJSONFile(myJSONString, 76,80);
-//        count++;//count = 16
-//    }
-//    else if(count1==16){
-//        parseJSONFile(myJSONString, 81,85);
-//        count++;//count = 17
-//    }
-//    else if(count1==17){
-//        parseJSONFile(myJSONString, 86,90);
-//        count++;//count = 18
-//    }
-//    else if(count1==18){
-//        parseJSONFile(myJSONString, 91,95);
-//        count++;//count = 19
-//    }
-//    else if(count1==19){
-//        parseJSONFile(myJSONString, 96,99);
-//        count=0;
-//    }
-//    else{
-//        //do nothing
-//    }
-
-}
 
 
     private void showCorrectAnswer(int sel){
@@ -757,97 +670,6 @@ System.out.println("count: "+ myCount);
 
 
 
-
-
-
-    private class ParseJSONQuestion extends AsyncTask<String, Integer, ArrayList<Question>> {
-
-        Question myQuestion = new Question();
-        @Override
-        protected ArrayList<Question> doInBackground(String... urls){
-
-            int jsonArraySize;
-           // ArrayList<Question> myQuestions = new ArrayList<Question>();
-            JsonParser jsonParser = new JsonParser();
-            jsonArraySize = jsonParser.parse(myJSONString).getAsJsonArray().size();
-            String choice = urls[0];
-
-            //JSON
-            for(int i=10; i<jsonArraySize;i++){
-
-                String background = "";
-                String question = "";
-                String core = "";
-                String explanation = "";
-
-                //incorrect answers
-                int length = jsonParser.parse(myJSONString)
-                        .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("options").get(0).getAsJsonObject().getAsJsonArray("incorrectAnswers").get(0)
-                        .getAsJsonObject().getAsJsonArray("incorrectAnswer").size();
-
-                QuestionOptions[] questionOptions = new QuestionOptions[length+1];
-
-                //correct answer
-                String correctAnswer = jsonParser.parse(myJSONString)
-                        .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("options").get(0).getAsJsonObject().getAsJsonArray("correctAnswers").get(0)
-                        .getAsJsonObject().getAsJsonArray("correctAnswer").get(0).getAsJsonObject().get("_").getAsString();
-                QuestionOptions corr = new QuestionOptions(correctAnswer, true);
-                questionOptions[0] = corr;
-
-                for(int j=0; j<length; j++){
-                    String myIncorrectOption = jsonParser.parse(myJSONString)
-                            .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("options").get(0).getAsJsonObject().getAsJsonArray("incorrectAnswers").get(0)
-                            .getAsJsonObject().getAsJsonArray("incorrectAnswer").get(j).getAsJsonObject().get("_").getAsString();
-                    QuestionOptions incorr = new QuestionOptions(myIncorrectOption, false);
-                    questionOptions[j+1] = incorr;
-                }
-
-
-                myQuestion.setQuestionOptions(questionOptions);
-
-                //explanation
-                explanation = jsonParser.parse(myJSONString)
-                        .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("explanation").get(0).getAsString();
-                myQuestion.setExplanation(explanation);
-
-                //core
-                core = jsonParser.parse(myJSONString)
-                        .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("core").get(0).getAsString();
-                myQuestion.setCore(core);
-
-                //question
-                question = jsonParser.parse(myJSONString)
-                        .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("question").get(0).getAsString();
-                myQuestion.setQuestion(question);
-
-
-                //background
-                background = jsonParser.parse(myJSONString)
-                        .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("background").get(0).getAsString();
-                myQuestion.setBackground(background);
-
-
-                questionList.add(myQuestion);
-
-            }
-
-
-      //  System.out.println("myQuestion: " + myQuestion.getQuestion());
-
-            return questionList;
-
-        }
-
-      //  protected void onPostExecute(Question result)
-      //  {
-      //      myQuestion = result;
-     //   }
-
-
-
-
-
-    }
 
 
 
