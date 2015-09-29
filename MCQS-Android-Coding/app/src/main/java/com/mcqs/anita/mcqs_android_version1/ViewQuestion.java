@@ -1,37 +1,22 @@
 package com.mcqs.anita.mcqs_android_version1;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.res.AssetManager;
 import android.graphics.Color;
-
-import java.net.URI;
-
-import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
-import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.view.View;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -39,22 +24,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.lang.reflect.Field;
-import java.lang.reflect.Type;
-import java.net.URI;
 import java.util.ArrayList;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 import us.feras.mdv.MarkdownView;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.xml.sax.InputSource;
-import org.xml.sax.XMLReader;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 import android.view.View.OnClickListener;
 
@@ -68,6 +42,7 @@ public class ViewQuestion extends AppCompatActivity  {
     private Button optionThree;
     private Button optionFour;
     private Button optionFive;
+    private Question myQuestion1;
     private ArrayList<QuestionOptions> myOptions;
     private Button nextButton;
     private Button explanationButton;
@@ -84,7 +59,9 @@ public class ViewQuestion extends AppCompatActivity  {
     private String myJSONString = "";
     private ImageView questionImage;
     private TextView actionBarTitle;
-
+    private int count=1;
+    private int jsonArraySize1;
+    private int myCount=3;
 
 
     @Override
@@ -99,42 +76,39 @@ public class ViewQuestion extends AppCompatActivity  {
         getSupportActionBar().setCustomView(R.layout.actionbar);
         actionBarTitle = (TextView) findViewById(R.id.action_bar_text);
         actionBarTitle.setText(R.string.title_activity_view_question);
+
+       // Intent i = this.getIntent();
+       // questionList = i.getParcelableArrayListExtra("questions");
+
         checkFiles();//if there don't copy file
         myJSONString =  readFromFile();
-        parseJSONFile(myJSONString);
+        JsonParser jsonParser = new JsonParser();
+        jsonArraySize1 = jsonParser.parse(myJSONString).getAsJsonArray().size();
+        //parse json as you go
+        parseJSONFile(myJSONString,0,2);//parse first 3 questions
+
+
+
         displayQuestions();
+
     }
 
 
 
 
-    private void parseJSONFile(String myJSONString) {
+
+    //parse entire JSON File - first 5 nodes
+    private void parseJSONFile(String myJSONString, int start, int finish) {
         //questionList - array of questions
         int jsonArraySize;
 
         JsonParser jsonParser = new JsonParser();
         jsonArraySize = jsonParser.parse(myJSONString).getAsJsonArray().size();
+        System.out.println("JSONArraySize: " + jsonArraySize);
 
 
-//        //images
-//        int count = 0;
-//        String toPathImages = "/data/data/" + getPackageName() + "/files/images";
-//        File f = new File(toPathImages);
-//        File[] files = f.listFiles();
-//        if (files != null) {
-//            for (int i = 0; i < files.length; i++) {
-//                count++;
-//                File file = files[i];
-//              //  System.out.println("file " + file);
-//            }
-//        } else {
-//            System.out.println("null images folder????");
-//        }
-
-
-
-        //JSON
-        for(int i=0; i<jsonArraySize;i++){
+        //JSON - for(int i=0; i<jsonArraySize;i++){
+        for(int i=start; i<finish;i++){
 
             Question myQuestion = new Question();
 
@@ -142,12 +116,6 @@ public class ViewQuestion extends AppCompatActivity  {
             String question = "";
             String core = "";
             String explanation = "";
-
-          //  File file = files[i];
-
-          //  String path = file.getPath();
-         //   myQuestion.setImagePath(path);
-          //  myQuestion.setIndex(i);
 
 
             //incorrect answers
@@ -202,9 +170,8 @@ public class ViewQuestion extends AppCompatActivity  {
                     .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("background").get(0).getAsString();
             myQuestion.setBackground(background);
 
-
             questionList.add(myQuestion);
-
+          //  System.out.println("questionlistsize: "+ questionList.size());
         }
     }
 
@@ -335,6 +302,7 @@ private void displayQuestions(){
     int questionNumbers = questionList.size();
     int choice = (int) (Math.random() * questionNumbers);//random question
     Question displayQuestion = questionList.get(choice);
+ //   Question displayQuestion = parseJSONQuestion(myJSONString);
     String displayBackgroundString = displayQuestion.getBackground();
     String displayQuestionString = displayQuestion.getQuestion();
     String displayCoreString = displayQuestion.getCore();
@@ -360,25 +328,6 @@ private void displayQuestions(){
     backgroundScroll = (ScrollView) findViewById(R.id.scrollView);
     questionImage = (ImageView) findViewById(R.id.imageView);
 
-    //WebSettings settings = questionImage.getSettings();
-   // settings.setUseWideViewPort(true);
-   // settings.setLoadWithOverviewMode(true);
-    //Display display = getWindowManager().getDefaultDisplay();
-    //int width=display.getWidth();
-    //settings.setBuiltInZoomControls(true);
-    //settings.setSupportZoom(true);
-
-   // String html = "<html><head></head><body><center><img width=\""+ "100%" +"\" src=\""+ "file://"+displayImagePath + "\"></center></body></html>";
-    //File file = new File(displayImagePath);
-    //questionImage.setImageURI(Uri.fromFile(file));
-
-
-
-   // questionImage.loadUrl(displayImagePath);
-  //  questionImage.loadDataWithBaseURL("", html, "text/html", "utf-8", "");
-    // int height = questionImage.getMaxHeight();
-   // int width = questionImage.getMaxWidth();
-   // System.out.println("Image Height " + height + " Width " + width);
 
     String myQuestion = displayBackgroundString+"\n"+displayQuestionString;
     String myExplanation = displayCoreString+"\n"+displayExplanationString;
@@ -499,12 +448,16 @@ private void displayQuestions(){
         @Override
         public void onClick(View view) {
             displayQuestions();
+
+            nextParseJson(myCount);
+
+
             explanationButton.setEnabled(false);
             explainText.setVisibility(View.INVISIBLE);
             explainScroll.setVisibility(View.INVISIBLE);
-            explainScroll.scrollTo(0,0);
+            explainScroll.scrollTo(0, 0);
             backgroundScroll.setVisibility(View.VISIBLE);
-            backgroundScroll.scrollTo(0,0);
+            backgroundScroll.scrollTo(0, 0);
             questionText.setVisibility(View.VISIBLE);
             optionOne.setVisibility(View.VISIBLE);
             optionTwo.setVisibility(View.VISIBLE);
@@ -516,6 +469,7 @@ private void displayQuestions(){
           //  imageButton.setVisibility(View.VISIBLE);
             explanationButton.setVisibility(View.VISIBLE);
             viewStatus = false;
+            System.out.println("questionList Size: "+questionList.size());
             optionOne.setBackgroundColor(Color.parseColor("#D8D8D8"));
             optionTwo.setBackgroundColor(Color.parseColor("#D8D8D8"));
             optionThree.setBackgroundColor(Color.parseColor("#D8D8D8"));
@@ -606,7 +560,96 @@ private void displayQuestions(){
     });
 }
 
+private void nextParseJson(int count1){
 
+System.out.println("count: "+ myCount);
+  //  if(count1==1){
+    if(myCount<jsonArraySize1){
+        //do nothing - outside json array
+        parseJSONFile(myJSONString, myCount, myCount + 1);
+        myCount++;
+    }else {
+
+    }
+        //count=2;//count = 2
+   // }
+//    else if(count1==2){
+//        parseJSONFile(myJSONString, 11,15);
+//        count=3;//count = 3
+//    }
+//    else if(count1==3){
+//        parseJSONFile(myJSONString, 16,20);
+//        count++;//count = 4
+//    }
+//    else if(count1==4){
+//        parseJSONFile(myJSONString, 21,25);
+//        count++;//count = 5
+//    }
+//    else if(count1==5){
+//        parseJSONFile(myJSONString, 26,30);
+//        count++;//count = 6
+//    }
+//    else if(count1==6){
+//        parseJSONFile(myJSONString, 31,35);
+//        count++;//count = 7
+//    }
+//    else if(count1==7){
+//        parseJSONFile(myJSONString, 36,40);
+//        count++;//count = 8
+//    }
+//    else if(count1==8){
+//        parseJSONFile(myJSONString, 41,45);
+//        count++;//count = 9
+//    }
+//    else if(count1==9){
+//        parseJSONFile(myJSONString, 46,50);
+//        count++;//count = 10
+//    }
+//    else if(count1==10){
+//        parseJSONFile(myJSONString, 51,55);
+//        count++;//count = 11
+//    }
+//    else if(count1==11){
+//        parseJSONFile(myJSONString, 56,60);
+//        count++;//count = 12
+//    }
+//    else if(count1==12){
+//        parseJSONFile(myJSONString, 61,65);
+//        count++;//count = 13
+//    }
+//    else if(count1==13){
+//        parseJSONFile(myJSONString, 66,70);
+//        count++;//count = 14
+//    }
+//    else if(count1==14){
+//        parseJSONFile(myJSONString, 71,75);
+//        count++;//count = 15
+//    }
+//    else if(count1==15){
+//        parseJSONFile(myJSONString, 76,80);
+//        count++;//count = 16
+//    }
+//    else if(count1==16){
+//        parseJSONFile(myJSONString, 81,85);
+//        count++;//count = 17
+//    }
+//    else if(count1==17){
+//        parseJSONFile(myJSONString, 86,90);
+//        count++;//count = 18
+//    }
+//    else if(count1==18){
+//        parseJSONFile(myJSONString, 91,95);
+//        count++;//count = 19
+//    }
+//    else if(count1==19){
+//        parseJSONFile(myJSONString, 96,99);
+//        count=0;
+//    }
+//    else{
+//        //do nothing
+//    }
+
+}
 
 
     private void showCorrectAnswer(int sel){
@@ -710,6 +753,108 @@ private void displayQuestions(){
       //  }
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
+
+
+
+    private class ParseJSONQuestion extends AsyncTask<String, Integer, ArrayList<Question>> {
+
+        Question myQuestion = new Question();
+        @Override
+        protected ArrayList<Question> doInBackground(String... urls){
+
+            int jsonArraySize;
+           // ArrayList<Question> myQuestions = new ArrayList<Question>();
+            JsonParser jsonParser = new JsonParser();
+            jsonArraySize = jsonParser.parse(myJSONString).getAsJsonArray().size();
+            String choice = urls[0];
+
+            //JSON
+            for(int i=10; i<jsonArraySize;i++){
+
+                String background = "";
+                String question = "";
+                String core = "";
+                String explanation = "";
+
+                //incorrect answers
+                int length = jsonParser.parse(myJSONString)
+                        .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("options").get(0).getAsJsonObject().getAsJsonArray("incorrectAnswers").get(0)
+                        .getAsJsonObject().getAsJsonArray("incorrectAnswer").size();
+
+                QuestionOptions[] questionOptions = new QuestionOptions[length+1];
+
+                //correct answer
+                String correctAnswer = jsonParser.parse(myJSONString)
+                        .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("options").get(0).getAsJsonObject().getAsJsonArray("correctAnswers").get(0)
+                        .getAsJsonObject().getAsJsonArray("correctAnswer").get(0).getAsJsonObject().get("_").getAsString();
+                QuestionOptions corr = new QuestionOptions(correctAnswer, true);
+                questionOptions[0] = corr;
+
+                for(int j=0; j<length; j++){
+                    String myIncorrectOption = jsonParser.parse(myJSONString)
+                            .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("options").get(0).getAsJsonObject().getAsJsonArray("incorrectAnswers").get(0)
+                            .getAsJsonObject().getAsJsonArray("incorrectAnswer").get(j).getAsJsonObject().get("_").getAsString();
+                    QuestionOptions incorr = new QuestionOptions(myIncorrectOption, false);
+                    questionOptions[j+1] = incorr;
+                }
+
+
+                myQuestion.setQuestionOptions(questionOptions);
+
+                //explanation
+                explanation = jsonParser.parse(myJSONString)
+                        .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("explanation").get(0).getAsString();
+                myQuestion.setExplanation(explanation);
+
+                //core
+                core = jsonParser.parse(myJSONString)
+                        .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("core").get(0).getAsString();
+                myQuestion.setCore(core);
+
+                //question
+                question = jsonParser.parse(myJSONString)
+                        .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("question").get(0).getAsString();
+                myQuestion.setQuestion(question);
+
+
+                //background
+                background = jsonParser.parse(myJSONString)
+                        .getAsJsonArray().get(i).getAsJsonObject().getAsJsonArray("background").get(0).getAsString();
+                myQuestion.setBackground(background);
+
+
+                questionList.add(myQuestion);
+
+            }
+
+
+      //  System.out.println("myQuestion: " + myQuestion.getQuestion());
+
+            return questionList;
+
+        }
+
+      //  protected void onPostExecute(Question result)
+      //  {
+      //      myQuestion = result;
+     //   }
+
+
+
+
+
+    }
+
+
+
+
+
+
+
 }
 
 
