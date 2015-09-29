@@ -1,22 +1,34 @@
 package com.mcqs.anita.mcqs_android_version1;
 
-
-import android.os.Parcel;
-import android.os.Parcelable;
+import com.bluelinelabs.logansquare.annotation.JsonField;
+import com.bluelinelabs.logansquare.annotation.JsonObject;
+import com.bluelinelabs.logansquare.annotation.OnJsonParseComplete;
+import com.bluelinelabs.logansquare.annotation.OnPreJsonSerialize;
 
 /**
  * Created by david-MCQS on 07/09/2015.
  */
-public class Question implements Parcelable{
+@JsonObject
+public class Question{
+
+   // @JsonField(name = "options")
+    private QuestionOptions[] questionOptions = new QuestionOptions[5];
+
+    @JsonField
+    private String background;
+
+    @JsonField
+    private String question;
+
+    @JsonField
+    private String core;
+
+    @JsonField
+    private String explanation;
 
     private int index;
 
 
-    private String background;
-    private String question;
-    private QuestionOptions[] questionOptions = new QuestionOptions[5];
-    private String core;
-    private String explanation;
     private String imagePath;
 
 
@@ -31,45 +43,8 @@ public class Question implements Parcelable{
         this.core = core;
         this.explanation=explanation;
     }
-    public Question(Parcel in){
-        readFromParcel(in);
-    }
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(background);
-        dest.writeString(question);
-        //dest.writeArray(questionOptions);
-       // dest.writeParcelable(questionOptions, flags);
-       // dest.writeParcelableArray(questionOptions, flags);
-        dest.writeTypedArray(questionOptions, flags);
-        dest.writeString(core);
-        dest.writeString(explanation);
-        dest.writeString(imagePath);
-    }
-    private void readFromParcel(Parcel in){
-        background = in.readString();
-        question = in.readString();
-        questionOptions = in.createTypedArray(QuestionOptions.CREATOR);
-        //questionOptions = in.readParcelableArray(QuestionOptions.class.getClassLoader());
-        core = in.readString();
-        explanation = in.readString();
-        imagePath = in.readString();
-    }
 
-    public static final Parcelable.Creator CREATOR =
-            new Parcelable.Creator() {
-                public Question createFromParcel(Parcel in) {
-                    return new Question(in);
-                }
 
-                public Question[] newArray(int size) {
-                    return new Question[size];
-                }
-            };
 
     public int getIndex() {
         return index;
@@ -126,5 +101,19 @@ public class Question implements Parcelable{
 
     public void setExplanation(String explanation) {
         this.explanation = explanation;
+    }
+
+    @OnJsonParseComplete
+    void onParseComplete() {
+        // Do some fancy post-processing stuff after parsing here
+    }
+
+    /*
+     * Optional callback method to do something before your
+     * object serializes.
+     */
+    @OnPreJsonSerialize
+    void onPreSerialize() {
+        // Do some fancy pre-processing stuff before serializing here
     }
 }

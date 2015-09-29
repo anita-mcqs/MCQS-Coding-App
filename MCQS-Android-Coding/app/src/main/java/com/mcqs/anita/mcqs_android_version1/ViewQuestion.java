@@ -16,6 +16,8 @@ import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.view.View;
+
+import com.bluelinelabs.logansquare.LoganSquare;
 import com.google.gson.JsonParser;
 import java.io.BufferedReader;
 import java.io.File;
@@ -29,6 +31,7 @@ import us.feras.mdv.MarkdownView;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import android.view.View.OnClickListener;
 
@@ -83,12 +86,37 @@ public class ViewQuestion extends AppCompatActivity  {
 
         checkFiles();//if there don't copy file
         myJSONString =  readFromFile();
-        JsonParser jsonParser = new JsonParser();
-        jsonArraySize1 = jsonParser.parse(myJSONString).getAsJsonArray().size();
-        //parse json as you go
-        displayQ = parseJSONFile(myJSONString);//parse random question
 
-        displayQuestions(displayQ);
+      //  JsonParser jsonParser = new JsonParser();
+    //    jsonArraySize1 = jsonParser.parse(myJSONString).getAsJsonArray().size();
+       // System.out.println( myJSONString);
+        try {
+
+            //QuestionContainer container = LoganSquare.parse(myJSONString, QuestionContainer.class);
+
+
+           // List<Question> my= container.getQuestion();
+            //System.out.println("my: "+ my.size());
+
+
+         List<Question> qList= LoganSquare.parseList(myJSONString, Question.class);
+            System.out.println(qList.size()+" length");
+                Question myQ = qList.get(0);
+                System.out.println("Question: "+myQ.getQuestion());
+                System.out.println("Explanation: "+myQ.getExplanation());
+        }
+        catch(IOException er){
+            er.printStackTrace();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+
+        //parse json as you go
+     //   displayQ = parseJSONFile(myJSONString);//parse random question
+
+//        displayQuestions(displayQ);
 
     }
 
@@ -107,8 +135,7 @@ public class ViewQuestion extends AppCompatActivity  {
         System.out.println("JSONArraySize: " + jsonArraySize);
 
 
-        //JSON - for(int i=0; i<jsonArraySize;i++){
-      //  for(int i=start; i<finish;i++){
+
 
             Question myQuestion = new Question();
 
@@ -170,9 +197,7 @@ public class ViewQuestion extends AppCompatActivity  {
                     .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("background").get(0).getAsString();
             myQuestion.setBackground(background);
 
-          //  questionList.add(myQuestion);
-          //  System.out.println("questionlistsize: "+ questionList.size());
-        //}
+
 
         return myQuestion;
     }
