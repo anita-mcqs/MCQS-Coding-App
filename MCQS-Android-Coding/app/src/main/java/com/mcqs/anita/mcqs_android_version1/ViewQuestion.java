@@ -66,6 +66,7 @@ public class ViewQuestion extends AppCompatActivity  {
     private int jsonArraySize1;
     private int myCount=3;
     private Question displayQ = new Question();
+    private List<Question> qList;
 
 
     @Override
@@ -87,36 +88,31 @@ public class ViewQuestion extends AppCompatActivity  {
         checkFiles();//if there don't copy file
         myJSONString =  readFromFile();
 
-      //  JsonParser jsonParser = new JsonParser();
-    //    jsonArraySize1 = jsonParser.parse(myJSONString).getAsJsonArray().size();
-       // System.out.println( myJSONString);
+        JsonParser jsonParser = new JsonParser();
+        jsonArraySize1 = jsonParser.parse(myJSONString).getAsJsonArray().size();
+
         try {
+         qList= LoganSquare.parseList(myJSONString, Question.class);
+           System.out.println(qList.size()+" length");
+            int choice = (int) (Math.random() * qList.size());//random question
 
-            //QuestionContainer container = LoganSquare.parse(myJSONString, QuestionContainer.class);
+            displayQ = qList.get(choice);
 
 
-           // List<Question> my= container.getQuestion();
-            //System.out.println("my: "+ my.size());
-
-
-         List<Question> qList= LoganSquare.parseList(myJSONString, Question.class);
-            System.out.println(qList.size()+" length");
-                Question myQ = qList.get(0);
-                System.out.println("Question: "+myQ.getQuestion());
-                System.out.println("Explanation: "+myQ.getExplanation());
         }
         catch(IOException er){
             er.printStackTrace();
-        }
+       }
         catch(Exception e){
             e.printStackTrace();
         }
 
 
         //parse json as you go
-     //   displayQ = parseJSONFile(myJSONString);//parse random question
+      //  displayQ = parseJSONFile(myJSONString);//parse random question
 
-//        displayQuestions(displayQ);
+        displayQuestions(displayQ);
+
 
     }
 
@@ -147,13 +143,28 @@ public class ViewQuestion extends AppCompatActivity  {
 
             //incorrect answers
             int length = jsonParser.parse(myJSONString)
-                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("options").get(0).getAsJsonObject().getAsJsonArray("incorrectAnswers").get(0)
-                    .getAsJsonObject().getAsJsonArray("incorrectAnswer").size();
+                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("options").size();
 
-            QuestionOptions[] questionOptions = new QuestionOptions[length+1];
-            if(length>4){
-                System.out.println("Question Options: "+ length+ " Question No: " +choice);
-            }
+            QuestionOptions[] questionOptions = new QuestionOptions[length];
+      //  System.out.println("Question Options: "+ length+ " Question No: " +choice);
+
+
+
+        for(int j=0; j<length; j++){
+            String option = jsonParser.parse(myJSONString)
+                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("options").get(j).getAsJsonObject().get("answer").getAsString();
+            Boolean correct = jsonParser.parse(myJSONString)
+                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("options").get(j).getAsJsonObject().get("correctAnswer").getAsBoolean();
+            //.getAsJsonObject().getAsJsonArray("incorrectAnswers").get(0)
+              //      .getAsJsonObject().getAsJsonArray("incorrectAnswer").get(j).getAsJsonObject().get("_").getAsString();
+            QuestionOptions incorr = new QuestionOptions(option, correct);
+            questionOptions[j] = incorr;
+        }
+
+        myQuestion.setQuestionOptions(questionOptions);
+
+
+        /*
             //correct answer
             String correctAnswer = jsonParser.parse(myJSONString)
                     .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("options").get(0).getAsJsonObject().getAsJsonArray("correctAnswers").get(0)
@@ -177,27 +188,35 @@ public class ViewQuestion extends AppCompatActivity  {
 
             myQuestion.setQuestionOptions(questionOptions);
 
+*/
+
+
+
+
             //explanation
             explanation = jsonParser.parse(myJSONString)
-                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("explanation").get(0).getAsString();
+                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonPrimitive("explanation").getAsString();
             myQuestion.setExplanation(explanation);
 
             //core
             core = jsonParser.parse(myJSONString)
-                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("core").get(0).getAsString();
+                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonPrimitive("core").getAsString();
             myQuestion.setCore(core);
 
             //question
             question = jsonParser.parse(myJSONString)
-                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("question").get(0).getAsString();
+                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonPrimitive("question").getAsString();
             myQuestion.setQuestion(question);
 
             //background
             background = jsonParser.parse(myJSONString)
-                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("background").get(0).getAsString();
+                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonPrimitive("background").getAsString();
             myQuestion.setBackground(background);
 
-
+      //  System.out.println("explanation: " + explanation);
+       // System.out.println("core: "+ core);
+      //  System.out.println("question: "+ question);
+      //  System.out.println("background: "+ background);
 
         return myQuestion;
     }
@@ -476,7 +495,28 @@ private void displayQuestions(Question myQ){
         @Override
         public void onClick(View view) {
 
-            displayQ = parseJSONFile(myJSONString);
+            int choice = (int) (Math.random() * qList.size());//random question
+
+
+
+
+
+
+          //  System.out.println("time difference: ");
+            long startTime = System.nanoTime();
+           // displayQ = parseJSONFile(myJSONString);
+            displayQ = qList.get(choice);
+            long endTime = System.nanoTime();
+            long timeDifference = (endTime - startTime);
+            String time = String.valueOf(timeDifference);
+            System.out.println("time difference: " + timeDifference + " Nanoseconds");
+
+
+
+
+
+
+
             displayQuestions(displayQ);
 
             explanationButton.setEnabled(false);
@@ -496,7 +536,7 @@ private void displayQuestions(Question myQ){
           //  imageButton.setVisibility(View.VISIBLE);
             explanationButton.setVisibility(View.VISIBLE);
             viewStatus = false;
-            System.out.println("questionList Size: "+questionList.size());
+           // System.out.println("questionList Size: "+questionList.size());
             optionOne.setBackgroundColor(Color.parseColor("#D8D8D8"));
             optionTwo.setBackgroundColor(Color.parseColor("#D8D8D8"));
             optionThree.setBackgroundColor(Color.parseColor("#D8D8D8"));

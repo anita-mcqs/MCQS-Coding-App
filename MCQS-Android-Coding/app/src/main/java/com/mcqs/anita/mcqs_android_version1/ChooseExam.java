@@ -80,9 +80,9 @@ public class ChooseExam extends AppCompatActivity {
     }
 
 
-
+    // TODO: 22/09/2015 Sample Data
     private void createList(){
-        // TODO: 22/09/2015 Sample Data 
+
         Exam exam1 = new Exam("Bear", 1,"Bears are mammals of the family Ursidae. Bears are classified as caniforms, or doglike carnivorans, with the pinnipeds being their closest living relatives.");
         Exam exam2 = new Exam("Camel", 2,"A camel is an even-toed ungulate within the genus Camelus, bearing distinctive fatty deposits known as \"humps\" on its back.");
         Exam exam3 = new Exam("Cat", 3,"The domestic cat (Felis catus or Felis silvestris catus) is a small, usually furry, domesticated, and carnivorous mammal.");

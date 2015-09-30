@@ -44,53 +44,35 @@ public class MyJSONParser {
 
     }
 
-    public JSONObject getJSONFromUrl(String url) {
+    public String getJSONFromUrl(String url) {
 
 
         // Making the HTTP request - API uses Http Get
         try {
-               CookieManager cookieManager = new CookieManager();
-              CookieHandler.setDefault(cookieManager);
+              // CookieManager cookieManager = new CookieManager();
+           //   CookieHandler.setDefault(cookieManager);
 
             URL myURL = new URL(url);
-             conn = (HttpURLConnection) myURL.openConnection();
+            System.out.println(url);
+            conn = (HttpURLConnection) myURL.openConnection();
 
              /* optional request header */
             conn.setRequestProperty("Content-Type", "application/json");
                 /* optional request header */
             conn.setRequestProperty("Accept", "application/json");
-            conn.setRequestProperty("Cookie", "connect.sid=s%3ARwR-QRxNNSrEH4FT34DPRuPkFeQGVLMM.s6NSVwZ6B8nqmqostgg9VpEircbA87gDrPJcoctmm4s;");
-            conn.setReadTimeout(10000 /* milliseconds */);
-           conn.setConnectTimeout(15000 /* milliseconds */);
+         //   conn.setReadTimeout(10000 /* milliseconds */);
+         //   conn.setConnectTimeout(15000 /* milliseconds */);
             conn.setRequestMethod("GET");
+
             conn.setDoInput(true);
-            conn.setDoOutput(true);
+           // conn.setDoOutput(true);
             // Starts the query
             conn.connect();
 
-           // String query = URLEncoder.encode("key", "UTF-8") + "=" + URLEncoder.encode("value", "UTF-8");
-         //   CookieManager cookieManager = new CookieManager();
-          //  CookieHandler.setDefault(cookieManager);
-         //   URL myURL = new URL(url);
-         //   urlConnection = (HttpURLConnection) myURL.openConnection();
-         //   urlConnection.setRequestProperty("Cookie", "McqsUserSessionUserId=224;");
-        //    urlConnection.setRequestMethod("POST");
-         //   urlConnection.setDoInput(true);
-        //    urlConnection.setDoOutput(true);
-
-        //    DataOutputStream out = new DataOutputStream(urlConnection.getOutputStream());
-         //   out.writeBytes(query);
-         //   out.flush();
-          //  out.close();
-
-
-
-           // urlConnection.connect();
-
 
             int statusCode = conn.getResponseCode();
-            URL myURL2 = conn.getURL();
-            System.out.println("code: " + statusCode+ " URL "+ myURL2.getPath());
+           // URL myURL2 = conn.getURL();
+            System.out.println("code: " + statusCode);
 
             /* 200 represents HTTP OK */
             if(statusCode == 200){
@@ -110,18 +92,18 @@ public class MyJSONParser {
 
 
                     outPut = sb.toString();
-                    System.out.print("myJSONParser: "+ outPut);
+                    //System.out.print("myJSONParser: "+ outPut);
                     Log.e("JSON", outPut);
 
                 } catch (Exception e) {
                     Log.e("Buffer Error", "Error converting result " + e.toString());
                 }
 
-                try {
-                    json = new JSONObject(outPut);
-                } catch (JSONException e) {
-                    Log.e("JSON Parser", "Error parsing data " + e.toString());
-                }
+               // try {
+                 //   json = new JSONObject(outPut);
+               // } catch (JSONException e) {
+               //     Log.e("JSON Parser", "Error parsing data " + e.toString());
+               // }
                 finally{
                     is.close();
                     conn.disconnect();
@@ -169,7 +151,7 @@ public class MyJSONParser {
         }*/
 
         // return JSON String
-        return json;
+        return outPut;
 
     }
 }

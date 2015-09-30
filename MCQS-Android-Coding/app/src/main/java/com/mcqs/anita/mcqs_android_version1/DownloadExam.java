@@ -1,6 +1,7 @@
 package com.mcqs.anita.mcqs_android_version1;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -19,6 +20,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -67,6 +78,7 @@ public class DownloadExam extends AppCompatActivity {
             public void onClick(View view) {
                 try{
                     String test = new DownloadQuestion().execute(packageURL).get();
+                 //   System.out.println(test);
                 }
                 catch (InterruptedException e)
                 {
@@ -117,13 +129,64 @@ public class DownloadExam extends AppCompatActivity {
         @Override
         protected String doInBackground(String... urls){
             MyJSONParser jsonParser = new MyJSONParser();
-            JSONObject myJSON = jsonParser.getJSONFromUrl(packageURL);
+            String myJSON = jsonParser.getJSONFromUrl(urls[0]);
+            String test = "test test test";
+            FileOutputStream outputStream;
             if(myJSON==null){
                 System.out.println("json null");
             }
-            downloadedJSONTxt = myJSON.toString();
 
-            System.out.println("myJSON: " + downloadedJSONTxt);
+
+            String fileName = "myJSON.txt";
+            try {
+
+                //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(new File()));
+
+                outputStream = openFileOutput("myJSON.txt", Context.MODE_PRIVATE);
+                outputStream.write(myJSON.getBytes());
+                outputStream.close();
+
+
+
+            }
+            catch(FileNotFoundException er){
+                er.printStackTrace();
+            }
+            catch(IOException er){
+                er.printStackTrace();
+            }
+
+
+
+            String ret = "";
+            String toPath = "/data/data/" + getPackageName();
+            try {
+                InputStream inputStream = openFileInput("myJSON.txt");
+                if ( inputStream != null ) {
+                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                    String receiveString = "";
+                    StringBuilder stringBuilder = new StringBuilder();
+                    while ( (receiveString = bufferedReader.readLine()) != null ) {
+                        stringBuilder.append(receiveString);
+                    }
+                    inputStream.close();
+                    ret = stringBuilder.toString();
+                }
+            }
+            catch (FileNotFoundException e) {
+                Log.e("login activity", "File not found: " + e.toString());
+            } catch (IOException e) {
+                Log.e("login activity", "Can not read file: " + e.toString());
+            }
+
+            System.out.println("ret: " + ret);
+
+           // downloadedJSONTxt = myJSON.toString();
+//String toPath = "/data/data/" + getPackageName()+"/files/";
+       //new File(toPath).createNewFile();
+           // Boolean fileThere = fileExistance("myJSON.txt");
+           // System.out.println("myJSON: " + myJSON);
             return downloadedJSONTxt;
         }
 

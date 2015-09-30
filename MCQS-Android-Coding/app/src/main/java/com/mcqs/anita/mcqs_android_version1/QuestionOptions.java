@@ -11,8 +11,10 @@ import com.bluelinelabs.logansquare.annotation.JsonObject;
 @JsonObject
 public class QuestionOptions{
 
-
+    @JsonField
     private boolean correctAnswer;//true - correct
+
+    @JsonField
     private String answer;
 
     public QuestionOptions(){
