@@ -78,6 +78,7 @@ public class DownloadExam extends AppCompatActivity {
             public void onClick(View view) {
                 try{
                     String test = new DownloadQuestion().execute(packageURL).get();
+
                  //   System.out.println(test);
                 }
                 catch (InterruptedException e)
@@ -88,6 +89,9 @@ public class DownloadExam extends AppCompatActivity {
                 {
                     e.printStackTrace();
                 }
+                Intent startQuiz = new Intent(DownloadExam.this, ViewQuestion.class);
+
+                startActivity(startQuiz);
 
             }
         });
@@ -125,7 +129,6 @@ public class DownloadExam extends AppCompatActivity {
 
     private class DownloadQuestion extends AsyncTask<String, Integer, String> {
 
-
         @Override
         protected String doInBackground(String... urls){
             MyJSONParser jsonParser = new MyJSONParser();
@@ -135,19 +138,11 @@ public class DownloadExam extends AppCompatActivity {
             if(myJSON==null){
                 System.out.println("json null");
             }
-
-
             String fileName = "myJSON.txt";
             try {
-
-                //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(new File()));
-
                 outputStream = openFileOutput("myJSON.txt", Context.MODE_PRIVATE);
                 outputStream.write(myJSON.getBytes());
                 outputStream.close();
-
-
-
             }
             catch(FileNotFoundException er){
                 er.printStackTrace();
@@ -155,8 +150,6 @@ public class DownloadExam extends AppCompatActivity {
             catch(IOException er){
                 er.printStackTrace();
             }
-
-
 
             String ret = "";
             String toPath = "/data/data/" + getPackageName();
@@ -179,14 +172,7 @@ public class DownloadExam extends AppCompatActivity {
             } catch (IOException e) {
                 Log.e("login activity", "Can not read file: " + e.toString());
             }
-
             System.out.println("ret: " + ret);
-
-           // downloadedJSONTxt = myJSON.toString();
-//String toPath = "/data/data/" + getPackageName()+"/files/";
-       //new File(toPath).createNewFile();
-           // Boolean fileThere = fileExistance("myJSON.txt");
-           // System.out.println("myJSON: " + myJSON);
             return downloadedJSONTxt;
         }
 
@@ -194,8 +180,5 @@ public class DownloadExam extends AppCompatActivity {
         {
             downloadedJSONTxt = result;
         }
-
-
     }
-
 }

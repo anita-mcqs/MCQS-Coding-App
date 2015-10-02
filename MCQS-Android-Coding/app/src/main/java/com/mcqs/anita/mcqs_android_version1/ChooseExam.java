@@ -11,12 +11,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +31,7 @@ public class ChooseExam extends AppCompatActivity {
     private ListViewAdapter adapter;
     private EditText inputSearch;
     private ArrayList<Exam> examList;
+    private Button downloadOriginal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,24 @@ public class ChooseExam extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.actionbar);
         actionBarTitle = (TextView) findViewById(R.id.action_bar_text);
         actionBarTitle.setText(R.string.title_activity_choose_exam);
+
+        downloadOriginal = (Button) findViewById(R.id.button2);
+
+
+
+        downloadOriginal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                File dir = getFilesDir();
+                File file = new File(dir, "myJSON.txt");
+                boolean deleted = file.delete();//delete text file in internal storage
+
+                Intent startQuiz = new Intent(ChooseExam.this, ViewQuestion.class);
+
+                startActivity(startQuiz);
+            }
+        });
 
 
         examList = new ArrayList<Exam>();

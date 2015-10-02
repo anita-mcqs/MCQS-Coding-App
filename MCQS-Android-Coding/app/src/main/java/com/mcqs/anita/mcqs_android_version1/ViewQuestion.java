@@ -1,15 +1,17 @@
 package com.mcqs.anita.mcqs_android_version1;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.res.AssetManager;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -34,7 +36,9 @@ import java.util.Collections;
 import java.util.List;
 
 import android.view.View.OnClickListener;
+import android.widget.Toast;
 
+@SuppressLint("SetJavaScriptEnabled")
 public class ViewQuestion extends AppCompatActivity  {
 
     // private static String questionURL = "http://192.168.1.7:2010/api/fullQuestion";
@@ -82,6 +86,7 @@ public class ViewQuestion extends AppCompatActivity  {
         actionBarTitle = (TextView) findViewById(R.id.action_bar_text);
         actionBarTitle.setText(R.string.title_activity_view_question);
 
+
        // Intent i = this.getIntent();
        // questionList = i.getParcelableArrayListExtra("questions");
 
@@ -112,7 +117,8 @@ public class ViewQuestion extends AppCompatActivity  {
       //  displayQ = parseJSONFile(myJSONString);//parse random question
 
         displayQuestions(displayQ);
-
+        registerForContextMenu(questionText);
+        registerForContextMenu(explainText);
 
     }
 
@@ -260,7 +266,7 @@ public class ViewQuestion extends AppCompatActivity  {
         InputStream in = null;
         OutputStream out = null;
         String toPath = "/data/data/" + getPackageName()+"/files/";
-       // String toPathImages = "/data/data/" + getPackageName()+"/files/images";
+        String toPathImages = "/data/data/" + getPackageName()+"/files/images";
         Boolean fileThere = fileExistance("myJSON.txt");
         if(fileThere==true)
         {
@@ -269,7 +275,7 @@ public class ViewQuestion extends AppCompatActivity  {
         else
         {
             copyAssetFolder(assetMgr, "json", toPath);
-          //  copyAssetFolder(assetMgr, "myImages", toPathImages);
+            copyAssetFolder(assetMgr, "myImages", toPathImages);
         }
 
     }
@@ -371,10 +377,17 @@ private void displayQuestions(Question myQ){
     imageButton = (Button) findViewById(R.id.buttonImage);
     questionButton = (Button) findViewById(R.id.buttonQuestion);
     explainText = (MarkdownView) findViewById(R.id.textViewExplanation);
-    explainScroll = (ScrollView) findViewById(R.id.scrollViewEx);
+   // explainScroll = (ScrollView) findViewById(R.id.scrollViewEx);
     backgroundScroll = (ScrollView) findViewById(R.id.scrollView);
     questionImage = (ImageView) findViewById(R.id.imageView);
+    WebSettings settingsQ = questionText.getSettings();
 
+    questionText.setScrollBarStyle(MarkdownView.SCROLLBARS_OUTSIDE_OVERLAY);
+    questionText.setScrollbarFadingEnabled(false);
+
+    WebSettings settingsE = explainText.getSettings();
+    explainText.setScrollBarStyle(MarkdownView.SCROLLBARS_OUTSIDE_OVERLAY);
+    explainText.setScrollbarFadingEnabled(false);
 
     final String myQuestion = displayBackgroundString+"\n"+displayQuestionString;
     String myExplanation = displayCoreString+"\n"+displayExplanationString;
@@ -382,11 +395,27 @@ private void displayQuestions(Question myQ){
     myQuestion.replaceAll("\\s+", System.getProperty("line.separator"));
     myExplanation.replaceAll("\\s+", "\n");
     myExplanation.replaceAll("\\s+", System.getProperty("line.separator"));
+    settingsQ.setJavaScriptEnabled(true);
+    questionText.getSettings().setLoadsImagesAutomatically(true);
 
+   // questionText.setWebViewClient(new MyBrowser());
+    questionText.addJavascriptInterface(new WebAppInterface(this), "Android");
+   // questionText.addJavascriptInterface(new WebAppInterface(this), "Android");
+    questionText.loadMarkdown("<script type=\"text/javascript\">\n" +
+            "    function showAndroidToast(toast) {\n" +
+            "        Android.showToast(toast);\n" +
+            "    }\n" +
+            "</script>" +
+            "test1" +"<img  name=\"submit\" src=\"file:///data/data/com.mcqs.anita.mcqs_android_coding/files/images/1b.JPG\" onclick=\"showAndroidToast(this.src)\">"+
+            " \ntest12   ", "file:///android_asset/markdown_css_themes/foghorn.css");
+    //questionText.loadUrl("file:///android_asset/index.html");
 
+//width=""+"100%"+""
 
-    //Markdown View
-    questionText.loadMarkdown(myQuestion, "file:///android_asset/markdown_css_themes/foghorn.css");
+//  "test" +"<img name=\"submit\" src=\"file:///data/data/\" + getPackageName() + \"/files/images\"+\"1b.JPG\" onclick=\"showAndroidToast(this.src)\">"+
+
+//"<img name="submit" src="http://mcqs.com/frcr1a/images/f1/1b.JPG" onclick="showAndroidToast(this.src)">
+
     explainText.loadMarkdown(myExplanation, "file:///android_asset/markdown_css_themes/foghorn.css");
 
 
@@ -412,6 +441,7 @@ private void displayQuestions(Question myQ){
             }
             disableOptionButtons();
             explanationButton.setEnabled(true);
+            nextButton.setEnabled(true);
             questionButton.setVisibility(View.INVISIBLE);
             imageButton.setVisibility(View.INVISIBLE);
             explanationButton.setVisibility(View.VISIBLE);
@@ -429,6 +459,7 @@ private void displayQuestions(Question myQ){
             }
             explanationButton.setEnabled(true);
             disableOptionButtons();
+            nextButton.setEnabled(true);
             questionButton.setVisibility(View.INVISIBLE);
             imageButton.setVisibility(View.INVISIBLE);
             explanationButton.setVisibility(View.VISIBLE);
@@ -448,6 +479,7 @@ private void displayQuestions(Question myQ){
             }
             explanationButton.setEnabled(true);
             disableOptionButtons();
+            nextButton.setEnabled(true);
             questionButton.setVisibility(View.INVISIBLE);
             imageButton.setVisibility(View.INVISIBLE);
             explanationButton.setVisibility(View.VISIBLE);
@@ -467,6 +499,7 @@ private void displayQuestions(Question myQ){
             }
             explanationButton.setEnabled(true);
             disableOptionButtons();
+            nextButton.setEnabled(true);
             questionButton.setVisibility(View.INVISIBLE);
             imageButton.setVisibility(View.INVISIBLE);
             explanationButton.setVisibility(View.VISIBLE);
@@ -485,6 +518,7 @@ private void displayQuestions(Question myQ){
             }
             explanationButton.setEnabled(true);
             disableOptionButtons();
+            nextButton.setEnabled(true);
             questionButton.setVisibility(View.INVISIBLE);
             imageButton.setVisibility(View.INVISIBLE);
             explanationButton.setVisibility(View.VISIBLE);
@@ -497,11 +531,6 @@ private void displayQuestions(Question myQ){
 
             int choice = (int) (Math.random() * qList.size());//random question
 
-
-
-
-
-
           //  System.out.println("time difference: ");
             long startTime = System.nanoTime();
            // displayQ = parseJSONFile(myJSONString);
@@ -512,19 +541,15 @@ private void displayQuestions(Question myQ){
             System.out.println("time difference: " + timeDifference + " Nanoseconds");
 
 
-
-
-
-
-
             displayQuestions(displayQ);
 
             explanationButton.setEnabled(false);
+            nextButton.setEnabled(false);
             explainText.setVisibility(View.INVISIBLE);
-            explainScroll.setVisibility(View.INVISIBLE);
-            explainScroll.scrollTo(0, 0);
-            backgroundScroll.setVisibility(View.VISIBLE);
-            backgroundScroll.scrollTo(0, 0);
+           // explainScroll.setVisibility(View.INVISIBLE);
+          //  explainScroll.scrollTo(0, 0);
+          //  backgroundScroll.setVisibility(View.VISIBLE);
+          //  backgroundScroll.scrollTo(0, 0);
             questionText.setVisibility(View.VISIBLE);
             optionOne.setVisibility(View.VISIBLE);
             optionTwo.setVisibility(View.VISIBLE);
@@ -551,8 +576,8 @@ private void displayQuestions(Question myQ){
         public void onClick(View view) {
 
             explainText.setVisibility(View.INVISIBLE);
-            explainScroll.setVisibility(View.INVISIBLE);
-            backgroundScroll.setVisibility(View.INVISIBLE);
+        //    explainScroll.setVisibility(View.INVISIBLE);
+           // backgroundScroll.setVisibility(View.INVISIBLE);
             questionText.setVisibility(View.INVISIBLE);
             optionOne.setVisibility(View.INVISIBLE);
             optionTwo.setVisibility(View.INVISIBLE);
@@ -572,8 +597,8 @@ private void displayQuestions(Question myQ){
 
             if(viewStatus==false) {
                 explainText.setVisibility(View.INVISIBLE);
-                explainScroll.setVisibility(View.INVISIBLE);
-                backgroundScroll.setVisibility(View.VISIBLE);
+               // explainScroll.setVisibility(View.INVISIBLE);
+               // backgroundScroll.setVisibility(View.VISIBLE);
                 questionText.setVisibility(View.VISIBLE);
                 optionOne.setVisibility(View.VISIBLE);
                 optionTwo.setVisibility(View.VISIBLE);
@@ -587,8 +612,8 @@ private void displayQuestions(Question myQ){
             }
             if(viewStatus==true){
                 explainText.setVisibility(View.INVISIBLE);
-                explainScroll.setVisibility(View.INVISIBLE);
-                backgroundScroll.setVisibility(View.VISIBLE);
+             //   explainScroll.setVisibility(View.INVISIBLE);
+             //   backgroundScroll.setVisibility(View.VISIBLE);
                 questionText.setVisibility(View.VISIBLE);
                 optionOne.setVisibility(View.VISIBLE);
                 optionTwo.setVisibility(View.VISIBLE);
@@ -610,8 +635,8 @@ private void displayQuestions(Question myQ){
         public void onClick(View view) {
 
             explainText.setVisibility(View.VISIBLE);
-            explainScroll.setVisibility(View.VISIBLE);
-            backgroundScroll.setVisibility(View.INVISIBLE);
+          //  explainScroll.setVisibility(View.VISIBLE);
+           // backgroundScroll.setVisibility(View.INVISIBLE);
             questionText.setVisibility(View.INVISIBLE);
             optionOne.setVisibility(View.INVISIBLE);
             optionTwo.setVisibility(View.INVISIBLE);
@@ -626,6 +651,9 @@ private void displayQuestions(Question myQ){
         }
     });
 }
+
+
+
 
 
 

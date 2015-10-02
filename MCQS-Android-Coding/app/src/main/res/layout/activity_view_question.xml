@@ -27,18 +27,7 @@
         android:layout_centerHorizontal="true"
         android:visibility="invisible"/>
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollViewEx"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_above="@+id/relativeLayout"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:visibility="invisible"
-        android:layout_marginBottom="2dp"
-        android:layout_alignTop="@+id/textViewBackground">
+
 
         <us.feras.mdv.MarkdownView
             android:layout_width="wrap_content"
@@ -48,26 +37,16 @@
 
             android:text="Explanation"
             android:id="@+id/textViewExplanation"
-            android:layout_below="@+id/textViewBackground"
             android:visibility="invisible"
-            android:layout_above="@+id/button1"
-            android:layout_alignEnd="@+id/button1"
-            android:layout_alignRight="@+id/button1"
-            android:layout_toEndOf="@+id/button6"
-            android:layout_toRightOf="@+id/button6" />
-    </ScrollView>
+            android:layout_alignRight="@+id/relativeLayout2"
+            android:layout_alignEnd="@+id/relativeLayout2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_above="@+id/relativeLayout" />
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_above="@+id/buttonOption1"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="2dp"
-        android:layout_alignTop="@+id/textViewBackground">
+
+
 
         <us.feras.mdv.MarkdownView
             android:layout_width="wrap_content"
@@ -77,13 +56,13 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Question"
             android:id="@+id/textViewQuestion"
-            android:layout_below="@+id/textViewBackground"
-            android:layout_above="@+id/button1"
-            android:layout_alignEnd="@+id/button1"
-            android:layout_alignRight="@+id/button1"
-            android:layout_toEndOf="@+id/button6"
-            android:layout_toRightOf="@+id/button6"/>
-    </ScrollView>
+            android:layout_above="@+id/buttonOption1"
+            android:layout_alignRight="@+id/textViewExplanation"
+            android:layout_alignEnd="@+id/textViewExplanation"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" />
+
 
 
 
@@ -93,7 +72,8 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_above="@+id/relativeLayout">
+    android:layout_above="@+id/relativeLayout"
+    android:id="@+id/relativeLayout2">
     <com.mcqs.anita.mcqs_android_version1.TouchImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -131,6 +111,7 @@
         android:layout_weight=".4"
         android:layout_height="wrap_content"
         android:text="Next"
+        android:enabled="false"
         android:background="#607D8B"
         android:layout_marginLeft="2dp"
         android:id="@+id/buttonNext"
@@ -309,8 +290,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="5dp"
-        android:layout_alignRight="@+id/scrollView"
-        android:layout_alignEnd="@+id/scrollView" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 
 

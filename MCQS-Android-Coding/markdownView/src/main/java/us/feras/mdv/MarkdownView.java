@@ -9,7 +9,10 @@ import us.feras.mdv.util.HttpHelper;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.AttributeSet;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.webkit.WebView;
+import android.widget.Toast;
 
 import com.petebevin.markdown.MarkdownProcessor;
 
@@ -17,6 +20,7 @@ import com.petebevin.markdown.MarkdownProcessor;
  * @author Feras Alnatsheh
  */
 public class MarkdownView extends WebView {
+	public static final int ID_DO_SOMETHING = 1;
 
 	public MarkdownView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -66,6 +70,48 @@ public class MarkdownView extends WebView {
 		new LoadMarkdownUrlTask().execute(url, cssFileUrl);
 	}
 
+	@Override
+	protected void onCreateContextMenu(ContextMenu menu){
+		super.onCreateContextMenu(menu);
+
+		final HitTestResult result = getHitTestResult();
+		MenuItem.OnMenuItemClickListener handler = new MenuItem.OnMenuItemClickListener(){
+			public boolean onMenuItemClick(MenuItem item){
+
+				switch (item.getItemId()){
+					case ID_DO_SOMETHING:
+						System.out.println("imageCase: " +result.getExtra());
+						break;
+					default:
+						break;
+				}
+				return true;
+			}
+		};
+
+
+		if (result.getType() == HitTestResult.IMAGE_TYPE
+				|| result.getType() == HitTestResult.SRC_IMAGE_ANCHOR_TYPE) {
+			menu.addSubMenu(1, 1, 1, "Save the picture");
+			System.out.println("image: " + result.getExtra());
+
+			// Menu options for an image.
+			// set the header title to the image url
+			menu.setHeaderTitle(result.getExtra());
+			menu.add(0, ID_DO_SOMETHING, 0, "Your Method Name").setOnMenuItemClickListener(handler);
+
+		}
+
+
+
+	}
+
+
+
+
+
+
+
 	public void loadMarkdownFile(String url) {
 		loadMarkdownFile(url, null);
 	}
@@ -102,7 +148,7 @@ public class MarkdownView extends WebView {
 				String url = params[0];
 				this.cssFileUrl = params[1];
 				if (url.startsWith("file:///android_asset")) {
-					txt = readFileFromAsset(url);
+				//	txt = readFileFromAsset(url);
 				} else {
 					txt = HttpHelper.get(url).getResponseMessage();
 				}

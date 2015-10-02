@@ -39,4 +39,13 @@
         android:layout_marginTop="37dp"
         android:layout_alignEnd="@+id/buttonStartQuiz"
         android:layout_alignRight="@+id/buttonStartQuiz" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="www.MCQS.com"
+        android:id="@+id/textView2"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

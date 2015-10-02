@@ -11,7 +11,7 @@ import com.bluelinelabs.logansquare.annotation.OnPreJsonSerialize;
 @JsonObject
 public class Question{
 
-   @JsonField(name = "options")
+    @JsonField(name = "options")
     private QuestionOptions[] questionOptions = new QuestionOptions[5];
 
     @JsonField

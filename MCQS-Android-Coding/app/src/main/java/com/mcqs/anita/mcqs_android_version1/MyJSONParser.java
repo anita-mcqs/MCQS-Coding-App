@@ -46,11 +46,8 @@ public class MyJSONParser {
 
     public String getJSONFromUrl(String url) {
 
-
         // Making the HTTP request - API uses Http Get
         try {
-              // CookieManager cookieManager = new CookieManager();
-           //   CookieHandler.setDefault(cookieManager);
 
             URL myURL = new URL(url);
             System.out.println(url);
