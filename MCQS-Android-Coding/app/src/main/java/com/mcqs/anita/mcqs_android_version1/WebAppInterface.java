@@ -31,7 +31,7 @@ public class WebAppInterface {
 
     /** Show a toast from the web page */
     @JavascriptInterface
-    public void showToast(final String toast) {
+    public void showImage(final String image) {
 
 
 
@@ -40,6 +40,7 @@ public class WebAppInterface {
             @Override
             public void run() {
 
+                System.out.println(image);
                 ImageView questionImage = (ImageView) activity.findViewById(R.id.imageView);
                 MarkdownView explainText = (MarkdownView) activity.findViewById(R.id.textViewExplanation);
                 MarkdownView questionText = (MarkdownView) activity.findViewById(R.id.textViewQuestion);
@@ -52,9 +53,9 @@ public class WebAppInterface {
                 Button questionButton = (Button) activity.findViewById(R.id.buttonQuestion);
                 Button imageButton = (Button) activity.findViewById(R.id.buttonImage);
                 // button.setBackgroundResource(R.drawable.practice_ri_wrong_3);
-                File file = new File(toast);
+                File file = new File(image);
 
-                 questionImage.setImageURI(Uri.parse(toast));
+                 questionImage.setImageURI(Uri.parse(image));
                   explainText.setVisibility(View.INVISIBLE);
                   questionText.setVisibility(View.INVISIBLE);
                  optionOne.setVisibility(View.INVISIBLE);
@@ -62,8 +63,9 @@ public class WebAppInterface {
                   optionThree.setVisibility(View.INVISIBLE);
                   optionFour.setVisibility(View.INVISIBLE);
                    optionFive.setVisibility(View.INVISIBLE);
+
                  questionImage.setVisibility(View.VISIBLE);
-                   explanationButton.setVisibility(View.INVISIBLE);
+                 //  explanationButton.setVisibility(View.INVISIBLE);
                    questionButton.setVisibility(View.VISIBLE);
                   imageButton.setVisibility(View.INVISIBLE);
                 if (questionImage != null) {
@@ -82,6 +84,67 @@ public class WebAppInterface {
 
 
     }
+
+
+
+
+    /** Show a toast from the web page */
+    @JavascriptInterface
+    public void showImageE(final String imageE) {
+
+
+
+
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+
+                ImageView questionImage = (ImageView) activity.findViewById(R.id.imageView);
+                MarkdownView explainText = (MarkdownView) activity.findViewById(R.id.textViewExplanation);
+                MarkdownView questionText = (MarkdownView) activity.findViewById(R.id.textViewQuestion);
+                Button optionOne = (Button) activity.findViewById(R.id.buttonOption1);
+                Button optionTwo = (Button) activity.findViewById(R.id.buttonOption2);
+                Button optionThree = (Button) activity.findViewById(R.id.buttonOption3);
+                Button optionFour = (Button) activity.findViewById(R.id.buttonOption4);
+                Button optionFive = (Button) activity.findViewById(R.id.buttonOption5);
+                Button explanationButton = (Button) activity.findViewById(R.id.buttonExplanation);
+                Button questionButton = (Button) activity.findViewById(R.id.buttonQuestion);
+                Button imageButton = (Button) activity.findViewById(R.id.buttonImage);
+                // button.setBackgroundResource(R.drawable.practice_ri_wrong_3);
+                File file = new File(imageE);
+
+                questionImage.setImageURI(Uri.parse(imageE));
+                explainText.setVisibility(View.INVISIBLE);
+                questionText.setVisibility(View.INVISIBLE);
+                optionOne.setVisibility(View.INVISIBLE);
+                optionTwo.setVisibility(View.INVISIBLE);
+                optionThree.setVisibility(View.INVISIBLE);
+                optionFour.setVisibility(View.INVISIBLE);
+                optionFive.setVisibility(View.INVISIBLE);
+               questionImage.setVisibility(View.VISIBLE);
+                explanationButton.setVisibility(View.VISIBLE);
+                questionButton.setVisibility(View.INVISIBLE);
+                imageButton.setVisibility(View.INVISIBLE);
+                if (questionImage != null) {
+                    System.out.println("Explanation");
+                }
+                //  Toast.makeText(activity, toast, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
+
+        //ViewQuestion.class.  ImageView questionImage = (ImageView) findViewById(R.id.imageView);
+
+
+
+    }
+
+
+
     @JavascriptInterface
     public void performClick(String value){
         System.out.println("perform click: "+ value);

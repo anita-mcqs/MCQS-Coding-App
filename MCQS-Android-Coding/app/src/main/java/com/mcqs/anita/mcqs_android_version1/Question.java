@@ -26,10 +26,19 @@ public class Question{
     @JsonField
     private String explanation;
 
+
     private int index;
 
+    @JsonField
+    private String[] images;
 
-    private String imagePath;
+    private boolean imagesDownloaded;
+
+    private boolean questionAnswered;
+
+    private boolean answeredCorrectly;
+
+
 
 
 
@@ -54,12 +63,12 @@ public class Question{
         this.index = index;
     }
 
-    public String getImagePath() {
-        return imagePath;
+    public String[] getImages() {
+        return images;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setImages(String[] images) {
+        this.images = images;
     }
 
     public QuestionOptions[] getQuestionOptions() {
@@ -101,6 +110,31 @@ public class Question{
 
     public void setExplanation(String explanation) {
         this.explanation = explanation;
+    }
+
+
+    public boolean isImagesDownloaded() {
+        return imagesDownloaded;
+    }
+
+    public void setImagesDownloaded(boolean imagesDownloaded) {
+        this.imagesDownloaded = imagesDownloaded;
+    }
+
+    public boolean isQuestionAnswered() {
+        return questionAnswered;
+    }
+
+    public void setQuestionAnswered(boolean questionAnswered) {
+        this.questionAnswered = questionAnswered;
+    }
+
+    public boolean isAnsweredCorrectly() {
+        return answeredCorrectly;
+    }
+
+    public void setAnsweredCorrectly(boolean answeredCorrectly) {
+        this.answeredCorrectly = answeredCorrectly;
     }
 
     @OnJsonParseComplete

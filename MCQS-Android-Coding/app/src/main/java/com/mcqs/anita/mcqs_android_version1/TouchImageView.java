@@ -161,6 +161,14 @@ public class TouchImageView extends ImageView {
 
     }
 
+    public void resetZoom(){
+
+        Matrix myMatrix = new Matrix(matrix);
+        saveScale = 1f;
+        setImageMatrix(myMatrix);
+        invalidate();
+    }
+
     private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
 
         @Override

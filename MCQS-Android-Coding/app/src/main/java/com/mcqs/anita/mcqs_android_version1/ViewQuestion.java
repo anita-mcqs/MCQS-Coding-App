@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.res.AssetManager;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
@@ -21,13 +22,18 @@ import android.view.View;
 
 import com.bluelinelabs.logansquare.LoganSquare;
 import com.google.gson.JsonParser;
+
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import us.feras.mdv.MarkdownView;
 import java.io.InputStream;
@@ -64,7 +70,7 @@ public class ViewQuestion extends AppCompatActivity  {
     private int progressInt=0;
     private int progressMax=0;
     private String myJSONString = "";
-    private ImageView questionImage;
+    private TouchImageView questionImage;
     private TextView actionBarTitle;
     private int count=1;
     private int jsonArraySize1;
@@ -379,7 +385,7 @@ private void displayQuestions(Question myQ){
     explainText = (MarkdownView) findViewById(R.id.textViewExplanation);
    // explainScroll = (ScrollView) findViewById(R.id.scrollViewEx);
     backgroundScroll = (ScrollView) findViewById(R.id.scrollView);
-    questionImage = (ImageView) findViewById(R.id.imageView);
+    questionImage = (TouchImageView) findViewById(R.id.imageView);
     WebSettings settingsQ = questionText.getSettings();
 
     questionText.setScrollBarStyle(MarkdownView.SCROLLBARS_OUTSIDE_OVERLAY);
@@ -396,29 +402,73 @@ private void displayQuestions(Question myQ){
     myExplanation.replaceAll("\\s+", "\n");
     myExplanation.replaceAll("\\s+", System.getProperty("line.separator"));
     settingsQ.setJavaScriptEnabled(true);
+    settingsE.setJavaScriptEnabled(true);
     questionText.getSettings().setLoadsImagesAutomatically(true);
+    explainText.getSettings().setLoadsImagesAutomatically(true);
 
    // questionText.setWebViewClient(new MyBrowser());
     questionText.addJavascriptInterface(new WebAppInterface(this), "Android");
+    explainText.addJavascriptInterface(new WebAppInterface(this), "Android");
    // questionText.addJavascriptInterface(new WebAppInterface(this), "Android");
     questionText.loadMarkdown("<script type=\"text/javascript\">\n" +
-            "    function showAndroidToast(toast) {\n" +
-            "        Android.showToast(toast);\n" +
+            "    function showAndroidImage(image) {\n" +
+            "        Android.showImage(image);\n" +
             "    }\n" +
             "</script>" +
-            "test1" +"<img  name=\"submit\" src=\"file:///data/data/com.mcqs.anita.mcqs_android_coding/files/images/1b.JPG\" onclick=\"showAndroidToast(this.src)\">"+
-            " \ntest12   ", "file:///android_asset/markdown_css_themes/foghorn.css");
+            "test1" +"<img src=\"file:///data/data/"+ getApplicationContext().getPackageName() +"/files/images/1b.JPG\" onclick=\"showAndroidImage(this.src)\">"+
+            " \ntest12 \n  "+"<img src=\"file:///data/data/"+getApplicationContext().getPackageName()+"/files/images/1.png\" onclick=\"showAndroidImage(this.src)\">", "file:///android_asset/markdown_css_themes/foghorn.css");
     //questionText.loadUrl("file:///android_asset/index.html");
-
+System.out.println("package name: "+ getApplicationContext().getPackageName());
+    System.out.println("src name: "+ "file:///data/data/"+getApplicationContext().getPackageName()+"/files/images/1b.JPG");
 //width=""+"100%"+""
 
-//  "test" +"<img name=\"submit\" src=\"file:///data/data/\" + getPackageName() + \"/files/images\"+\"1b.JPG\" onclick=\"showAndroidToast(this.src)\">"+
 
+
+        String testPath = "http://www.radiography.com/mcqs/images/SPECTamygdala.jpg";
+    try {
+        URL[] imageURLS = new URL[1];
+        URL imageURL = new URL(testPath);
+        imageURLS[0] = imageURL;
+        new DownloadImages().execute(imageURLS);
+
+    }
+    catch(MalformedURLException e){
+        e.printStackTrace();
+    }
+
+
+//String toPathImages = "/data/data/" + getPackageName()+"/files/images";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  "test" +"<img name=\"submit\" src=\"file:///data/data/\" + getPackageName() + \"/files/images\"+\"1b.JPG\" onclick=\"showAndroidToast(this.src)\">"+
+//src="file:///data/data/com.mcqs.anita.mcqs_android_coding/files/images/1b.JPG"
 //"<img name="submit" src="http://mcqs.com/frcr1a/images/f1/1b.JPG" onclick="showAndroidToast(this.src)">
 
-    explainText.loadMarkdown(myExplanation, "file:///android_asset/markdown_css_themes/foghorn.css");
+    explainText.loadMarkdown("<script type=\"text/javascript\">\n" +
+            "    function showAndroidImage(ImageE) {\n" +
+            "        Android.showImageE(ImageE);\n" +
+            "    }\n" +
+            "</script>" +
+            "explanation1" + "<img src=\"file:///data/data/"+getApplicationContext().getPackageName()+"/files/images/2.png\" onclick=\"showAndroidImage(this.src)\">" +
+            " \nexplanation12 \n  " + "<img src=\"file:///data/data/"+getApplicationContext().getPackageName()+"/files/images/3.png\" onclick=\"showAndroidImage(this.src)\">", "file:///android_asset/markdown_css_themes/foghorn.css");
 
 
+
+
+
+//explainText.loadMarkdown(myExplanation, "file:///android_asset/markdown_css_themes/foghorn.css");
     optionOne.setText(myOptions.get(0).getAnswer());
     //System.out.println(myOptions.get(0).getAnswer());
     optionTwo.setText(myOptions.get(1).getAnswer());
@@ -542,7 +592,7 @@ private void displayQuestions(Question myQ){
 
 
             displayQuestions(displayQ);
-
+            questionImage.resetZoom();
             explanationButton.setEnabled(false);
             nextButton.setEnabled(false);
             explainText.setVisibility(View.INVISIBLE);
@@ -606,9 +656,10 @@ private void displayQuestions(Question myQ){
                 optionFour.setVisibility(View.VISIBLE);
                 optionFive.setVisibility(View.VISIBLE);
                 questionImage.setVisibility(View.INVISIBLE);
+                questionImage.resetZoom();
                 questionButton.setVisibility(View.INVISIBLE);
-                imageButton.setVisibility(View.VISIBLE);
-                explanationButton.setVisibility(View.INVISIBLE);
+              //  imageButton.setVisibility(View.VISIBLE);
+                explanationButton.setVisibility(View.VISIBLE);
             }
             if(viewStatus==true){
                 explainText.setVisibility(View.INVISIBLE);
@@ -620,6 +671,7 @@ private void displayQuestions(Question myQ){
                 optionThree.setVisibility(View.VISIBLE);
                 optionFour.setVisibility(View.VISIBLE);
                 optionFive.setVisibility(View.VISIBLE);
+                questionImage.resetZoom();
                 questionImage.setVisibility(View.INVISIBLE);
                 questionButton.setVisibility(View.INVISIBLE);
                 imageButton.setVisibility(View.INVISIBLE);
@@ -637,6 +689,7 @@ private void displayQuestions(Question myQ){
             explainText.setVisibility(View.VISIBLE);
           //  explainScroll.setVisibility(View.VISIBLE);
            // backgroundScroll.setVisibility(View.INVISIBLE);
+            questionImage.resetZoom();
             questionText.setVisibility(View.INVISIBLE);
             optionOne.setVisibility(View.INVISIBLE);
             optionTwo.setVisibility(View.INVISIBLE);
@@ -762,7 +815,50 @@ private void displayQuestions(Question myQ){
 
 
 
+private class DownloadImages extends AsyncTask<URL, Integer, Void>{
 
+        protected Void doInBackground(URL... urls){
+
+            int count = urls.length;//no of images to download in images array
+            for(int i=0; i< count; i++){
+                try {
+                    URL testPath = urls[i];
+                    String testPath2 = new File(testPath.getPath()).getName();
+                    String toPathImages = "/data/data/" + getPackageName() + "/files/images/";
+                    InputStream in = new BufferedInputStream(testPath.openStream());
+                    ByteArrayOutputStream out = new ByteArrayOutputStream();
+                    byte[] buf = new byte[1024];
+                    int n = 0;
+                    while (-1!=(n=in.read(buf))){
+                        out.write(buf, 0, n);
+                    }
+                    out.close();
+                    in.close();
+                    byte[] response = out.toByteArray();
+
+                    FileOutputStream fos = new FileOutputStream(toPathImages+testPath2);
+                    fos.write(response);
+                    fos.close();
+                }
+                catch(MalformedURLException e){
+                    e.printStackTrace();
+                }
+                catch(IOException e){
+                    e.printStackTrace();
+                }
+
+            }
+
+
+
+
+
+            return null;
+        }
+
+
+
+    }
 
 
 
