@@ -38,15 +38,12 @@ public class ChooseExam extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_exam);
 
-
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar);
         actionBarTitle = (TextView) findViewById(R.id.action_bar_text);
         actionBarTitle.setText(R.string.title_activity_choose_exam);
 
         downloadOriginal = (Button) findViewById(R.id.button2);
-
-
 
         downloadOriginal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,13 +52,19 @@ public class ChooseExam extends AppCompatActivity {
                 File dir = getFilesDir();
                 File file = new File(dir, "myJSON.txt");
                 boolean deleted = file.delete();//delete text file in internal storage
+                String toPathImages = "/data/data/" + getPackageName()+"/files/images";
+                File imageFolder = new File(toPathImages);
+                File[] imageFiles = imageFolder.listFiles();
+                System.out.println("no of images!: "+ imageFiles.length);
+                for(int i=0;i<imageFiles.length;i++){
+                   imageFiles[i].delete();
+                }
+                imageFolder.delete();
 
                 Intent startQuiz = new Intent(ChooseExam.this, ViewQuestion.class);
-
                 startActivity(startQuiz);
             }
         });
-
 
         examList = new ArrayList<Exam>();
 
@@ -96,9 +99,9 @@ public class ChooseExam extends AppCompatActivity {
                 // TODO Auto-generated method stub
             }
         });
-
-
     }
+
+
 
 
     // TODO: 22/09/2015 Sample Data
@@ -121,8 +124,6 @@ public class ChooseExam extends AppCompatActivity {
         examList.add(exam7);
     }
 
-
-
         @Override
         public boolean onCreateOptionsMenu(Menu menu) {
             // Inflate the menu; this adds items to the action bar if it is present.
@@ -144,5 +145,4 @@ public class ChooseExam extends AppCompatActivity {
 
             return super.onOptionsItemSelected(item);
         }
-
 }

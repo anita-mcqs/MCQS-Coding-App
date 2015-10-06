@@ -33,9 +33,6 @@ public class WebAppInterface {
     @JavascriptInterface
     public void showImage(final String image) {
 
-
-
-
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -74,31 +71,17 @@ public class WebAppInterface {
               //  Toast.makeText(activity, toast, Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
-
-
         //ViewQuestion.class.  ImageView questionImage = (ImageView) findViewById(R.id.imageView);
-
-
-
     }
-
-
 
 
     /** Show a toast from the web page */
     @JavascriptInterface
     public void showImageE(final String imageE) {
 
-
-
-
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-
 
                 ImageView questionImage = (ImageView) activity.findViewById(R.id.imageView);
                 MarkdownView explainText = (MarkdownView) activity.findViewById(R.id.textViewExplanation);
@@ -132,15 +115,7 @@ public class WebAppInterface {
                 //  Toast.makeText(activity, toast, Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
-
-
         //ViewQuestion.class.  ImageView questionImage = (ImageView) findViewById(R.id.imageView);
-
-
-
     }
 
 

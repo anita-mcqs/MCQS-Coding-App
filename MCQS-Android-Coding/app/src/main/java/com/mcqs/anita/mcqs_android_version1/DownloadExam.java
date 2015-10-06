@@ -44,10 +44,8 @@ public class DownloadExam extends AppCompatActivity {
     String name;
     Button downloadButton;
     private String downloadedJSONTxt="";
-    private static String packageURL= "http://192.168.1.7:4444/question/exam/3";//PHP Exam      //test download JSON
- //   private static String packageURL= "http://192.168.1.7:4444/question/list";//PHP Exam      //test download JSON
+    private static String packageURL= "http://192.168.1.7:4444/question/exam/4";//PHP Exam      //test download JSON
     int id;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,14 +70,18 @@ public class DownloadExam extends AppCompatActivity {
         txtName.setText(name);
         txtDescription.setText(description);
 
-
         downloadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try{
                     String test = new DownloadQuestion().execute(packageURL).get();
-
-                 //   System.out.println(test);
+                    String toPathImages = "/data/data/" + getPackageName()+"/files/images";
+                    File imageFolder = new File(toPathImages);
+                    File[] imageFiles = imageFolder.listFiles();
+                    System.out.println("no of images!: "+ imageFiles.length);
+                    for(int i=0;i<imageFiles.length;i++){
+                        imageFiles[i].delete();
+                    }
                 }
                 catch (InterruptedException e)
                 {
@@ -90,16 +92,10 @@ public class DownloadExam extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 Intent startQuiz = new Intent(DownloadExam.this, ViewQuestion.class);
-
                 startActivity(startQuiz);
-
             }
         });
-
-
     }
-
-
 
 
 
@@ -116,16 +112,12 @@ public class DownloadExam extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         // if (id == R.id.action_settings) {
         //   return true;
         //  }
-
         return super.onOptionsItemSelected(item);
     }
-
-
 
     private class DownloadQuestion extends AsyncTask<String, Integer, String> {
 
