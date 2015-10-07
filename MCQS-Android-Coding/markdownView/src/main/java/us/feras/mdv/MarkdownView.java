@@ -37,7 +37,7 @@ public class MarkdownView extends WebView {
 	 * @param txt
 	 *            - input in markdown format
 	 * @param cssFileUrl
-	 *            - a URL to css File. If the file located in the project assets
+	 *
 	 *            folder then the URL should start with "file:///android_asset/"
 	 */
 	public void loadMarkdown(String txt, String cssFileUrl) {
@@ -173,8 +173,12 @@ public class MarkdownView extends WebView {
 
 	private void loadMarkdownToView(String txt, String cssFileUrl) {
 		MarkdownProcessor m = new MarkdownProcessor();
+	//	String temp = txt.replace("%","%%");
+	//	String temp1 = temp.replace("?","??");
 		String html = m.markdown(txt);
+		//html=html.replace("%", "%%");
 		if (cssFileUrl != null) {
+			//html=html.replace("%", "%%");
 			html = String.format(
 					"<link rel=\"stylesheet\" type=\"text/css\" href=\"%s\" />"
 							+ html, cssFileUrl);

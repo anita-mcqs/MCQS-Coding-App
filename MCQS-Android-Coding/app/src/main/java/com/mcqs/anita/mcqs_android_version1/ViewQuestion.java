@@ -90,16 +90,21 @@ public class ViewQuestion extends AppCompatActivity  {
         myJSONString =  readFromFile();
 
         JsonParser jsonParser = new JsonParser();
-        jsonArraySize1 = jsonParser.parse(myJSONString).getAsJsonArray().size();
-
+       // jsonArraySize1 = jsonParser.parse(myJSONString).getAsJsonArray().size();
+      //  System.out.println("package: "+getApplicationContext().getPackageName());
         try {
          qList= LoganSquare.parseList(myJSONString, Question.class);
-           System.out.println(qList.size()+" length");
+
+       //    System.out.println(qList.size()+" length");
          //   int choice = (int) (Math.random() * qList.size());//random question
           //  displayQ = qList.get(choice);
             for(int i=0; i<qList.size(); i++){
+
+
                 if(qList.get(i).getImages()!=null){
-                    System.out.println("Images: "+i+ " : "+qList.get(i).getImages().length);
+                 //   System.out.println("Images: "+i+ " : "+qList.get(i).getImages().length);
+                   // System.out.println("q: " + i+ " "+ qList.get(i).getQuestion());
+                  //  System.out.println("e: " + i+ " "+ qList.get(i).getExplanation());
                     //download images - add to finalList
                   //  String testPath = "http://www.radiography.com/mcqs/images/SPECTamygdala.jpg";
                     try {
@@ -131,9 +136,6 @@ public class ViewQuestion extends AppCompatActivity  {
 
         int choice = (int) (Math.random() * finalList.size());//random question
         displayQ = finalList.get(choice);
-
-        //parse json as you go
-      //  displayQ = parseJSONFile(myJSONString);//parse random question
 
         displayQuestions(displayQ);
         registerForContextMenu(questionText);
@@ -365,31 +367,42 @@ private void displayQuestions(Question myQ)
     explainText.setScrollBarStyle(MarkdownView.SCROLLBARS_OUTSIDE_OVERLAY);
     explainText.setScrollbarFadingEnabled(false);
 
-    final String myQuestion = displayBackgroundString+"\n"+displayQuestionString;
+    String myQuestion = displayBackgroundString+"\n"+displayQuestionString;
+    String testQ = "my string 20% and 30% of course? There is.";
     String myExplanation = displayCoreString+"\n"+displayExplanationString;
+    String testE = "my string 100% and 130% of course? There is.";
     myQuestion.replaceAll("\\s+", "\n");
     myQuestion.replaceAll("\\s+", System.getProperty("line.separator"));
     myExplanation.replaceAll("\\s+", "\n");
     myExplanation.replaceAll("\\s+", System.getProperty("line.separator"));
+    myQuestion=myQuestion.replace("%", "&#37;");//replace % sign with ASCII
+    testQ= testQ.replace("%", "&#37;");
+    testE=testE.replace("%", "&#37;");
+    myExplanation=myExplanation.replace("%", "&#37;");
+  //  myQuestion.replace("?", "");
+   // myExplanation.replace("?", "");
     settingsQ.setJavaScriptEnabled(true);
     settingsE.setJavaScriptEnabled(true);
     questionText.getSettings().setLoadsImagesAutomatically(true);
     explainText.getSettings().setLoadsImagesAutomatically(true);
+    System.out.println("test: "+ testQ + testE);
 
    // questionText.setWebViewClient(new MyBrowser());
     questionText.addJavascriptInterface(new WebAppInterface(this), "Android");
     explainText.addJavascriptInterface(new WebAppInterface(this), "Android");
    // questionText.addJavascriptInterface(new WebAppInterface(this), "Android");
-    questionText.loadMarkdown("<script type=\"text/javascript\">\n" +
-            "    function showAndroidImage(image) {\n" +
-            "        Android.showImage(image);\n" +
-            "    }\n" +
-            "</script>" +
-            "test1" +"<img src=\"file:///data/data/"+ getApplicationContext().getPackageName() +"/files/images/1b.JPG\" onclick=\"showAndroidImage(this.src)\">"+
-            " \ntest12 \n  "+"<img src=\"file:///data/data/"+getApplicationContext().getPackageName()+"/files/images/1.png\" onclick=\"showAndroidImage(this.src)\">", "file:///android_asset/markdown_css_themes/foghorn.css");
-    //questionText.loadUrl("file:///android_asset/index.html");
-System.out.println("package name: "+ getApplicationContext().getPackageName());
-    System.out.println("src name: "+ "file:///data/data/"+getApplicationContext().getPackageName()+"/files/images/1b.JPG");
+//    questionText.loadMarkdown("<script type=\"text/javascript\">\n" +
+//            "    function showAndroidImage(image) {\n" +
+//            "        Android.showImage(image);\n" +
+//            "    }\n" +
+//            "</script>" +
+//            "test1<img src=\"file:///data/data/"+ getApplicationContext().getPackageName() +"/files/images/1b.JPG\" onclick=\"showAndroidImage(this.src)\">"+
+//            " \ntest12 \n  "+"<img src=\"file:///data/data/"+getApplicationContext().getPackageName()+"/files/images/1.png\" onclick=\"showAndroidImage(this.src)\">", "file:///android_asset/markdown_css_themes/foghorn.css");
+
+    questionText.loadMarkdown("<script type=\"text/javascript\">function showAndroidImage(image) {Android.showImage(image);}</script>" + myQuestion, "file:///android_asset/markdown_css_themes/foghorn.css");
+
+//System.out.println("package name: " + getApplicationContext().getPackageName());
+//    System.out.println("src name: "+ "file:///data/data/"+getApplicationContext().getPackageName()+"/files/images/1b.JPG");
 
 //width=""+"100%"+""
 //        String testPath = "http://www.radiography.com/mcqs/images/SPECTamygdala.jpg";
@@ -410,14 +423,21 @@ System.out.println("package name: "+ getApplicationContext().getPackageName());
 //src="file:///data/data/com.mcqs.anita.mcqs_android_coding/files/images/1b.JPG"
 //"<img name="submit" src="http://mcqs.com/frcr1a/images/f1/1b.JPG" onclick="showAndroidToast(this.src)">
 
+//    explainText.loadMarkdown("<script type=\"text/javascript\">\n" +
+//            "    function showAndroidImage(ImageE) {\n" +
+//            "        Android.showImageE(ImageE);\n" +
+//            "    }\n" +
+//            "</script>" +
+//            "explanation1" + "<img src=\"file:///data/data/"+getApplicationContext().getPackageName()+"/files/images/2.png\" onclick=\"showAndroidImage(this.src)\">" +
+//            " \nexplanation12 \n  " + "<img src=\"file:///data/data/"+getApplicationContext().getPackageName()+"/files/images/3.png\" onclick=\"showAndroidImage(this.src)\">", "file:///android_asset/markdown_css_themes/foghorn.css");
+ //  explainText.loadMarkdown("<script type=\"text/javascript\">function showAndroidImage(ImageE) {Android.showImageE(ImageE);}</script>"+myExplanation, "file:///android_asset/markdown_css_themes/foghorn.css");
+ //   System.out.println("explanation!!!"+myExplanation);
+   // System.out.println("question!!!"+myExplanation);
     explainText.loadMarkdown("<script type=\"text/javascript\">\n" +
             "    function showAndroidImage(ImageE) {\n" +
             "        Android.showImageE(ImageE);\n" +
             "    }\n" +
-            "</script>" +
-            "explanation1" + "<img src=\"file:///data/data/"+getApplicationContext().getPackageName()+"/files/images/2.png\" onclick=\"showAndroidImage(this.src)\">" +
-            " \nexplanation12 \n  " + "<img src=\"file:///data/data/"+getApplicationContext().getPackageName()+"/files/images/3.png\" onclick=\"showAndroidImage(this.src)\">", "file:///android_asset/markdown_css_themes/foghorn.css");
-
+            "</script>" + myExplanation, "file:///android_asset/markdown_css_themes/foghorn.css");
 //explainText.loadMarkdown(myExplanation, "file:///android_asset/markdown_css_themes/foghorn.css");
 
     optionOne.setText(myOptions.get(0).getAnswer());
