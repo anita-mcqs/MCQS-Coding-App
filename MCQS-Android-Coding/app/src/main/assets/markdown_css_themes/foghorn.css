@@ -3,7 +3,9 @@ html, body {
         margin:auto;
         max-width:42em;
         background:#fefefe;
-		box-shadow: inset 0px 2px 5px 0 rgba(0, 0, 0, 0.26) !important;
+		box-shadow:
+        		inset 7px 0px 7px -5px rgba(0,0,0,0.5),
+        		inset -7px 0px 7px -5px rgba(0,0,0,0.5);
 	}
 body {
 	font: 1em "Vollkorn", Palatino, Times;

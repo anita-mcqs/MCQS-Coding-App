@@ -135,6 +135,7 @@ public class ViewQuestion extends AppCompatActivity  {
         }
 
         int choice = (int) (Math.random() * finalList.size());//random question
+
         displayQ = finalList.get(choice);
 
         displayQuestions(displayQ);
@@ -552,6 +553,7 @@ private void displayQuestions(Question myQ)
           //  System.out.println("time difference: ");
             long startTime = System.nanoTime();
            // displayQ = parseJSONFile(myJSONString);
+
             displayQ = finalList.get(choice);
             long endTime = System.nanoTime();
             long timeDifference = (endTime - startTime);
