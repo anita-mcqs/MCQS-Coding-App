@@ -39,6 +39,9 @@ import java.util.Collections;
 import java.util.List;
 import android.view.View.OnClickListener;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 @SuppressLint("SetJavaScriptEnabled")
 public class ViewQuestion extends AppCompatActivity  {
 
@@ -74,6 +77,8 @@ public class ViewQuestion extends AppCompatActivity  {
     private Question displayQ = new Question();
     private List<Question> qList;
     private List<Question> finalList;
+    private ArrayList<Integer> questionIds = new ArrayList<>();
+    private String questionIDTemp="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,33 +93,41 @@ public class ViewQuestion extends AppCompatActivity  {
 
         checkFiles();//if there don't copy file
         myJSONString =  readFromFile();
+        questionIDTemp = readFromFileID();
+        try {
+            JSONArray myIds = new JSONArray(questionIDTemp);
+            if(myIds==null){
+                System.out.println("No Questions Attempted yet");
+            }
+            else{
+
+                for(int i=0;i<myIds.length(); i++){
+                    questionIds.add(myIds.optInt(i));
+                }
+            }
+        }
+        catch(JSONException er){
+            er.printStackTrace();
+        }
+
+        System.out.println("id length: "+ questionIds.size());
+
+
 
         JsonParser jsonParser = new JsonParser();
-       // jsonArraySize1 = jsonParser.parse(myJSONString).getAsJsonArray().size();
-      //  System.out.println("package: "+getApplicationContext().getPackageName());
         try {
+
          qList= LoganSquare.parseList(myJSONString, Question.class);
-
-       //    System.out.println(qList.size()+" length");
-         //   int choice = (int) (Math.random() * qList.size());//random question
-          //  displayQ = qList.get(choice);
+            System.out.println("question array: "+ qList.size());
             for(int i=0; i<qList.size(); i++){
-
-
+                System.out.println("QuestionId: "+ qList.get(i).getQuestionId());
                 if(qList.get(i).getImages()!=null){
-                 //   System.out.println("Images: "+i+ " : "+qList.get(i).getImages().length);
-                   // System.out.println("q: " + i+ " "+ qList.get(i).getQuestion());
-                  //  System.out.println("e: " + i+ " "+ qList.get(i).getExplanation());
-                    //download images - add to finalList
-                  //  String testPath = "http://www.radiography.com/mcqs/images/SPECTamygdala.jpg";
                     try {
                         URL[] imageURLS = new URL[qList.get(i).getImages().length];
                         for(int j=0; j<qList.get(i).getImages().length; j++){
                             URL imageURL = new URL(qList.get(i).getImages()[j]);
                             imageURLS[j] = imageURL;
                         }
-                       // URL imageURL = new URL(testPath);
-                       // imageURLS[0] = imageURL;
                         new DownloadImages().execute(imageURLS);
                         finalList.add(qList.get(i));
                     }
@@ -126,6 +139,8 @@ public class ViewQuestion extends AppCompatActivity  {
                     finalList.add(qList.get(i));//add questions without images to final list
                 }
             }
+            System.out.println("finallist: "+ finalList.size());
+
         }
         catch(IOException er){
             er.printStackTrace();
@@ -135,7 +150,6 @@ public class ViewQuestion extends AppCompatActivity  {
         }
 
         int choice = (int) (Math.random() * finalList.size());//random question
-
         displayQ = finalList.get(choice);
 
         displayQuestions(displayQ);
@@ -143,95 +157,36 @@ public class ViewQuestion extends AppCompatActivity  {
         registerForContextMenu(explainText);
     }
 
-//    //parse entire JSON File - first 5 nodes
-//    private Question parseJSONFile(String myJSONString) {
-//        //questionList - array of questions
-//        int jsonArraySize;
-//
-//        JsonParser jsonParser = new JsonParser();
-//        jsonArraySize = jsonParser.parse(myJSONString).getAsJsonArray().size();
-//        int choice = (int) (Math.random() * jsonArraySize);//random question
-//        System.out.println("JSONArraySize: " + jsonArraySize);
-//
-//            Question myQuestion = new Question();
-//            String background = "";
-//            String question = "";
-//            String core = "";
-//            String explanation = "";
-//
-//            //incorrect answers
-//            int length = jsonParser.parse(myJSONString)
-//                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("options").size();
-//
-//            QuestionOptions[] questionOptions = new QuestionOptions[length];
-//      //  System.out.println("Question Options: "+ length+ " Question No: " +choice);
-//
-//        for(int j=0; j<length; j++){
-//            String option = jsonParser.parse(myJSONString)
-//                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("options").get(j).getAsJsonObject().get("answer").getAsString();
-//            Boolean correct = jsonParser.parse(myJSONString)
-//                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("options").get(j).getAsJsonObject().get("correctAnswer").getAsBoolean();
-//            //.getAsJsonObject().getAsJsonArray("incorrectAnswers").get(0)
-//              //      .getAsJsonObject().getAsJsonArray("incorrectAnswer").get(j).getAsJsonObject().get("_").getAsString();
-//            QuestionOptions incorr = new QuestionOptions(option, correct);
-//            questionOptions[j] = incorr;
-//        }
-//
-//        myQuestion.setQuestionOptions(questionOptions);
-//        /*
-//            //correct answer
-//            String correctAnswer = jsonParser.parse(myJSONString)
-//                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("options").get(0).getAsJsonObject().getAsJsonArray("correctAnswers").get(0)
-//                    .getAsJsonObject().getAsJsonArray("correctAnswer").get(0).getAsJsonObject().get("_").getAsString();
-//
-//           //System.out.println("correct: " + correctAnswer);
-//
-//            QuestionOptions corr = new QuestionOptions(correctAnswer, true);
-//            questionOptions[0] = corr;
-//
-//            for(int j=0; j<length; j++){
-//                String myIncorrectOption = jsonParser.parse(myJSONString)
-//                        .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonArray("options").get(0).getAsJsonObject().getAsJsonArray("incorrectAnswers").get(0)
-//                        .getAsJsonObject().getAsJsonArray("incorrectAnswer").get(j).getAsJsonObject().get("_").getAsString();
-//                QuestionOptions incorr = new QuestionOptions(myIncorrectOption, false);
-//                questionOptions[j+1] = incorr;
-//            }
-//
-//            myQuestion.setQuestionOptions(questionOptions);
-//*/
-//            //explanation
-//            explanation = jsonParser.parse(myJSONString)
-//                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonPrimitive("explanation").getAsString();
-//            myQuestion.setExplanation(explanation);
-//
-//            //core
-//            core = jsonParser.parse(myJSONString)
-//                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonPrimitive("core").getAsString();
-//            myQuestion.setCore(core);
-//
-//            //question
-//            question = jsonParser.parse(myJSONString)
-//                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonPrimitive("question").getAsString();
-//            myQuestion.setQuestion(question);
-//
-//            //background
-//            background = jsonParser.parse(myJSONString)
-//                    .getAsJsonArray().get(choice).getAsJsonObject().getAsJsonPrimitive("background").getAsString();
-//            myQuestion.setBackground(background);
-//
-//      //  System.out.println("explanation: " + explanation);
-//       // System.out.println("core: "+ core);
-//      //  System.out.println("question: "+ question);
-//      //  System.out.println("background: "+ background);
-//
-//        return myQuestion;
-//    }
 
     private String readFromFile() {
         String ret = "";
         String toPath = "/data/data/" + getPackageName();
         try {
             InputStream inputStream = openFileInput("myJSON.txt");
+            if ( inputStream != null ) {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String receiveString = "";
+                StringBuilder stringBuilder = new StringBuilder();
+                while ( (receiveString = bufferedReader.readLine()) != null ) {
+                    stringBuilder.append(receiveString);
+                }
+                inputStream.close();
+                ret = stringBuilder.toString();
+            }
+        }
+        catch (FileNotFoundException e) {
+            Log.e("login activity", "File not found: " + e.toString());
+        } catch (IOException e) {
+            Log.e("login activity", "Can not read file: " + e.toString());
+        }
+        return ret;
+    }
+    private String readFromFileID() {
+        String ret = "";
+        String toPath = "/data/data/" + getPackageName();
+        try {
+            InputStream inputStream = openFileInput("myQuestionIds.txt");
             if ( inputStream != null ) {
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -260,6 +215,7 @@ public class ViewQuestion extends AppCompatActivity  {
         String toPath = "/data/data/" + getPackageName()+"/files/";
         String toPathImages = "/data/data/" + getPackageName()+"/files/images";
         Boolean fileThere = fileExistance("myJSON.txt");
+        Boolean fileIDThere = fileExistance("myQuestionIds.txt");
         if(fileThere==true)
         {
             // System.out.println("not empty");
@@ -267,6 +223,7 @@ public class ViewQuestion extends AppCompatActivity  {
         else
         {
             copyAssetFolder(assetMgr, "json", toPath);
+            copyAssetFolder(assetMgr, "ids", toPath);
             copyAssetFolder(assetMgr, "myImages", toPathImages);
         }
     }
@@ -330,7 +287,6 @@ public class ViewQuestion extends AppCompatActivity  {
 
 
 
-
 private void displayQuestions(Question myQ)
 {
     int questionNumbers = questionList.size();
@@ -356,7 +312,6 @@ private void displayQuestions(Question myQ)
     imageButton = (Button) findViewById(R.id.buttonImage);
     questionButton = (Button) findViewById(R.id.buttonQuestion);
     explainText = (MarkdownView) findViewById(R.id.textViewExplanation);
-   // explainScroll = (ScrollView) findViewById(R.id.scrollViewEx);
     backgroundScroll = (ScrollView) findViewById(R.id.scrollView);
     questionImage = (TouchImageView) findViewById(R.id.imageView);
     WebSettings settingsQ = questionText.getSettings();
@@ -380,66 +335,21 @@ private void displayQuestions(Question myQ)
     testQ= testQ.replace("%", "&#37;");
     testE=testE.replace("%", "&#37;");
     myExplanation=myExplanation.replace("%", "&#37;");
-  //  myQuestion.replace("?", "");
-   // myExplanation.replace("?", "");
     settingsQ.setJavaScriptEnabled(true);
     settingsE.setJavaScriptEnabled(true);
     questionText.getSettings().setLoadsImagesAutomatically(true);
     explainText.getSettings().setLoadsImagesAutomatically(true);
-    System.out.println("test: "+ testQ + testE);
 
-   // questionText.setWebViewClient(new MyBrowser());
     questionText.addJavascriptInterface(new WebAppInterface(this), "Android");
     explainText.addJavascriptInterface(new WebAppInterface(this), "Android");
-   // questionText.addJavascriptInterface(new WebAppInterface(this), "Android");
-//    questionText.loadMarkdown("<script type=\"text/javascript\">\n" +
-//            "    function showAndroidImage(image) {\n" +
-//            "        Android.showImage(image);\n" +
-//            "    }\n" +
-//            "</script>" +
-//            "test1<img src=\"file:///data/data/"+ getApplicationContext().getPackageName() +"/files/images/1b.JPG\" onclick=\"showAndroidImage(this.src)\">"+
-//            " \ntest12 \n  "+"<img src=\"file:///data/data/"+getApplicationContext().getPackageName()+"/files/images/1.png\" onclick=\"showAndroidImage(this.src)\">", "file:///android_asset/markdown_css_themes/foghorn.css");
 
     questionText.loadMarkdown("<script type=\"text/javascript\">function showAndroidImage(image) {Android.showImage(image);}</script>" + myQuestion, "file:///android_asset/markdown_css_themes/foghorn.css");
 
-//System.out.println("package name: " + getApplicationContext().getPackageName());
-//    System.out.println("src name: "+ "file:///data/data/"+getApplicationContext().getPackageName()+"/files/images/1b.JPG");
-
-//width=""+"100%"+""
-//        String testPath = "http://www.radiography.com/mcqs/images/SPECTamygdala.jpg";
-//    try {
-//        URL[] imageURLS = new URL[1];
-//        URL imageURL = new URL(testPath);
-//        imageURLS[0] = imageURL;
-//        new DownloadImages().execute(imageURLS);
-//
-//    }
-//    catch(MalformedURLException e){
-//        e.printStackTrace();
-//    }
-
-//String toPathImages = "/data/data/" + getPackageName()+"/files/images";
-
-//  "test" +"<img name=\"submit\" src=\"file:///data/data/\" + getPackageName() + \"/files/images\"+\"1b.JPG\" onclick=\"showAndroidToast(this.src)\">"+
-//src="file:///data/data/com.mcqs.anita.mcqs_android_coding/files/images/1b.JPG"
-//"<img name="submit" src="http://mcqs.com/frcr1a/images/f1/1b.JPG" onclick="showAndroidToast(this.src)">
-
-//    explainText.loadMarkdown("<script type=\"text/javascript\">\n" +
-//            "    function showAndroidImage(ImageE) {\n" +
-//            "        Android.showImageE(ImageE);\n" +
-//            "    }\n" +
-//            "</script>" +
-//            "explanation1" + "<img src=\"file:///data/data/"+getApplicationContext().getPackageName()+"/files/images/2.png\" onclick=\"showAndroidImage(this.src)\">" +
-//            " \nexplanation12 \n  " + "<img src=\"file:///data/data/"+getApplicationContext().getPackageName()+"/files/images/3.png\" onclick=\"showAndroidImage(this.src)\">", "file:///android_asset/markdown_css_themes/foghorn.css");
- //  explainText.loadMarkdown("<script type=\"text/javascript\">function showAndroidImage(ImageE) {Android.showImageE(ImageE);}</script>"+myExplanation, "file:///android_asset/markdown_css_themes/foghorn.css");
- //   System.out.println("explanation!!!"+myExplanation);
-   // System.out.println("question!!!"+myExplanation);
     explainText.loadMarkdown("<script type=\"text/javascript\">\n" +
             "    function showAndroidImage(ImageE) {\n" +
             "        Android.showImageE(ImageE);\n" +
             "    }\n" +
             "</script>" + myExplanation, "file:///android_asset/markdown_css_themes/foghorn.css");
-//explainText.loadMarkdown(myExplanation, "file:///android_asset/markdown_css_themes/foghorn.css");
 
     optionOne.setText(myOptions.get(0).getAnswer());
     optionTwo.setText(myOptions.get(1).getAnswer());
@@ -550,25 +460,18 @@ private void displayQuestions(Question myQ)
         public void onClick(View view) {
 
             int choice = (int) (Math.random() * finalList.size());//random question
-          //  System.out.println("time difference: ");
             long startTime = System.nanoTime();
-           // displayQ = parseJSONFile(myJSONString);
 
             displayQ = finalList.get(choice);
             long endTime = System.nanoTime();
             long timeDifference = (endTime - startTime);
             String time = String.valueOf(timeDifference);
-           // System.out.println("time difference: " + timeDifference + " Nanoseconds");
 
             displayQuestions(displayQ);
             questionImage.resetZoom();
             explanationButton.setEnabled(false);
             nextButton.setEnabled(false);
             explainText.setVisibility(View.INVISIBLE);
-           // explainScroll.setVisibility(View.INVISIBLE);
-          //  explainScroll.scrollTo(0, 0);
-          //  backgroundScroll.setVisibility(View.VISIBLE);
-          //  backgroundScroll.scrollTo(0, 0);
             questionText.setVisibility(View.VISIBLE);
             optionOne.setVisibility(View.VISIBLE);
             optionTwo.setVisibility(View.VISIBLE);
@@ -577,10 +480,8 @@ private void displayQuestions(Question myQ)
             optionFive.setVisibility(View.VISIBLE);
             questionImage.setVisibility(View.INVISIBLE);
             questionButton.setVisibility(View.INVISIBLE);
-          //  imageButton.setVisibility(View.VISIBLE);
             explanationButton.setVisibility(View.VISIBLE);
             viewStatus = false;
-           // System.out.println("questionList Size: "+questionList.size());
             optionOne.setBackgroundColor(Color.parseColor("#D8D8D8"));
             optionTwo.setBackgroundColor(Color.parseColor("#D8D8D8"));
             optionThree.setBackgroundColor(Color.parseColor("#D8D8D8"));
@@ -594,8 +495,6 @@ private void displayQuestions(Question myQ)
         public void onClick(View view) {
 
             explainText.setVisibility(View.INVISIBLE);
-        //    explainScroll.setVisibility(View.INVISIBLE);
-           // backgroundScroll.setVisibility(View.INVISIBLE);
             questionText.setVisibility(View.INVISIBLE);
             optionOne.setVisibility(View.INVISIBLE);
             optionTwo.setVisibility(View.INVISIBLE);
@@ -615,8 +514,6 @@ private void displayQuestions(Question myQ)
 
             if(viewStatus==false) {
                 explainText.setVisibility(View.INVISIBLE);
-               // explainScroll.setVisibility(View.INVISIBLE);
-               // backgroundScroll.setVisibility(View.VISIBLE);
                 questionText.setVisibility(View.VISIBLE);
                 optionOne.setVisibility(View.VISIBLE);
                 optionTwo.setVisibility(View.VISIBLE);
@@ -626,13 +523,10 @@ private void displayQuestions(Question myQ)
                 questionImage.setVisibility(View.INVISIBLE);
                 questionImage.resetZoom();
                 questionButton.setVisibility(View.INVISIBLE);
-              //  imageButton.setVisibility(View.VISIBLE);
                 explanationButton.setVisibility(View.VISIBLE);
             }
             if(viewStatus==true){
                 explainText.setVisibility(View.INVISIBLE);
-             //   explainScroll.setVisibility(View.INVISIBLE);
-             //   backgroundScroll.setVisibility(View.VISIBLE);
                 questionText.setVisibility(View.VISIBLE);
                 optionOne.setVisibility(View.VISIBLE);
                 optionTwo.setVisibility(View.VISIBLE);
@@ -653,8 +547,6 @@ private void displayQuestions(Question myQ)
         public void onClick(View view) {
 
             explainText.setVisibility(View.VISIBLE);
-          //  explainScroll.setVisibility(View.VISIBLE);
-           // backgroundScroll.setVisibility(View.INVISIBLE);
             questionImage.resetZoom();
             questionText.setVisibility(View.INVISIBLE);
             optionOne.setVisibility(View.INVISIBLE);
@@ -670,7 +562,6 @@ private void displayQuestions(Question myQ)
         }
     });
 }
-
 
 
 
@@ -781,13 +672,11 @@ private void displayQuestions(Question myQ)
 
 
 
-
-
 private class DownloadImages extends AsyncTask<URL, Integer, Void>{
 
         protected Void doInBackground(URL... urls){
 
-            int count = urls.length;//no of images to download in images array
+            int count = urls.length;
             for(int i=0; i< count; i++){
                 try {
                     URL testPath = urls[i];

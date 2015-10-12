@@ -15,6 +15,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.CookieHandler;
 import java.net.CookieManager;
@@ -52,19 +53,26 @@ public class MyJSONParser {
             URL myURL = new URL(url);
             System.out.println(url);
             conn = (HttpURLConnection) myURL.openConnection();
-
+            conn.setDoOutput(true);
              /* optional request header */
             conn.setRequestProperty("Content-Type", "application/json");
                 /* optional request header */
             conn.setRequestProperty("Accept", "application/json");
          //   conn.setReadTimeout(10000 /* milliseconds */);
          //   conn.setConnectTimeout(15000 /* milliseconds */);
-            conn.setRequestMethod("GET");
+            conn.setRequestMethod("POST");
 
-            conn.setDoInput(true);
-           // conn.setDoOutput(true);
+            String input = "[1,2,3,4,5]";//test data
+
+
+           // conn.setDoInput(true);
+
             // Starts the query
             conn.connect();
+            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+            wr.write(input);
+            wr.flush();
+
 
 
             int statusCode = conn.getResponseCode();

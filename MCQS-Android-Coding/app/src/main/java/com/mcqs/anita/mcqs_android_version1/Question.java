@@ -32,6 +32,9 @@ public class Question{
     @JsonField
     private String[] images;
 
+    @JsonField
+    private int questionId;
+
     private boolean imagesDownloaded;
 
     private boolean questionAnswered;
@@ -53,7 +56,13 @@ public class Question{
         this.explanation=explanation;
     }
 
+    public int getQuestionId() {
+        return questionId;
+    }
 
+    public void setQuestionId(int questionId) {
+        this.questionId = questionId;
+    }
 
     public int getIndex() {
         return index;
