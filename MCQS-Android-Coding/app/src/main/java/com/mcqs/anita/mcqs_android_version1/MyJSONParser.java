@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,11 +39,16 @@ public class MyJSONParser {
     static String outPut = "";
     HttpURLConnection conn = null;
     Integer result = 0;
+    private String questionIDTemp="";
 
 
     // constructor
     public MyJSONParser() {
 
+    }
+    // constructor
+    public MyJSONParser(String ids) {
+            questionIDTemp = ids;
     }
 
     public String getJSONFromUrl(String url) {
@@ -62,7 +68,7 @@ public class MyJSONParser {
          //   conn.setConnectTimeout(15000 /* milliseconds */);
             conn.setRequestMethod("POST");
 
-            String input = "[1,2,3,4,5]";//test data
+
 
 
            // conn.setDoInput(true);
@@ -70,7 +76,7 @@ public class MyJSONParser {
             // Starts the query
             conn.connect();
             OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            wr.write(input);
+            wr.write(questionIDTemp);
             wr.flush();
 
 
@@ -159,4 +165,5 @@ public class MyJSONParser {
         return outPut;
 
     }
+
 }

@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +47,8 @@ public class DownloadExam extends AppCompatActivity {
     private String downloadedJSONTxt="";
     private static String packageURL= "http://192.168.1.7:4444/question/exam/4";//PHP Exam      //test download JSON
     int id;
+    private String questionIDTemp="";
+    private ProgressBar spinner;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,8 @@ public class DownloadExam extends AppCompatActivity {
         name = i.getStringExtra("name");
         id = i.getIntExtra("id", 0);
         description = i.getStringExtra("description");
+        spinner = (ProgressBar) findViewById(R.id.progressBar);
+        spinner.setVisibility(View.GONE);
 
         txtName = (TextView) findViewById(R.id.textViewExamName);
         txtDescription = (TextView) findViewById(R.id.textViewExamDescription);
@@ -69,10 +74,12 @@ public class DownloadExam extends AppCompatActivity {
 
         txtName.setText(name);
         txtDescription.setText(description);
+        questionIDTemp = readFromFileID();
 
         downloadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                spinner.setVisibility(View.VISIBLE);
                 try{
                     String test = new DownloadQuestion().execute(packageURL).get();
                     String toPathImages = "/data/data/" + getPackageName()+"/files/images";
@@ -96,7 +103,30 @@ public class DownloadExam extends AppCompatActivity {
             }
         });
     }
-
+    private String readFromFileID() {
+        String ret = "";
+        String toPath = "/data/data/" + getPackageName();
+        try {
+            InputStream inputStream = openFileInput("myQuestionIds.txt");
+            if ( inputStream != null ) {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String receiveString = "";
+                StringBuilder stringBuilder = new StringBuilder();
+                while ( (receiveString = bufferedReader.readLine()) != null ) {
+                    stringBuilder.append(receiveString);
+                }
+                inputStream.close();
+                ret = stringBuilder.toString();
+            }
+        }
+        catch (FileNotFoundException e) {
+            Log.e("login activity", "File not found: " + e.toString());
+        } catch (IOException e) {
+            Log.e("login activity", "Can not read file: " + e.toString());
+        }
+        return ret;
+    }
 
 
     @Override
@@ -123,7 +153,7 @@ public class DownloadExam extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... urls){
-            MyJSONParser jsonParser = new MyJSONParser();
+            MyJSONParser jsonParser = new MyJSONParser(questionIDTemp);
             String myJSON = jsonParser.getJSONFromUrl(urls[0]);
             String test = "test test test";
             FileOutputStream outputStream;

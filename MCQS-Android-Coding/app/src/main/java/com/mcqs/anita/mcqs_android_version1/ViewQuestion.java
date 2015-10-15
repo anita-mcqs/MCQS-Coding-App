@@ -1,7 +1,9 @@
 package com.mcqs.anita.mcqs_android_version1;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -115,46 +117,75 @@ public class ViewQuestion extends AppCompatActivity  {
 
 
         JsonParser jsonParser = new JsonParser();
+
         try {
 
-         qList= LoganSquare.parseList(myJSONString, Question.class);
-            System.out.println("question array: "+ qList.size());
-            for(int i=0; i<qList.size(); i++){
-                System.out.println("QuestionId: "+ qList.get(i).getQuestionId());
-                if(qList.get(i).getImages()!=null){
-                    try {
-                        URL[] imageURLS = new URL[qList.get(i).getImages().length];
-                        for(int j=0; j<qList.get(i).getImages().length; j++){
-                            URL imageURL = new URL(qList.get(i).getImages()[j]);
-                            imageURLS[j] = imageURL;
+            qList = LoganSquare.parseList(myJSONString, Question.class);
+            System.out.println("question array: " + qList.size()+ " "+ finalList.size());
+
+
+
+                for (int i = 0; i < qList.size(); i++) {
+                    System.out.println("QuestionId: " + qList.get(i).getQuestionId());
+                    if (qList.get(i).getImages() != null) {
+                        try {
+                            URL[] imageURLS = new URL[qList.get(i).getImages().length];
+                            for (int j = 0; j < qList.get(i).getImages().length; j++) {
+                                URL imageURL = new URL(qList.get(i).getImages()[j]);
+                                imageURLS[j] = imageURL;
+                            }
+                            new DownloadImages().execute(qList.get(i));
+
+                            //  finalList.add(qList.get(i));
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
                         }
-                        new DownloadImages().execute(imageURLS);
-                        finalList.add(qList.get(i));
-                    }
-                    catch(MalformedURLException e){
-                        e.printStackTrace();
+                    } else {
+                        finalList.add(qList.get(i));//add questions without images to final list
                     }
                 }
-                else{
-                    finalList.add(qList.get(i));//add questions without images to final list
+                System.out.println("finallist: " + finalList.size());
+                if (finalList.size()>0) {
+
+                    int choice = (int) (Math.random() * finalList.size());//random question
+                    displayQ = finalList.get(choice);
+                    System.out.println("Display Question");
+                    displayQuestions(displayQ);
                 }
+            else{
+                    System.out.println("No Question");
+                }
+
             }
-            System.out.println("finallist: "+ finalList.size());
 
-        }
-        catch(IOException er){
-            er.printStackTrace();
-       }
-        catch(Exception e){
-            e.printStackTrace();
-        }
+            catch(IOException er){
+                er.printStackTrace();
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
 
-        int choice = (int) (Math.random() * finalList.size());//random question
-        displayQ = finalList.get(choice);
+      //  int choice = (int) (Math.random() * finalList.size());//random question
+       // displayQ = finalList.get(0);
+        // displayQ = finalList.get(choice);
 
-        displayQuestions(displayQ);
-        registerForContextMenu(questionText);
-        registerForContextMenu(explainText);
+       // registerForContextMenu(questionText);
+     //   registerForContextMenu(explainText);
+    }
+
+
+
+
+    @Override
+    public void onBackPressed() {//back button - go back to menu page
+        Intent startQuiz = new Intent( ViewQuestion.this,MainActivity.class);
+
+        startActivity(startQuiz);
+       // Log.d("CDA", "onBackPressed Called");
+       // Intent setIntent = new Intent(Intent.ACTION_MAIN);
+       // setIntent.addCategory(Intent.CATEGORY_HOME);
+      //  setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+       // startActivity(setIntent);
     }
 
 
@@ -296,6 +327,7 @@ private void displayQuestions(Question myQ)
     String displayQuestionString = displayQuestion.getQuestion();
     String displayCoreString = displayQuestion.getCore();
     String displayExplanationString = displayQuestion.getExplanation();
+    final int qID = displayQuestion.getQuestionId();
     imageURLS = displayQuestion.getImages();
     QuestionOptions[] questionOptions = displayQuestion.getQuestionOptions();
     myOptions = new ArrayList<QuestionOptions>(Arrays.asList(questionOptions));
@@ -363,6 +395,7 @@ private void displayQuestions(Question myQ)
             boolean status = myOptions.get(0).isCorrectAnswer();
             if (status == true) {
                 optionOne.setBackgroundColor(Color.parseColor("#4caf50"));
+                questionIds.add(qID);
             } else {
                 optionOne.setBackgroundColor(Color.parseColor("#F44336"));
                 showCorrectAnswer(1);
@@ -382,6 +415,7 @@ private void displayQuestions(Question myQ)
             boolean status = myOptions.get(1).isCorrectAnswer();
             if (status == true) {
                 optionTwo.setBackgroundColor(Color.parseColor("#4caf50"));
+                questionIds.add(qID);
             } else {
                 optionTwo.setBackgroundColor(Color.parseColor("#F44336"));
                 showCorrectAnswer(2);
@@ -401,6 +435,7 @@ private void displayQuestions(Question myQ)
             boolean status = myOptions.get(2).isCorrectAnswer();
             if(status==true){
                 optionThree.setBackgroundColor(Color.parseColor("#4caf50"));
+                questionIds.add(qID);
             }
             else{
                 optionThree.setBackgroundColor(Color.parseColor("#F44336"));
@@ -421,6 +456,7 @@ private void displayQuestions(Question myQ)
             boolean status = myOptions.get(3).isCorrectAnswer();
             if(status==true){
                 optionFour.setBackgroundColor(Color.parseColor("#4caf50"));
+                questionIds.add(qID);
             }
             else{
                 optionFour.setBackgroundColor(Color.parseColor("#F44336"));
@@ -441,6 +477,7 @@ private void displayQuestions(Question myQ)
             boolean status = myOptions.get(4).isCorrectAnswer();
             if(status==true){
                 optionFive.setBackgroundColor(Color.parseColor("#4caf50"));
+                questionIds.add(qID);
             }
             else{
                 optionFive.setBackgroundColor(Color.parseColor("#F44336"));
@@ -461,6 +498,8 @@ private void displayQuestions(Question myQ)
 
             int choice = (int) (Math.random() * finalList.size());//random question
             long startTime = System.nanoTime();
+
+            saveQuestionIds(questionIds);//save correct answer ids
 
             displayQ = finalList.get(choice);
             long endTime = System.nanoTime();
@@ -563,6 +602,34 @@ private void displayQuestions(Question myQ)
     });
 }
 
+
+    private void saveQuestionIds(ArrayList<Integer> myIds){
+
+        ArrayList<Integer> questionIds = myIds;
+        String fileName = "myQuestionIds.txt";
+        FileOutputStream outputStream;
+
+        JSONArray questionArray = new JSONArray();
+        for(int i=0; i<questionIds.size(); i++){
+            questionArray.put(questionIds.get(i));
+        }
+        String questionIdsString = questionArray.toString();
+        try {
+            outputStream = openFileOutput("myQuestionIds.txt", Context.MODE_PRIVATE);
+            outputStream.write(questionIdsString.getBytes());
+            outputStream.close();
+        }
+        catch(FileNotFoundException er){
+            er.printStackTrace();
+        }
+        catch(IOException er){
+            er.printStackTrace();
+        }
+
+
+
+
+    }
 
 
     private void showCorrectAnswer(int sel){
@@ -672,30 +739,42 @@ private void displayQuestions(Question myQ)
 
 
 
-private class DownloadImages extends AsyncTask<URL, Integer, Void>{
+private class DownloadImages extends AsyncTask<Question, Integer, Integer>{
+    Question myQ;
 
-        protected Void doInBackground(URL... urls){
+        protected Integer doInBackground(Question... urls){
 
-            int count = urls.length;
-            for(int i=0; i< count; i++){
+            myQ = urls[0];
                 try {
-                    URL testPath = urls[i];
-                    String testPath2 = new File(testPath.getPath()).getName();
-                    String toPathImages = "/data/data/" + getPackageName() + "/files/images/";
-                    InputStream in = new BufferedInputStream(testPath.openStream());
-                    ByteArrayOutputStream out = new ByteArrayOutputStream();
-                    byte[] buf = new byte[1024];
-                    int n = 0;
-                    while (-1!=(n=in.read(buf))){
-                        out.write(buf, 0, n);
-                    }
-                    out.close();
-                    in.close();
-                    byte[] response = out.toByteArray();
 
-                    FileOutputStream fos = new FileOutputStream(toPathImages+testPath2);
-                    fos.write(response);
-                    fos.close();
+                    URL[] imageURLS = new URL[myQ.getImages().length];
+                    for(int j=0; j<myQ.getImages().length; j++){
+                        URL imageURL = new URL(myQ.getImages()[j]);
+                        imageURLS[j] = imageURL;
+                    }
+
+                    int count = imageURLS.length;
+                    for(int i=0; i< count; i++) {
+
+
+                        URL testPath = imageURLS[i];
+                        String testPath2 = new File(testPath.getPath()).getName();
+                        String toPathImages = "/data/data/" + getPackageName() + "/files/images/";
+                        InputStream in = new BufferedInputStream(testPath.openStream());
+                        ByteArrayOutputStream out = new ByteArrayOutputStream();
+                        byte[] buf = new byte[1024];
+                        int n = 0;
+                        while (-1 != (n = in.read(buf))) {
+                            out.write(buf, 0, n);
+                        }
+                        out.close();
+                        in.close();
+                        byte[] response = out.toByteArray();
+
+                        FileOutputStream fos = new FileOutputStream(toPathImages + testPath2);
+                        fos.write(response);
+                        fos.close();
+                    }
                 }
                 catch(MalformedURLException e){
                     e.printStackTrace();
@@ -703,10 +782,30 @@ private class DownloadImages extends AsyncTask<URL, Integer, Void>{
                 catch(IOException e){
                     e.printStackTrace();
                 }
+            return 1;
             }
-            return null;
+
+
+
+
+    protected void onPostExecute(Integer result)
+    {
+        System.out.println("test post execute" + result);
+        finalList.add(myQ);
+        System.out.println("array size: "+ finalList.size());
+        if(finalList.size()==1){
+            int choice = (int) (Math.random() * finalList.size());//random question
+            displayQ = finalList.get(0);
+            System.out.println("Display Question Post Execute");
+            displayQuestions(displayQ);
         }
+      //  progressDialog.cancel();
+
+        //Call your method that checks if the pictures were downloaded
+
     }
+
+}
 }
 
 
