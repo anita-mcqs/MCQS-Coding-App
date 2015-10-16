@@ -225,7 +225,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="Option 5"
         android:background="#D8D8D8"
         android:id="@+id/buttonOption5"
         android:layout_above="@+id/relativeLayout"
@@ -238,7 +237,6 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Option 4"
         android:textAllCaps="false"
         android:background="#D8D8D8"
         android:id="@+id/buttonOption4"
@@ -252,7 +250,6 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Option 3"
         android:textAllCaps="false"
         android:background="#D8D8D8"
         android:id="@+id/buttonOption3"
@@ -266,7 +263,6 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Option 2"
         android:textAllCaps="false"
         android:background="#D8D8D8"
         android:paddingBottom="20px"
@@ -281,7 +277,6 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Option 1"
         android:background="#D8D8D8"
         android:textAllCaps="false"
         android:id="@+id/buttonOption1"

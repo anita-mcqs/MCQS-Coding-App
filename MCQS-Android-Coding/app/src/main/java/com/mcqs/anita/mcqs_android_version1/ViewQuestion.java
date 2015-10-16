@@ -93,6 +93,12 @@ public class ViewQuestion extends AppCompatActivity  {
         actionBarTitle.setText(R.string.title_activity_view_question);
         finalList = new ArrayList<Question>();
 
+        //if intent - get questions from parcelable - DON'T parse JSON
+
+
+
+
+
         checkFiles();//if there don't copy file
         myJSONString =  readFromFile();
         questionIDTemp = readFromFileID();
@@ -118,7 +124,7 @@ public class ViewQuestion extends AppCompatActivity  {
 
         JsonParser jsonParser = new JsonParser();
 
-        try {
+        try {//if finallist is empty!!
 
             qList = LoganSquare.parseList(myJSONString, Question.class);
             System.out.println("question array: " + qList.size()+ " "+ finalList.size());
