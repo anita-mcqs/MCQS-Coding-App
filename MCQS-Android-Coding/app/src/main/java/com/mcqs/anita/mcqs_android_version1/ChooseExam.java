@@ -107,13 +107,13 @@ public class ChooseExam extends AppCompatActivity {
     // TODO: 22/09/2015 Sample Data
     private void createList(){
 
-        Exam exam1 = new Exam("Bear", 1,"Bears are mammals of the family Ursidae. Bears are classified as caniforms, or doglike carnivorans, with the pinnipeds being their closest living relatives.");
-        Exam exam2 = new Exam("Camel", 2,"A camel is an even-toed ungulate within the genus Camelus, bearing distinctive fatty deposits known as \"humps\" on its back.");
-        Exam exam3 = new Exam("Cat", 3,"The domestic cat (Felis catus or Felis silvestris catus) is a small, usually furry, domesticated, and carnivorous mammal.");
-        Exam exam4 = new Exam("Deer", 4,"Deer (singular and plural) are the ruminant mammals forming the family Cervidae.");
-        Exam exam5 = new Exam("Dog", 5,"The domestic dog (Canis lupus familiaris or Canis familiaris) is a domesticated canid which has been selectively bred for millennia for various behaviors, sensory capabilities, and physical attributes.");
-        Exam exam6 = new Exam("Goat", 6,"The domestic goat (Capra aegagrus hircus) is a subspecies of goat domesticated from the wild goat of southwest Asia and Eastern Europe.");
-        Exam exam7 = new Exam("Horse", 7,"The horse (Equus ferus caballus) is one of two extant subspecies of Equus ferus.");
+        Exam exam1 = new Exam("Package 1", 1,"Package Description For Package One");
+        Exam exam2 = new Exam("Package 2", 2,"Package Description For Package Two");
+        Exam exam3 = new Exam("Package 3", 3,"Package Description For Package Three");
+        Exam exam4 = new Exam("Package 4", 4,"Package Description For Package Four");
+        Exam exam5 = new Exam("Package 5", 5,"Package Description For Package Five");
+        Exam exam6 = new Exam("Package 6", 6,"Package Description For Package Six");
+        Exam exam7 = new Exam("Package 7", 7,"Package Description For Package Seven");
         
         examList.add(exam1);
         examList.add(exam2);

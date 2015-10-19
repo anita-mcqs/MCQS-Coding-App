@@ -261,16 +261,16 @@ public class DownloadExam extends AppCompatActivity {
             finalList.add(myQ);
             System.out.println("array size: "+ finalList.size());
 
-            if(finalList.size()==1){//test exam 4 - only one question
-                spinner.setVisibility(View.INVISIBLE);
-                quizButton.setEnabled(true);
-            }
-//            if(finalList.size()==qList.size()){
-//                //all images downloaded
+//            if(finalList.size()==1){//test exam 4 - only one question
 //                spinner.setVisibility(View.INVISIBLE);
 //                quizButton.setEnabled(true);
-//
 //            }
+            if(finalList.size()==qList.size()){
+                //all images downloaded
+                spinner.setVisibility(View.INVISIBLE);
+                quizButton.setEnabled(true);
+
+            }
 
 
 
