@@ -98,9 +98,6 @@ public class DownloadExam extends AppCompatActivity {
         });
 
 
-
-
-
         downloadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -118,7 +115,7 @@ public class DownloadExam extends AppCompatActivity {
                     System.out.println("*******************************Logan Square**********************************");
                     qList = LoganSquare.parseList(downloadedJSONTxt, Question.class);
                     for (int i = 0; i < qList.size(); i++) {
-                        // System.out.println("QuestionId: " + qList.get(i).getQuestionId());
+                         System.out.println("QuestionId: " + qList.get(i).getQuestionId());
                         if (qList.get(i).getImages() != null) {
                             try {
                                 URL[] imageURLS = new URL[qList.get(i).getImages().length];
@@ -127,7 +124,6 @@ public class DownloadExam extends AppCompatActivity {
                                     imageURLS[j] = imageURL;
                                 }
                                 new DownloadImages().execute(qList.get(i));
-
                                 //  finalList.add(qList.get(i));
                             } catch (MalformedURLException e) {
                                 e.printStackTrace();
@@ -137,10 +133,6 @@ public class DownloadExam extends AppCompatActivity {
                         }
                     }
                     System.out.println("final List Download: " + finalList.size());
-
-
-
-
                 }
                 catch (InterruptedException e)
                 {
@@ -153,10 +145,6 @@ public class DownloadExam extends AppCompatActivity {
                 {
                     e.printStackTrace();
                 }
-
-
-
-
             }
         });
     }
@@ -185,7 +173,6 @@ public class DownloadExam extends AppCompatActivity {
         return ret;
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -206,12 +193,6 @@ public class DownloadExam extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-
-
-
-
-
     private class DownloadImages extends AsyncTask<Question, Integer, Integer> {
         Question myQ;
 
@@ -219,7 +200,6 @@ public class DownloadExam extends AppCompatActivity {
 
             myQ = urls[0];
             try {
-
                 URL[] imageURLS = new URL[myQ.getImages().length];
                 for (int j = 0; j < myQ.getImages().length; j++) {
                     URL imageURL = new URL(myQ.getImages()[j]);
@@ -227,9 +207,8 @@ public class DownloadExam extends AppCompatActivity {
                 }
 
                 int count = imageURLS.length;
-                for (int i = 0; i < count; i++) {
-
-
+                for (int i = 0; i < count; i++)
+                {
                     URL testPath = imageURLS[i];
                     String testPath2 = new File(testPath.getPath()).getName();
                     String toPathImages = "/data/data/" + getPackageName() + "/files/images/";
@@ -260,7 +239,6 @@ public class DownloadExam extends AppCompatActivity {
             System.out.println("test post execute" + result);
             finalList.add(myQ);
             System.out.println("array size: "+ finalList.size());
-
 //            if(finalList.size()==1){//test exam 4 - only one question
 //                spinner.setVisibility(View.INVISIBLE);
 //                quizButton.setEnabled(true);
@@ -269,21 +247,9 @@ public class DownloadExam extends AppCompatActivity {
                 //all images downloaded
                 spinner.setVisibility(View.INVISIBLE);
                 quizButton.setEnabled(true);
-
             }
-
-
-
-
         }
-
     }
-
-
-
-
-
-
 
         private class DownloadQuestion extends AsyncTask<String, Integer, String> {
 
@@ -291,7 +257,6 @@ public class DownloadExam extends AppCompatActivity {
         protected String doInBackground(String... urls){
             MyJSONParser jsonParser = new MyJSONParser(questionIDTemp);
             String myJSON = jsonParser.getJSONFromUrl(urls[0]);
-            String test = "test test test";
             FileOutputStream outputStream;
             if(myJSON==null){
                 System.out.println("json null");
@@ -333,7 +298,6 @@ public class DownloadExam extends AppCompatActivity {
           //  System.out.println("ret: " + ret);
             return ret;
         }
-
         protected void onPostExecute(String result)
         {
             downloadedJSONTxt = result;

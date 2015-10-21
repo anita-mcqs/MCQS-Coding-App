@@ -69,8 +69,6 @@ public class MyJSONParser {
             conn.setRequestMethod("POST");
 
 
-
-
            // conn.setDoInput(true);
 
             // Starts the query
@@ -83,7 +81,7 @@ public class MyJSONParser {
 
             int statusCode = conn.getResponseCode();
            // URL myURL2 = conn.getURL();
-            System.out.println("code: " + statusCode);
+          //  System.out.println("code: " + statusCode);
 
             /* 200 represents HTTP OK */
             if(statusCode == 200){

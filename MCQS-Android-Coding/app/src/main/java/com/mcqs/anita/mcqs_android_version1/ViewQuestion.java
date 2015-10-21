@@ -93,12 +93,6 @@ public class ViewQuestion extends AppCompatActivity  {
         actionBarTitle.setText(R.string.title_activity_view_question);
         finalList = new ArrayList<Question>();
 
-        //if intent - get questions from parcelable - DON'T parse JSON
-
-
-
-
-
         checkFiles();//if there don't copy file
         myJSONString =  readFromFile();
         questionIDTemp = readFromFileID();
@@ -118,21 +112,15 @@ public class ViewQuestion extends AppCompatActivity  {
             er.printStackTrace();
         }
 
-        System.out.println("id length: "+ questionIds.size());
-
-
-
+      //  System.out.println("id length: "+ questionIds.size());
         JsonParser jsonParser = new JsonParser();
 
-        try {//if finallist is empty!!
-
+        try
+        {//if finallist is empty!!
             qList = LoganSquare.parseList(myJSONString, Question.class);
-            System.out.println("question array: " + qList.size()+ " "+ finalList.size());
-
-
-
+          //  System.out.println("question array: " + qList.size()+ " "+ finalList.size());
                 for (int i = 0; i < qList.size(); i++) {
-                    System.out.println("QuestionId: " + qList.get(i).getQuestionId());
+                //    System.out.println("QuestionId: " + qList.get(i).getQuestionId());
                     if (qList.get(i).getImages() != null) {
                         try {
                             URL[] imageURLS = new URL[qList.get(i).getImages().length];
@@ -141,7 +129,6 @@ public class ViewQuestion extends AppCompatActivity  {
                                 imageURLS[j] = imageURL;
                             }
                             new DownloadImages().execute(qList.get(i));
-
                             //  finalList.add(qList.get(i));
                         } catch (MalformedURLException e) {
                             e.printStackTrace();
@@ -150,9 +137,8 @@ public class ViewQuestion extends AppCompatActivity  {
                         finalList.add(qList.get(i));//add questions without images to final list
                     }
                 }
-                System.out.println("finallist: " + finalList.size());
+              //  System.out.println("finallist: " + finalList.size());
                 if (finalList.size()>0) {
-
                     int choice = (int) (Math.random() * finalList.size());//random question
                     displayQ = finalList.get(choice);
                     System.out.println("Display Question");
@@ -161,9 +147,7 @@ public class ViewQuestion extends AppCompatActivity  {
             else{
                     System.out.println("No Question");
                 }
-
             }
-
             catch(IOException er){
                 er.printStackTrace();
             }
@@ -180,12 +164,9 @@ public class ViewQuestion extends AppCompatActivity  {
     }
 
 
-
-
     @Override
     public void onBackPressed() {//back button - go back to menu page
         Intent startQuiz = new Intent( ViewQuestion.this,MainActivity.class);
-
         startActivity(startQuiz);
        // Log.d("CDA", "onBackPressed Called");
        // Intent setIntent = new Intent(Intent.ACTION_MAIN);
@@ -193,7 +174,6 @@ public class ViewQuestion extends AppCompatActivity  {
       //  setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
        // startActivity(setIntent);
     }
-
 
     private String readFromFile() {
         String ret = "";
@@ -321,7 +301,6 @@ public class ViewQuestion extends AppCompatActivity  {
             out.write(buffer, 0, read);
         }
     }
-
 
 
 private void displayQuestions(Question myQ)
@@ -743,8 +722,6 @@ private void displayQuestions(Question myQ)
 
 
 
-
-
 private class DownloadImages extends AsyncTask<Question, Integer, Integer>{
     Question myQ;
 
@@ -758,10 +735,8 @@ private class DownloadImages extends AsyncTask<Question, Integer, Integer>{
                         URL imageURL = new URL(myQ.getImages()[j]);
                         imageURLS[j] = imageURL;
                     }
-
                     int count = imageURLS.length;
                     for(int i=0; i< count; i++) {
-
 
                         URL testPath = imageURLS[i];
                         String testPath2 = new File(testPath.getPath()).getName();
@@ -791,9 +766,6 @@ private class DownloadImages extends AsyncTask<Question, Integer, Integer>{
             return 1;
             }
 
-
-
-
     protected void onPostExecute(Integer result)
     {
         System.out.println("test post execute" + result);
@@ -806,11 +778,8 @@ private class DownloadImages extends AsyncTask<Question, Integer, Integer>{
             displayQuestions(displayQ);
         }
       //  progressDialog.cancel();
-
         //Call your method that checks if the pictures were downloaded
-
     }
-
 }
 }
 

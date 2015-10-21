@@ -41,7 +41,7 @@ public class ChooseExam extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar);
         actionBarTitle = (TextView) findViewById(R.id.action_bar_text);
-        actionBarTitle.setText(R.string.title_activity_choose_exam);
+        actionBarTitle.setText(R.string.choose_package);
 
         downloadOriginal = (Button) findViewById(R.id.button2);
 
@@ -55,7 +55,7 @@ public class ChooseExam extends AppCompatActivity {
                 String toPathImages = "/data/data/" + getPackageName()+"/files/images";
                 File imageFolder = new File(toPathImages);
                 File[] imageFiles = imageFolder.listFiles();
-                System.out.println("no of images!: "+ imageFiles.length);
+              //  System.out.println("no of images!: "+ imageFiles.length);
                 for(int i=0;i<imageFiles.length;i++){
                    imageFiles[i].delete();
                 }
@@ -68,7 +68,7 @@ public class ChooseExam extends AppCompatActivity {
 
         examList = new ArrayList<Exam>();
 
-        // TODO: 23/09/2015 Download Exam List - http://192.168.1.7:4444/question/list/ 
+        // TODO: 23/09/2015 Download Package List
         createList();
 
         adapter = new ListViewAdapter(this, examList);
@@ -82,7 +82,7 @@ public class ChooseExam extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable arg0) {
-                // TODO Auto-generated method stub
+
                 String text = inputSearch.getText().toString().toLowerCase(Locale.getDefault());
                 adapter.filter(text);
             }
@@ -90,19 +90,14 @@ public class ChooseExam extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence arg0, int arg1,
                                           int arg2, int arg3) {
-                // TODO Auto-generated method stub
             }
 
             @Override
             public void onTextChanged(CharSequence arg0, int arg1, int arg2,
                                       int arg3) {
-                // TODO Auto-generated method stub
             }
         });
     }
-
-
-
 
     // TODO: 22/09/2015 Sample Data
     private void createList(){
