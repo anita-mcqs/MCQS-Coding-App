@@ -17,11 +17,15 @@
 
         <activity
             android:name=".ViewQuestion"
-            android:label="@string/title_activity_view_question" >
+            android:label="@string/title_activity_view_question"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,11 +34,15 @@
         </activity>
         <activity
             android:name=".ChooseExam"
-            android:label="@string/title_activity_choose_exam" >
+            android:label="@string/title_activity_choose_exam"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         <activity
             android:name=".DownloadExam"
-            android:label="@string/title_activity_single_view" >
+            android:label="@string/title_activity_single_view"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
     </application>
 

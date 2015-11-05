@@ -2,11 +2,26 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:background="#E5E5E5"
     tools:context="com.mcqs.anita.mcqs_android_version1.ViewQuestion">
 
+<!--   android:paddingTop="@dimen/activity_vertical_margin"-->
+    <ProgressBar
+        style="@android:style/Widget.ProgressBar.Horizontal"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:visibility="invisible"
+        android:progressDrawable="@drawable/progressbar2"
+        android:layout_alignBottom="@+id/textViewBackground"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,8 +57,8 @@
             android:layout_alignEnd="@+id/relativeLayout2"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_above="@+id/relativeLayout" />
+            android:layout_above="@+id/relativeLayout"
+            android:layout_below="@+id/progressBar2" />
 
 
 
@@ -61,7 +76,7 @@
             android:layout_alignEnd="@+id/textViewExplanation"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true" />
+            android:layout_below="@+id/progressBar2" />
 
 
 
@@ -79,6 +94,7 @@
         android:layout_height="fill_parent"
         android:visibility="invisible"
         android:id="@+id/imageView" />
+
 
 </RelativeLayout>
 

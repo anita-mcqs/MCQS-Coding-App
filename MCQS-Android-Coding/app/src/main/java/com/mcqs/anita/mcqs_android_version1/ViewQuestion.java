@@ -81,6 +81,7 @@ public class ViewQuestion extends AppCompatActivity  {
     private List<Question> finalList;
     private ArrayList<Integer> questionIds = new ArrayList<>();
     private String questionIDTemp="";
+    private ArrayList<Boolean> progressData = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -305,6 +306,7 @@ public class ViewQuestion extends AppCompatActivity  {
 
 private void displayQuestions(Question myQ)
 {
+   // System.out.println("progress count to display!! "+ count);
     int questionNumbers = questionList.size();
     int choice = (int) (Math.random() * questionNumbers);//random question
     Question displayQuestion = myQ;
@@ -317,6 +319,23 @@ private void displayQuestions(Question myQ)
     QuestionOptions[] questionOptions = displayQuestion.getQuestionOptions();
     myOptions = new ArrayList<QuestionOptions>(Arrays.asList(questionOptions));
     Collections.shuffle(myOptions);//shuffle options
+
+    progressBar = (ProgressBar) findViewById(R.id.progressBar2);
+
+    progressBar.setMax(10);
+
+    int progressCount=0;
+    if(progressData.size()==10) {
+        for (int i = 0; i < progressData.size(); i++) {
+            boolean progress = progressData.get(i);
+            if(progress==true){
+                progressCount=progressCount+1;
+            }
+
+        }
+    }
+    System.out.println("Progress Data Count: " + progressCount);
+    progressBar.setProgress(progressCount);
 
     questionText = (MarkdownView) findViewById(R.id.textViewQuestion);
     optionOne = (Button) findViewById(R.id.buttonOption1);
@@ -381,9 +400,23 @@ private void displayQuestions(Question myQ)
             if (status == true) {
                 optionOne.setBackgroundColor(Color.parseColor("#4caf50"));
                 questionIds.add(qID);
+
+                if(progressData.size()==10){
+                    progressData.remove(0);
+                    progressData.add(true);
+                }else{
+                    progressData.add(true);
+                }
+
             } else {
                 optionOne.setBackgroundColor(Color.parseColor("#F44336"));
                 showCorrectAnswer(1);
+                if(progressData.size()==10){
+                    progressData.remove(0);
+                    progressData.add(false);
+                }else{
+                    progressData.add(false);
+                }
             }
             disableOptionButtons();
             explanationButton.setEnabled(true);
@@ -401,9 +434,23 @@ private void displayQuestions(Question myQ)
             if (status == true) {
                 optionTwo.setBackgroundColor(Color.parseColor("#4caf50"));
                 questionIds.add(qID);
+
+                if(progressData.size()==10){
+                    progressData.remove(0);
+                    progressData.add(true);
+                }else{
+                    progressData.add(true);
+                }
+
             } else {
                 optionTwo.setBackgroundColor(Color.parseColor("#F44336"));
                 showCorrectAnswer(2);
+                if(progressData.size()==10){
+                    progressData.remove(0);
+                    progressData.add(false);
+                }else{
+                    progressData.add(false);
+                }
             }
             explanationButton.setEnabled(true);
             disableOptionButtons();
@@ -421,10 +468,23 @@ private void displayQuestions(Question myQ)
             if(status==true){
                 optionThree.setBackgroundColor(Color.parseColor("#4caf50"));
                 questionIds.add(qID);
+                if(progressData.size()==10){
+                    progressData.remove(0);
+                    progressData.add(true);
+                }else{
+                    progressData.add(true);
+                }
+
             }
             else{
                 optionThree.setBackgroundColor(Color.parseColor("#F44336"));
                 showCorrectAnswer(3);
+                if(progressData.size()==10){
+                    progressData.remove(0);
+                    progressData.add(false);
+                }else{
+                    progressData.add(false);
+                }
             }
             explanationButton.setEnabled(true);
             disableOptionButtons();
@@ -442,10 +502,22 @@ private void displayQuestions(Question myQ)
             if(status==true){
                 optionFour.setBackgroundColor(Color.parseColor("#4caf50"));
                 questionIds.add(qID);
+                if(progressData.size()==10){
+                    progressData.remove(0);
+                    progressData.add(true);
+                }else{
+                    progressData.add(true);
+                }
             }
             else{
                 optionFour.setBackgroundColor(Color.parseColor("#F44336"));
                 showCorrectAnswer(4);
+                if(progressData.size()==10){
+                    progressData.remove(0);
+                    progressData.add(false);
+                }else{
+                    progressData.add(false);
+                }
             }
             explanationButton.setEnabled(true);
             disableOptionButtons();
@@ -463,10 +535,22 @@ private void displayQuestions(Question myQ)
             if(status==true){
                 optionFive.setBackgroundColor(Color.parseColor("#4caf50"));
                 questionIds.add(qID);
+                if(progressData.size()==10){
+                    progressData.remove(0);
+                    progressData.add(true);
+                }else{
+                    progressData.add(true);
+                }
             }
             else{
                 optionFive.setBackgroundColor(Color.parseColor("#F44336"));
                 showCorrectAnswer(5);
+                if(progressData.size()==10){
+                    progressData.remove(0);
+                    progressData.add(false);
+                }else{
+                    progressData.add(false);
+                }
             }
             explanationButton.setEnabled(true);
             disableOptionButtons();
@@ -490,6 +574,11 @@ private void displayQuestions(Question myQ)
             long endTime = System.nanoTime();
             long timeDifference = (endTime - startTime);
             String time = String.valueOf(timeDifference);
+
+            count++;
+            if(count>10){
+                progressBar.setVisibility(View.VISIBLE);
+            }
 
             displayQuestions(displayQ);
             questionImage.resetZoom();

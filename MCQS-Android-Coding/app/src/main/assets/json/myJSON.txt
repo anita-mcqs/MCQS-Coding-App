@@ -1,13 +1,13 @@
 [
   {
-    "background": "William, age 30, came to see the doctor because he wanted a \ndate.  He had never had a date in his life and was very \nfrustrated by his inability to meet and successfully ask a  \nwoman on a date.  <p> During the doctor's evaluation William said he was \nat a loss as to what his problem was.  His mother, who was in \nthe room at the time, had her own opinions regarding William's problem.  \nWilliam, she said, misreads situations by misinterpreting facial signals by his prospective dates. <p>\n  <i>\"He has always done so.  Sometimes he comes on too strong, sometimes he is \nwithdrawn when another person is interested.\n  He doesn't read \nthe tone of my voice correctly either.  I can be really mad at him \nand he doesn't take me seriously.  Or he can think I'm mad when \nI'm not,\" </i>she says. \n      <br>The physician is concerned that an area of William's brain is most likely to be malfunctioning, thereby causing his social problems by causing William to misinterpret facial signals by his prospective dates. He decides to investigate further by doing a more detailed scan on his brain, which shows an abnormal part of the brain, as shown in yellow. \n\t <br><br><img src=\"file:///data/data/com.mcqs.anita.mcqs_android_coding/files/images/SPECTamygdala.jpg\" onclick=\"showAndroidImage(this.src)\"><br/>He also had a SPECT scan, which confirmed that this  particular part of his  brain, as highlighted in yellow, in the location as suspected by the physician, was abnormal. <p>",
-    "question": "Which <b>exact  part </b>of the brain is likely to have shown up as abnormal on the  <i>SPECT scan?  </i>",
-    "core": "The exact part of the brain that is likely to have shown up as abnormal on the SPECT scan is the amygdala",
-    "explanation": "William's SPECT showed marked decreased activity in his right temporal lobe; his left temporal lobe was fine.\n\nThe intervention that was most effective for William was intensive social skills training. He worked with a psychologist who coached him on facial expressions, voice tones, and proper social etiquette. He had his first date 6 months after coming to the clinic.",
+    "background": "William, age 30, was brought to see a psychiatrist  by his mother, because of difficulties in his social life. \n\nWilliam  had never had a date in his life and was very \nfrustrated by his inability to meet and successfully ask a  \nwoman on a date.  \n\n<br>\n During the doctor's evaluation William said he was \nat a loss as to what his problem was.  His mother, who was in \nthe room at the time, had her own opinions regarding William's problem.  \nWilliam, she said, *misreads situations by **misinterpreting facial signals** by his prospective dates*. <p>\n  <i>\"He has always done so.  Sometimes he comes on too strong, sometimes he is withdrawn when another person is interested.  He doesn't read the tone of my voice correctly either.  I can be really mad at him and he doesn't take me seriously.  Or he can think I'm mad when I'm not,\" </i>she says. \n      <br>The psychiatrist  is concerned that an area of William's brain is likely to be malfunctioning, thereby causing his social problems by causing William to **misinterpret facial signals** by his prospective dates. \n\nAs part of a study he is doing, he orders  a **functional MRI  of his brain**, which reveals an **dysfunctional part of the brain**,  a coronal section of which which is shown here with the abnormal areas highlighted  in **red** . \n\t <br><br><img src=\"file:///data/data/com.mcqs.anita.mcqs_android_coding/files/images/Amygdala500-247x250.jpg\" onclick=\"showAndroidImage(this.src)\">\n\nThe psychiatrist believes that the result of this scan supports his hypothesis that William had a dysfunction area of the brain that was causing him difficulty in interpreting facial expressions. \n\n---",
+    "question": "---\n\n###Which is this  <b>exact  part </b> of the brain , as shown on the MRI in red ?",
+    "core": "Patients with  lesions of the amygdala  as a result of **Urbach-Wiethe disease** where calcium is deposited in the amygdala cannot discriminate emotion in facial expressions, but their ability to identify faces remains intact.",
+    "explanation": "Patients with bilateral amygdala lesions cannot discriminate emotion in facial expressions, but their ability to identify faces remains.  \n\nHave a look at this image of the amygdala: \n\n<img src=\"file:///data/data/com.mcqs.anita.mcqs_android_coding/files/images/Amygdala-hippocampus.jpg\" onclick=\"showAndroidImage(this.src)\"> \n\n In its extreme form irritative lesions of temporal lobe epilepsy can cause a **panic attack**. \n\nPanic attacks are brief spontaneously recurrent episodes of terror that generate a sense of impending disaster without a clearly identifiable cause. \n\nPET scans have shown an increase in blood flow to the parahippocampal gyri, beginning with the right parahippocampal gyrus. Similar but attenuated blood flow increases occurs during anxiety attacks.\n\n> Destructive lesions such as ablation of the amygdala cause an effect opposite to the irritative lesions of temporal lobe epilepsy. \n\nDestructive lesions of the amygdala cause a placid calmness in humans characterized as a flatness of affect.\n\n Lesions of the amygdala can occur as a result of **Urbach-Wiethe disease** where calcium is deposited in the amygdala. \n\nIf this disease occurs early in life then these patients with bilateral amygdala lesions cannot discriminate emotion in facial expressions, but their ability to identify faces remains. \n\n> The anatomical area for face recognition and memory is in the multimodal association area of the inferotemporal cortex. \n\nThis is a good example of how emotion in one area (amygdala) is linked with perception in another area (inferotemporal cortex) to create an intense emotionally charged memory.",
     "questionId": 88476,
     "options": [
       {
-        "answer": "Stria terminalis",
+        "answer": "Cerebellum",
         "correctAnswer": false
       },
       {
@@ -15,7 +15,7 @@
         "correctAnswer": false
       },
       {
-        "answer": "Cerebellum",
+        "answer": "Stria terminalis",
         "correctAnswer": false
       },
       {
@@ -28,7 +28,8 @@
       }
     ],
     "images": [
-      "http://www.radiography.com/mcqs/images/SPECTamygdala.jpg"
+      "http://news.vanderbilt.edu/files/Amygdala500-247x250.jpg",
+      "http://editthis.info/images/psy3242/4/4e/Amygdala-hippocampus.jpg"
     ]
   },
   {
@@ -39,7 +40,7 @@
     "questionId": 90387,
     "options": [
       {
-        "answer": "Paragoniums westermani infection",
+        "answer": "Cystic fibrosis",
         "correctAnswer": false
       },
       {
@@ -47,11 +48,11 @@
         "correctAnswer": false
       },
       {
-        "answer": "Pancoast tumor",
+        "answer": "Paragoniums westermani infection",
         "correctAnswer": false
       },
       {
-        "answer": "Cystic fibrosis",
+        "answer": "Pancoast tumor",
         "correctAnswer": false
       },
       {
@@ -68,19 +69,19 @@
     "questionId": 90403,
     "options": [
       {
-        "answer": "femoral trangle",
-        "correctAnswer": false
-      },
-      {
         "answer": "popliteal fossa",
         "correctAnswer": false
       },
       {
-        "answer": "posterior to medial malleolus",
+        "answer": "lateral aspect of the foot",
         "correctAnswer": false
       },
       {
-        "answer": "lateral aspect of the foot",
+        "answer": "femoral trangle",
+        "correctAnswer": false
+      },
+      {
+        "answer": "posterior to medial malleolus",
         "correctAnswer": false
       },
       {
@@ -91,13 +92,13 @@
   },
   {
     "background": "A 46-year-old female presents with a primary complaint of **irregular menstrual bleeding** that has persisted for the last several months. \n\nHer medical history consists of 2 full-term pregnancies and **invasive ductal carcinoma of the breast** that was successfully treated one year ago.\n\n After an appropriate evaluation, she is given a diagnosis of **type 1 endometrioid adenocarcinoma.**",
-    "question": "Which of the following factors most likely increased this patient’s risk for developing this cancer?",
+    "question": "---\n\n###Which of the following factors most likely increased this patient’s risk for developing this cancer?",
     "core": "Tamoxifen has a stimulatory effect on the endometrium, leading to an increased risk of developing endometrial hyperplasia and eventually endometrial carcinoma.",
-    "explanation": "Tamoxifen is a selective estrogen receptor modulator (SERM) used in the treatment of estrogen receptor positive breast cancer. It has a stimulatory effect on the endometrium, leading to an increased risk of developing endometrial hyperplasia and eventually endometrial carcinoma.\nTamoxifen is an estrogen agonist in endometrial tissue but an estrogen antagonist in the breast. Therefore, while tamoxifen's antagonist activity in the breast make it an effective agent in the treatment of breast cancer, its agonist effect in the endometrial tissue of the uterus can lead to excessive endometrial stimulation. A benefit of the estrogenic activity of tamoxifen in bone is an increase in bone mineral density, making tamoxifen a useful agent in the treatment of osteoporosis.",
+    "explanation": "**Tamoxifen** is a **selective estrogen receptor modulator** (SERM) used in the treatment of estrogen receptor positive breast cancer.\n\n> Tamoxifen is an estrogen agonist in endometrial tissue but an estrogen antagonist in the breast. \n\n> Therefore, while tamoxifen's antagonist activity in the breast make it an effective agent in the treatment of breast cancer, its agonist effect in the endometrial tissue of the uterus can lead to excessive endometrial stimulation.\n\n A benefit of the estrogenic activity of tamoxifen in bone is an **increase in bone mineral density**, making tamoxifen a useful agent in the treatment of **osteoporosis**.",
     "questionId": 90418,
     "options": [
       {
-        "answer": "Combined oral contraceptive use from the age of 32 to 42",
+        "answer": "The patient is 46-years-old and has yet to enter menopause",
         "correctAnswer": false
       },
       {
@@ -105,11 +106,11 @@
         "correctAnswer": false
       },
       {
-        "answer": "The patient is 46-years-old and has yet to enter menopause",
+        "answer": "Administration of raloxifene in the treatment of her previous breast cancer",
         "correctAnswer": false
       },
       {
-        "answer": "Administration of raloxifene in the treatment of her previous breast cancer",
+        "answer": "Combined oral contraceptive use from the age of 32 to 42",
         "correctAnswer": false
       },
       {
@@ -119,10 +120,10 @@
     ]
   },
   {
-    "background": "A 24-year-old male being treated for syphilis is given penicillin. Shortly after receiving the first dose the patient becomes dyspneic. Immediate assessment of the patient reveals a heart rate of 150 bpm and a blood pressure of 88/50.",
-    "question": "The first-line drug used in the treatment of this condition has what effect on alpha and beta autonomic receptors?",
-    "core": "Epinephrine is an alpha-1 and beta-1 agonist.",
-    "explanation": "This clinical scenario is consistent with anaphylactic shock, the treatment of which is intramuscular epinephrine in the lateral thigh. Epinephrine is an alpha-1 and beta-1 agonist.\nAnaphylaxis is a severe form of a type I hypersensitivity reaction. Bee stings are the most common cause of death from venomous insect/animal bites in the US, secondary to anaphylactic shock. Signs and symptoms include rash, dyspnea (secondary to laryngotracheal edema), and cardiovascular collapse. Treatment with epinephrine increases blood pressure (alpha-1 agonism).",
+    "background": "A 28 year old female teacher was given  ampicillin for group B streptococcus prophylaxis during her pregnancy. \nShe developed *generalized itching and hives* soon followed by **severe hypotension** and **tachycardia** and prolonged **fetal bradycardia**. \n\n\nShe was suspected of having an **anaphylaxis reaction** and was  treated with  **parenteral  epinephrine**  .",
+    "question": "---\n###What is the expected effect of  **parenteral  epinephrine**  on her  **alpha and beta autonomic receptors** ?",
+    "core": "Adrenaline stimulates alpha-1, beta-1 and beta-2 adrenergic receptors",
+    "explanation": "> An intravenous injection of adrenaline causes at low doses hypotension, at high doses hypertension.\n\n> It elicits a *rise of systolic pressure* and a *lowering of diastolic pressure*. \n\nThese variations of arterial pressure result from two components:\n\n*Cardiac effects*:\nAdrenaline's  beta-1 and beta-2 effects reinforces cardiac contractions and cardiac output increases.  Its cardiac action is inhibited by beta- adrenolytics.\n\n*Vascular effects*: adrenaline has both alpha-1 (vasoconstriction) and beta-2 (vasodilation) effects. \n\nThe vasoconstrictive effect overrides the vasodilatator effect and the peripheral resistances rise.\n\n After administration of an alpha-1 adrenolytic which inhibits vasoconstriction, adrenaline causes a fall of arterial pressure (inversion of effect), which implies that beta-1 cardiac effect is quantitatively less important than beta-2 vascular effect. In comparison, norepinephrine, which does not have a vascular beta effect, does not cause an hypotensive effect after administration of an alpha-1adrenolytic agent.\n\n\n**Other effects**\n\n> Adrenaline has bronchodilator, mydriatic effets and inhibits peristaltic activity of the digestive tract.\n\nIt has metabolic effects: *increase of plasma glucose, lactic acid, free fatty acids and glycerol*.\n\nIt *raises the temperature and increases oxygen uptake*.\n\n\nAdrenaline is used, in injectable formulation, by general route in the treatment of anaphylactic shocks and cardiac arrest.\n\nIt is very often combined with local anesthetics to reduce their diffusion from their injection site.",
     "questionId": 90463,
     "options": [
       {
@@ -134,11 +135,11 @@
         "correctAnswer": false
       },
       {
-        "answer": "Alpha-1 antagonism, beta-1 agonism",
+        "answer": "Alpha-1 agonism, beta-1 antagonism",
         "correctAnswer": false
       },
       {
-        "answer": "Alpha-1 agonism, beta-1 antagonism",
+        "answer": "Alpha-1 antagonism, beta-1 agonism",
         "correctAnswer": false
       },
       {
@@ -148,14 +149,14 @@
     ]
   },
   {
-    "background": "An experimental infusable drug, X729, is currently being studied to determine its pharmacokinetics. The drug was found to have a half life of 1.5 hours and is eliminated by first order kinetics.",
-    "question": "What is the minimum number of hours required to reach a steady state concentration of >90%?",
+    "background": "An experimental infusable drug, X56 , is currently being studied to determine its **pharmacokinetics**. \n\nThe drug was found to have a **half life of 1.5 hours** and is **eliminated by first order kinetics**.",
+    "question": "---\n\n###What is the minimum number of hours required to reach a steady state concentration of >90% ?",
     "core": "A drug infused at a constant rate reaches about 94% of steady state concentration after 4 half lives",
-    "explanation": "The minimum number of hours required to reach a steady state concentration of >90% is 6 hours (4 half lives). A drug infused at a constant rate reaches about 94% of steady state concentration after 4 half lives when it is eliminated by first order kinetics. A simplified example is as follows: if compound Y (half life of 1 hour) was infused at 100 mg/hr, then after 1 hour, 50% or 50 mg of the drug would be left in circulation. In the next hour, another 100 mg would be infused and a total of 150 mg (100 mg infused + 50 mg from the first hour) would have circulated, but since another hour or half life has passed the total amount remaining in circulation would be 75 mg or 75% of the infusable rate. The calculation is similar for the next two hours where it will reach 93.75% of the steady state concentration by the fourth hour.",
+    "explanation": "The minimum number of hours required to reach a steady state concentration of >90% is 6 hours (4 half lives)  when it is eliminated by first order kinetics. \n\n---\n\nA simplified example is as follows: if compound Y (half life of 1 hour) was infused at 100 mg/hr, then after 1 hour, 50% or 50 mg of the drug would be left in circulation.\n\nIn the next hour, another 100 mg would be infused and a total of 150 mg (100 mg infused + 50 mg from the first hour) would have circulated, but since another hour or half life has passed the total amount remaining in circulation would be 75 mg or 75% of the infusable rate. \n\nThe calculation is similar for the next two hours where it will reach 93.75% of the steady state concentration by the fourth hour.",
     "questionId": 90476,
     "options": [
       {
-        "answer": "7.5",
+        "answer": "3",
         "correctAnswer": false
       },
       {
@@ -163,11 +164,11 @@
         "correctAnswer": false
       },
       {
-        "answer": "1.5",
+        "answer": "7.5",
         "correctAnswer": false
       },
       {
-        "answer": "3",
+        "answer": "1.5",
         "correctAnswer": false
       },
       {
@@ -184,19 +185,19 @@
     "questionId": 90489,
     "options": [
       {
-        "answer": "excess CFTR channel production",
-        "correctAnswer": false
-      },
-      {
         "answer": "defective post-translational hydroxylation of the CFTR channel",
         "correctAnswer": false
       },
       {
-        "answer": "insufficient CFTR channel production",
+        "answer": "defective post-translational phosphorylation of the CFTR channel",
         "correctAnswer": false
       },
       {
-        "answer": "defective post-translational phosphorylation of the CFTR channel",
+        "answer": "excess CFTR channel production",
+        "correctAnswer": false
+      },
+      {
+        "answer": "insufficient CFTR channel production",
         "correctAnswer": false
       },
       {
@@ -221,11 +222,11 @@
         "correctAnswer": false
       },
       {
-        "answer": "On linear DNA in the mitochondrion",
+        "answer": "On single-stranded DNA in the cytoplasm",
         "correctAnswer": false
       },
       {
-        "answer": "On single-stranded DNA in the cytoplasm",
+        "answer": "On linear DNA in the mitochondrion",
         "correctAnswer": false
       },
       {
@@ -249,7 +250,7 @@
         "correctAnswer": false
       },
       {
-        "answer": "peritoneal cavity",
+        "answer": "pudendal cavity",
         "correctAnswer": false
       },
       {
@@ -257,7 +258,7 @@
         "correctAnswer": false
       },
       {
-        "answer": "pudendal cavity",
+        "answer": "peritoneal cavity",
         "correctAnswer": false
       },
       {
@@ -267,18 +268,22 @@
     ]
   },
   {
-    "background": "When a protein is being synthesized by the ribosome it is typically docked onto  **translocons**. \n\nThe ribosome and its associated enzymes then transfer an amino acid from the transfer RNA to an elongating length of protein in a process called **translation**.",
-    "question": "Where in the cell does this **process occur**",
-    "core": "Ribosomes attached to the rough endoplasmic reticulum (RER) are essential for protein-secreting cells.",
-    "explanation": "The translocons are tiny docking stations on the rough ER surface that lock onto ribosomes. When a ribosome begins making proteins, the translocon opens enough for the newly created protein to feed into the pore. The new protein passes into the pore in a linear or helical form, because the pore is too small to allow a folded protein to pass within. The translocon pore only opens if it recognizes a special sequence of amino acids that ribosomes use to start a newly created protein\n\n<img src=\"file:///data/data/com.mcqs.anita.mcqs_android_coding/files/images/secretion.gif\" onclick=\"showAndroidImage(this.src)\">\nThe translocon controls whether the new protein will be incorporated into the plasma membrane or will be stored in soluble form within the ER. The proteins that enter the tight confines of the ER membranes get bent and folded into their characteristic final shapes. These shapes result in part from atomic bonds between different portions of the protein molecule. The ER performs quality control by transporting abnormal or misshaped proteins back into the cell body where they are recycled. Stored proteins travel into another cell organelle, called the Golgi apparatus, and eventually exit the cell. When the ribosome finishes synthesizing a protein, the translocon ejects the ribosome and plugs up the pore\n\nAll proteins, whether they are used in a cell or secreted, are synthesized at cellular structures called ribosomes. If the protein is to be used with the cell, the ribosome remains in the cytosol and the completed protein is released into the cytosol. But if a protein is destined for secretion, the very first amino acids in the polypeptide chain are a special sequence called the signal sequence. Shortly after the synthesis of this sequence is completed, the synthesis stops until the ribosome docks at the rough endoplasmic reticulum.\n\nOnce docked, the synthesis continues, with the new protein threading into the rough endoplasmic reticulum. The signal sequence is then cleaved from the polypeptide chain. Often, too, further enzymes cut the protein in other places. Most secreted proteins are modified before secretion.\n\nNext, vesicles containing the protein bud from the rough endoplasmic reticulum and move too nearby the nearby Golgi apparatus. This is comprised of a stack of large, flattened vesicles. It is often likened to a stack of pita breads. The vesicles from the rough endoplasmic reticulum fuse with one end, adding their proteins to the first flattened vesicle. In turn, small vesicles bud from this structure and transfer the protein to the next layer of the stack. This continues until the protein winds up at the opposite end of the Golgi apparatus.\n\nOnce the protein has moved through the entire Golgi apparatus, secretion vesicles containing the protein bud off. These vesicles move to the plasma membrane, attach to the membrane, and then release their contents into the extracellular fluid through the process of exocytosis. Often a signal is required to initiate the release.",
+    "background": "When a protein is being synthesized by the ribosome it is typically docked onto  **translocons**. \n\nThe ribosome and its associated enzymes then transfer an amino acid from the transfer RNA to an elongating length of protein in a process called **translation** as shown below :\n\n<img src=@link>",
+    "question": "---\n\n###Where **in the cell** does this process occur ?",
+    "core": "Ribosomes on the rough endoplasmic reticulum are ` membrane bound`  and are responsible for the assembly of proteins in a  process that  is called translation.",
+    "explanation": "Certain cells of the pancreas and digestive tract produce a high volume of protein as enzymes. Many of the proteins are produced in quantity in the cells of the pancreas and the digestive tract and function as digestive enzymes.\n\nThe rough ER working with membrane bound ribosomes takes polypeptides and amino acids from the cytosol and continues protein assembly including, at an early stage, recognising a ‘destination label’ attached to each of them\n\n> The translocons are tiny docking stations on the rough ER surface that lock onto ribosomes. \n\nWhen a ribosome begins making proteins, the translocon opens enough for the newly created protein to feed into the pore. The new protein passes into the pore in a linear or helical form, because the pore is too small to allow a folded protein to pass within. The translocon pore only opens if it recognizes a special sequence of amino acids that ribosomes use to start a newly created protein\n\n<img src=@lin>\n\nThe translocon controls whether the new protein will be incorporated into the plasma membrane or will be stored in soluble form within the ER. The proteins that enter the tight confines of the ER membranes get bent and folded into their characteristic final shapes. These shapes result in part from atomic bonds between different portions of the protein molecule. The ER performs quality control by transporting abnormal or misshaped proteins back into the cell body where they are recycled. Stored proteins travel into another cell organelle, called the Golgi apparatus, and eventually exit the cell. When the ribosome finishes synthesizing a protein, the translocon ejects the ribosome and plugs up the pore\n\nAll proteins, whether they are used in a cell or secreted, are synthesized at cellular structures called ribosomes. If the protein is to be used with the cell, the ribosome remains in the cytosol and the completed protein is released into the cytosol. But if a protein is destined for secretion, the very first amino acids in the polypeptide chain are a special sequence called the signal sequence. Shortly after the synthesis of this sequence is completed, the synthesis stops until the ribosome docks at the rough endoplasmic reticulum.\n\nOnce docked, the synthesis continues, with the new protein threading into the rough endoplasmic reticulum. The signal sequence is then cleaved from the polypeptide chain. Often, too, further enzymes cut the protein in other places. Most secreted proteins are modified before secretion.\n\nNext, vesicles containing the protein bud from the rough endoplasmic reticulum and move too nearby the nearby Golgi apparatus. This is comprised of a stack of large, flattened vesicles. It is often likened to a stack of pita breads. The vesicles from the rough endoplasmic reticulum fuse with one end, adding their proteins to the first flattened vesicle. In turn, small vesicles bud from this structure and transfer the protein to the next layer of the stack. This continues until the protein winds up at the opposite end of the Golgi apparatus.\n\nOnce the protein has moved through the entire Golgi apparatus, secretion vesicles containing the protein bud off. These vesicles move to the plasma membrane, attach to the membrane, and then release their contents into the extracellular fluid through the process of exocytosis. Often a signal is required to initiate the release.",
     "questionId": 90560,
     "options": [
       {
-        "answer": "vacuole",
+        "answer": "Cytosol",
         "correctAnswer": false
       },
       {
-        "answer": "mitchondrion",
+        "answer": "nucleolus",
+        "correctAnswer": false
+      },
+      {
+        "answer": "Cell membrane",
         "correctAnswer": false
       },
       {
@@ -286,27 +291,28 @@
         "correctAnswer": false
       },
       {
-        "answer": "Nucleus",
-        "correctAnswer": false
-      },
-      {
         "answer": "rough endoplasmic reticulum",
         "correctAnswer": true
       }
-    ],
-    "images": [
-      "http://courses.washington.edu/conj/cell/secretion.gif"
     ]
   },
   {
     "background": "The **ELN gene** encodes a protein that is one of the two components of **elastic fibers**.",
-    "question": "Which of the following is likely to be caused by a defect in this gene?",
-    "core": "Normally, fibrillin binds to individual tropoelastin molecules to form the protein elastin, which is defective in Marfan syndrome.",
-    "explanation": "> The encoded protein elastin  is rich in hydrophobic amino acids such as glycine and proline, which form mobile hydrophobic regions bounded by **crosslinks between lysine residues**\n\nMultiple transcript variants encoding different isoforms have been found for this gene.\n\nThe other name for elastin is tropoelastin.\n\nThe characterization of disorder is consistent with an entropy-driven mechanism of elastic recoil. It is concluded that conformational disorder is a constitutive feature of elastin structure and function.\n\n> Deletions and mutations in this gene are associated with supravalvular aortic stenosis (SVAS) and the autosomal dominant cutis laxa.\n\n Other associated defects in elastin include Marfan syndrome, emphysema caused by α1-antitrypsin deficiency, atherosclerosis, Buschke-Ollendorff syndrome, Menkes syndrome, pseudoxanthoma elasticum, and Williams syndrome",
+    "question": "---\n\n###Which of the following conditions is likely to be associated  with  a defect in this **ELN gene** ?",
+    "core": "---\n\nThis condition has  a defect in the mechanism of **elastic recoil** caused by defective protein called ` elastin` , which is defective in this syndrome.",
+    "explanation": "---\n\n> The encoded protein elastin  is rich in hydrophobic amino acids such as glycine and proline, which form mobile hydrophobic regions bounded by **crosslinks between lysine residues**\n\nMultiple transcript variants encoding different isoforms have been found for this gene.\n\nThe other name for elastin is tropoelastin.\n\n> This condition has  a defect in the mechanism of **elastic recoil**.\n\nDeletions and mutations in this gene are associated with **supravalvular aortic stenosis** (SVAS) and the autosomal dominant **cutis laxa**.\n\n Other associated defects in elastin include **Marfan syndrome**, **emphysema caused by α1-antitrypsin deficiency**, **atherosclerosis**, **Buschke-Ollendorff syndrome**, **Menkes syndrome**, **pseudoxanthoma elasticum**, and **Williams syndrome**",
     "questionId": 90573,
     "options": [
       {
+        "answer": "Guillain-Barre syndrome",
+        "correctAnswer": false
+      },
+      {
         "answer": "Wolff-Parkinson White Syndrome",
+        "correctAnswer": false
+      },
+      {
+        "answer": "Ehlers-Danlos syndrome",
         "correctAnswer": false
       },
       {
@@ -314,15 +320,7 @@
         "correctAnswer": false
       },
       {
-        "answer": "Guillain-Barre syndrome",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Dandy-Walker syndrome",
-        "correctAnswer": false
-      },
-      {
-        "answer": "cutis laxa",
+        "answer": "Williams syndrome",
         "correctAnswer": true
       }
     ]
@@ -335,19 +333,19 @@
     "questionId": 90587,
     "options": [
       {
-        "answer": "Autosomal dominant",
-        "correctAnswer": false
-      },
-      {
         "answer": "Maternal inheritance",
         "correctAnswer": false
       },
       {
-        "answer": "X-linked recessive",
+        "answer": "Autosomal dominant",
         "correctAnswer": false
       },
       {
         "answer": "X-linked dominant",
+        "correctAnswer": false
+      },
+      {
+        "answer": "X-linked recessive",
         "correctAnswer": false
       },
       {
@@ -358,13 +356,17 @@
   },
   {
     "background": "A 31 year old male lecturer presented with an **inability  to elevate his arm greater than 90 degrees** due to weakness after a lateral ligament repair of the ankle .\n\nThe surgical procedure was carried out under general anaesthesia and required non-weight bearing mobilisation with elbow-crutches  in the early post-operative period. \n\n On examination he was noted to have **excessive lateral translation of the  scapula** which was in a  **high position** with the upper medial corner rotated laterally and the inferior angle medially. \n\nThe right serratus anterior  muscle was noted to be  flaccid.",
-    "question": "Which of the following nerves was likely to be damaged post-surgery?",
+    "question": "---\n\n###Which of the following nerves was likely to be damaged post-surgery?",
     "core": "An injury to the long thoracic nerve (external respiratory nerve of Bell; posterior thoracic nerve)   causes paralysis of the serratus anterior which results in winging of the  scapula.",
     "explanation": "The **long thoracic nerve** innervates the serratus anterior muscle, which- among its other functions- upwardly rotates the scapula allowing the arms to reach a 180 degree position. \n\n\nThis nerve characteristically arises from the anterior rami of three spinal nerve roots: the fifth, sixth, and seventh cervical nerves (C5-C7) although the root from C7 may be absent. The roots from C5 and C6 pierce through the scalenus medius, while the C7 root passes in front of the muscle.\n\nThe nerve descends behind (posterior to) the brachial plexus and the axillary artery and vein, resting on the outer surface of the serratus anterior. It extends along the side of the thorax to the lower border of that muscle, supplying filaments to each of its digitations (finger-like projections).",
     "questionId": 90600,
     "options": [
       {
-        "answer": "long  subscapular nerve",
+        "answer": "third intercostal nerve",
+        "correctAnswer": false
+      },
+      {
+        "answer": "musculo-cutaneous nerve",
         "correctAnswer": false
       },
       {
@@ -373,10 +375,6 @@
       },
       {
         "answer": "musculocutaneous nerve",
-        "correctAnswer": false
-      },
-      {
-        "answer": "fourth  intercostal nerve",
         "correctAnswer": false
       },
       {
@@ -397,11 +395,11 @@
         "correctAnswer": false
       },
       {
-        "answer": "Ductus Arteriosus",
+        "answer": "Urachus",
         "correctAnswer": false
       },
       {
-        "answer": "Urachus",
+        "answer": "Ductus Arteriosus",
         "correctAnswer": false
       },
       {
@@ -422,652 +420,9 @@
     "questionId": 103540,
     "options": [
       {
-        "answer": "Rheumatoid factor",
-        "correctAnswer": false
-      },
-      {
-        "answer": "topoisomerase-1",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Antinuclear antibody",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Anti Ro",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Anti centromere",
-        "correctAnswer": true
-      }
-    ]
-  },
-  {
-    "background": "A 54 year old woman with a long history of Raynaud's phenomenon is discovered to have evidence of recent  pulmonary fibrosis and renal failure. \n\nShe is suspected of suffering from the **diffuse form of  scleroderma**.",
-    "question": "Which antibody is most **specific** for  this form of diffuse systemic sclerosis   ?",
-    "core": "Antibodies to **topoisomerase-1** (Scl-70 antibodies) are present in about 30% of patients with dcSSc.",
-    "explanation": "Diffuse scleroderma can cause musculoskeletal, pulmonary, gastrointestinal, renal and other complications.\n\n###Patients with larger amounts of cutaneous involvement are more likely to have involvement of the internal tissues and organs. \n\nMost patients (over 80%) have vascular symptoms and Raynaud's phenomenon, which leads to attacks of discoloration of the hands and feet in response to cold.\n\n Systemic scleroderma and Raynaud's can cause painful ulcers on the fingers or toes which are known as **digital ulcers**.\n\n**Calcinosis** (deposition of calcium in lumps under the skin) is also common in systemic scleroderma, and is often seen near the elbows, knees or other joints.\n\n\n> Serum antitopoisomerase, also known as SCL-70 (positive in 30% of SSc patients), is specific to SSc.\n \n###Two thirds of patients with this antibody have diffuse SSc and pulmonary interstitial fibrosis as well as reduced survival\n\nSerologic testing for autoantibodies can be helpful in diagnosing and classifying systemic sclerosis.\n\nHowever, none of the serologic tests is sensitive enough to independently exclude disease.\n\n>  **Antinuclear antibody** (ANA) is positive in 60% to 80% of patients with scleroderma. \n\n> **Anticentromere antibodies** (ACAs) are found in roughly 60% to 80% of patients with **lcSSc** and only rarely in patients with dcSSc. \n\n> Antibodies to **topoisomerase-1** (Scl-70 antibodies) are present in about 30% of patients with dcSSc. \n\nThe presence of either ACA or anti-Scl-70 is highly specific (95%-99%) for the diagnosis of lcSSc and dcSSc, respectively. These antibodies are only rarely present in healthy subjects and in patients with other rheumatologic diseases. \n\n> The presence of ACA or anti-Scl-70 antibodies is also highly specific for underlying systemic sclerosis in patients presenting initially with isolated **Raynaud's phenomenon** and therefore may be helpful when Raynaud's phenomenon is the initial manifestation",
-    "questionId": 103599,
-    "options": [
-      {
-        "answer": "ANCA",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Anti centromere",
-        "correctAnswer": false
-      },
-      {
         "answer": "Anti Jo1",
         "correctAnswer": false
       },
-      {
-        "answer": "Antifibroblast Antibodies",
-        "correctAnswer": false
-      },
-      {
-        "answer": "topoisomerase-1",
-        "correctAnswer": true
-      }
-    ]
-  },
-  {
-    "background": "Serologic testing for **autoantibodies**   can be helpful in diagnosing and classifying systemic sclerosis.",
-    "question": "Which antibody **when negative**  constitutes  a distinct subset of SSc with less vasculopathy, a male predisposition and  more frequent lower gastrointestinal involvements   ?",
-    "core": "SSc patients who are ANA negative constitute a distinct subset of SSc with less vasculopathy, a greater proportion of males and  more frequent lower gastrointestinal involvement.",
-    "explanation": "Antinuclear antibodies (ANAs) are found in patients whose immune system is predisposed to cause inflammation against their own body tissues\n\nSSc patients who are ANA negative constitute a distinct subset of SSc with less vasculopathy, a greater proportion of males and possibly, more frequent lower gastrointestinal involvement. Seminars in Arthritis and Rheumatism, 11/28/2014.\n\nSerologic testing for autoantibodies can be helpful in diagnosing and classifying systemic sclerosis.\n\nHowever, none of the serologic tests is sensitive enough to independently exclude disease.\n\n>  **Antinuclear antibody** (ANA) is positive in 60% to 80% of patients with scleroderma. \n\n> **Anticentromere antibodies** (ACAs) are found in roughly 60% to 80% of patients with **lcSSc** and only rarely in patients with dcSSc. \n\n> Antibodies to **topoisomerase-1** (Scl-70 antibodies) are present in about 30% of patients with dcSSc. \n\nThe presence of either ACA or anti-Scl-70 is highly specific (95%-99%) for the diagnosis of lcSSc and dcSSc, respectively. These antibodies are only rarely present in healthy subjects and in patients with other rheumatologic diseases. \n\n> The presence of ACA or anti-Scl-70 antibodies is also highly specific for underlying systemic sclerosis in patients presenting initially with isolated **Raynaud's phenomenon** and therefore may be helpful when Raynaud's phenomenon is the initial manifestation",
-    "questionId": 103616,
-    "options": [
-      {
-        "answer": "topoisomerase-1",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Antifibroblast Antibodies",
-        "correctAnswer": false
-      },
-      {
-        "answer": "ANCA",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Rheumatoid factor",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Antinuclear antibody",
-        "correctAnswer": true
-      }
-    ]
-  },
-  {
-    "background": "Serologic testing for **autoantibodies**   can be helpful in diagnosing and classifying systemic sclerosis.",
-    "question": "Which antibodies in scleroderma identify a subgroup of patients with sensory neuropathy.?",
-    "core": "Antifibroblast growth factor receptor 3 antibodies identify a subgroup of patients with sensory neuropathy.",
-    "explanation": "> These Antifibroblast  antibodies identify a subgroup of patients with SN in whom an underlying autoimmune disorder affecting sensory neurons in the dorsal root and trigeminal nerve ganglia is suspected. PubMed, J Neurol Neurosurg Psychiatry, 2015 Jan 27.\n\n**Antifibroblast growth factor receptor 3 antibodies**  identify a subgroup of patients with **sensory neuropathy**. \n\n\nSSc patients who are ANA negative constitute a distinct subset of SSc with less vasculopathy, a greater proportion of males and possibly, more frequent lower gastrointestinal involvement. Seminars in Arthritis and Rheumatism, 11/28/2014.\n\nSerologic testing for autoantibodies can be helpful in diagnosing and classifying systemic sclerosis.\n\nHowever, none of the serologic tests is sensitive enough to independently exclude disease.\n\n>  **Antinuclear antibody** (ANA) is positive in 60% to 80% of patients with scleroderma. \n\n> **Anticentromere antibodies** (ACAs) are found in roughly 60% to 80% of patients with **lcSSc** and only rarely in patients with dcSSc. \n\n> Antibodies to **topoisomerase-1** (Scl-70 antibodies) are present in about 30% of patients with dcSSc. \n\nThe presence of either ACA or anti-Scl-70 is highly specific (95%-99%) for the diagnosis of lcSSc and dcSSc, respectively. These antibodies are only rarely present in healthy subjects and in patients with other rheumatologic diseases. \n\n> The presence of ACA or anti-Scl-70 antibodies is also highly specific for underlying systemic sclerosis in patients presenting initially with isolated **Raynaud's phenomenon** and therefore may be helpful when Raynaud's phenomenon is the initial manifestation",
-    "questionId": 103674,
-    "options": [
-      {
-        "answer": "anti-RNA polymerase III",
-        "correctAnswer": false
-      },
-      {
-        "answer": "ANCA",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Anti centromere",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Rheumatoid factor",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Antifibroblast Antibodies",
-        "correctAnswer": true
-      }
-    ]
-  },
-  {
-    "background": "A 62-year-old woman presents with  **anemia, thrombocytopenia, and acute renal failure**.\n\nFour days before admission, she was noted to be  **confused** and minimally conversant.      \n\n She has a history of **diffuse-skin-disease subtype of scleroderma** that has been **rapidly progressive** within the past 4 years. \n\n\n\n",
-    "question": "Which **antibodies** in this patient are most specifically associated with this **renal complication** of scleroderma ?",
-    "core": "The presence of anti-RNA polymerase III antibodies are a strong risk marker for developing **Scleroderma renal crisis**",
-    "explanation": "> Early warning signs of **Scleroderma renal crisis**   include the onset of the diffuse-skin-disease subtype of scleroderma within the past 4 years, rapidly progressive skin disease, and the presence of RNA-polymerase antibodies. \n\nRecent intensification of glucocorticoid therapy (to doses of prednisone >15 mg daily) can also predispose to the onset of scleroderma renal crisis.    \n\n###Scleroderma renal crisis occurs in roughly 5% of patients  with SSc . \n\nSeveral **risk factors** with a predictive value are established: \n\n* duration of SSc onset of less than four years\n* progressive skin thickening\n* new development of anemia\n* cardiac involvement (pericardial effusion or congestive heart failure) \n\n> Detection of anti-RNA polymerase III antibodies displays a strong risk marker for the presence of SRC, whereas the presence of anti-topoisomerase and anti-centromere antibodies in scleroderma indicates a favorable disease course \n\nBlood pressure levels greater than 150/90 mmHg are observed in almost 90% of patients experiencing SRC. \n\nHypertensive SRC is accompanied by clinical signs of malignant hypertension with left ventricular failure, hypertensive encephalopathy and arrhythmia .\n\nDiagnosis of SRC is confirmed by renal biopsy, which shows a **thrombotic microangiopathic process**, particularly affecting small vessels. \n\nVascular changes are accompanied by thrombosis, accumulation of myxoid material and later in the disease course, development of onion-skin lesions\nand/or fibrointimal sclerosis . \n\nFurthermore, one has to keep in mind that ANCA-associated vasculitis is a rare complication of SSc and in general presents with antibodies\ndirected against myeloperoxidase and p-ANCA\n\n\n Detection of anti-RNA polymerase III antibodies displays a strong risk marker for the presence of **scleroderma renal crisis**   , whereas the presence of anti-topoisomerase and anti-centromere antibodies in scleroderma indicates a favorable disease course\n\n\n\n>  **Antinuclear antibody** (ANA) is positive in 60% to 80% of patients with scleroderma. \n\n> **Anticentromere antibodies** (ACAs) are found in roughly 60% to 80% of patients with **lcSSc** and only rarely in patients with dcSSc. \n\n> Antibodies to **topoisomerase-1** (Scl-70 antibodies) are present in about 30% of patients with dcSSc. \n\nThe presence of either ACA or anti-Scl-70 is highly specific (95%-99%) for the diagnosis of lcSSc and dcSSc, respectively. These antibodies are only rarely present in healthy subjects and in patients with other rheumatologic diseases. \n\n> The presence of ACA or anti-Scl-70 antibodies is also highly specific for underlying systemic sclerosis in patients presenting initially with isolated **Raynaud's phenomenon** and therefore may be helpful when Raynaud's phenomenon is the initial manifestation",
-    "questionId": 103711,
-    "options": [
-      {
-        "answer": "Anti Jo1",
-        "correctAnswer": false
-      },
-      {
-        "answer": "topoisomerase-1",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Anti Ro",
-        "correctAnswer": false
-      },
-      {
-        "answer": "ANCA",
-        "correctAnswer": false
-      },
-      {
-        "answer": "anti-RNA polymerase III",
-        "correctAnswer": true
-      }
-    ]
-  },
-  {
-    "background": "A 16-year-old athletic female who has a past medical history of asthma requiring bronchodilators as needed, presents with **shortness of breath with exercise**. \n\nSymptoms usually occur 15 minutes after exercise, are worse with intense physical activity, and cause her to stop running. \n\nShe undergoes a cardiopulmonary **exercise stress test** with incremental increase in either speed or incline every minute as tolerated. \n\nThe results reveal a significant decrease in FEV1 after exercise.",
-    "question": "What is the likely diagnosis?",
-    "core": "Exercise-induced bronchospasm typically causes a decrease in FEV1 after exercise.",
-    "explanation": "Exercise-induced bronchospasm typically causes a decrease in FEV1 after exercise.",
-    "questionId": 104257,
-    "options": [
-      {
-        "answer": "Deconditioned athlete",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Exercise-induced vocal cord dysfunction",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Restrictive lung disease due to thoracic cage abnormality",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Respiratory muscle weakness",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Exercise-induced asthma",
-        "correctAnswer": true
-      }
-    ]
-  },
-  {
-    "background": "A 16-year-old athletic female who has a past medical history of asthma requiring bronchodilators as needed, presents with **shortness of breath with exercise**. \n\nSymptoms usually occur 15 minutes after exercise, are worse with intense physical activity, and cause her to stop running. \n\nShe undergoes a cardiopulmonary **exercise stress test** with incremental increase in either speed or incline every minute as tolerated. \n\nThe results reveal a significant decrease in FEV1 after exercise.",
-    "question": "What is the likely diagnosis?",
-    "core": "Exercise-induced bronchospasm is evident by a  decrease in FEV1 after exercise.",
-    "explanation": "Exercise-induced asthma is a common cause of exercise-induced dyspnea. The exercise test showed no evidence of exercise-induced bronchospasm, evident by no decrease in FEV1 after exercise.",
-    "questionId": 104290,
-    "options": [
-      {
-        "answer": "Exercise-induced asthma",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Exercise-induced vocal cord dysfunction",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Deconditioned athlete",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Restrictive lung disease due to thoracic cage abnormality",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Respiratory muscle weakness",
-        "correctAnswer": true
-      }
-    ]
-  },
-  {
-    "background": "A 16-year-old athletic female who has a past medical history of asthma requiring bronchodilators as needed, presents with **shortness of breath with exercise**. \n\nSymptoms usually occur 15 minutes after exercise, are worse with intense physical activity, and cause her to stop running. \n\nShe also exhibits  **stridor on exercise**. \n\nOn examination of her vocal cords ,  **adduction of the cords is noted with inspiration** \n\nShe undergoes a cardiopulmonary **exercise stress test** with incremental increase in either speed or incline every minute as tolerated. \n\nThe results reveal evidence of **upper airway obstruction** .",
-    "question": "What is the likely diagnosis?",
-    "core": "Paradoxical cord movement (adduction with inspiration)  is a sign of vocal cord dysfunction",
-    "explanation": "Exercise-induced vocal cord dysfunction presents with **paradoxical cord movement** (adduction with inspiration) causing increased upper airway resistance, dyspnea, and stridor. \n\nThere is also  evidence of upper airway obstruction on spirometry.",
-    "questionId": 104311,
-    "options": [
-      {
-        "answer": "Restrictive lung disease due to thoracic cage abnormality",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Deconditioned athlete",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Exercise-induced vocal cord dysfunction",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Cardiomyopathy",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Exercise-induced asthma",
-        "correctAnswer": true
-      }
-    ]
-  },
-  {
-    "background": "William, age 30, came to see the doctor because he wanted a \ndate.  He had never had a date in his life and was very \nfrustrated by his inability to meet and successfully ask a  \nwoman on a date.  <p> During the doctor's evaluation William said he was \nat a loss as to what his problem was.  His mother, who was in \nthe room at the time, had her own opinions regarding William's problem.  \nWilliam, she said, misreads situations by misinterpreting facial signals by his prospective dates. <p>\n  <i>\"He has always done so.  Sometimes he comes on too strong, sometimes he is \nwithdrawn when another person is interested.\n  He doesn't read \nthe tone of my voice correctly either.  I can be really mad at him \nand he doesn't take me seriously.  Or he can think I'm mad when \nI'm not,\" </i>she says. \n      <br>The physician is concerned that an area of William's brain is most likely to be malfunctioning, thereby causing his social problems by causing William to misinterpret facial signals by his prospective dates. He decides to investigate further by doing a more detailed scan on his brain, which shows an abnormal part of the brain, as shown in yellow. \n\t <br><br><img src=\"file:///data/data/com.mcqs.anita.mcqs_android_coding/files/images/SPECTamygdala.jpg\" onclick=\"showAndroidImage(this.src)\"><br/>He also had a SPECT scan, which confirmed that this  particular part of his  brain, as highlighted in yellow, in the location as suspected by the physician, was abnormal. <p>",
-    "question": "Which <b>exact  part </b>of the brain is likely to have shown up as abnormal on the  <i>SPECT scan?  </i>",
-    "core": "The exact part of the brain that is likely to have shown up as abnormal on the SPECT scan is the amygdala",
-    "explanation": "William's SPECT showed marked decreased activity in his right temporal lobe; his left temporal lobe was fine.\n\nThe intervention that was most effective for William was intensive social skills training. He worked with a psychologist who coached him on facial expressions, voice tones, and proper social etiquette. He had his first date 6 months after coming to the clinic.",
-    "questionId": 88476,
-    "options": [
-      {
-        "answer": "Interpeduncular nucleus",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Cerebellum",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Hypothalamus",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Stria terminalis",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Amygdala",
-        "correctAnswer": true
-      }
-    ],
-    "images": [
-      "http://www.radiography.com/mcqs/images/SPECTamygdala.jpg"
-    ]
-  },
-  {
-    "background": "A 21-year-old Caucasian male presents to your office with **wheezing and rhinitis**. \nLaboratory results show **peripheral eosinophilia** and **antibodies against neutrophil myeloperoxidase**.",
-    "question": "What is the most likely diagnosis?",
-    "core": "`Churg-Strauss syndrome` is a **small vessel vasculitis** without immune complexes associated with asthma, **eosinophilia**, and **antibodies against neutrophil myeloperoxidase**",
-    "explanation": "**Eosinophilic granulomatosis with polyangiitis** (EGPA, formerly **Churg-Strauss syndrome**) is a small vessel vasculitis without immune complexes associated with asthma, eosinophilia, and **antibodies against neutrophil myeloperoxidase** (also known as p-ANCA).\n\n>EGPA refers to the combination of primary vasculitis with eosinophilic vasculitis, late-onset asthma, and multisystemic involvement. \n\nHistopathologically, it is marked by **allergic angiitis**  and granulomatosis.\n\n Any organ system can be affected, but **lung involvement** (severe asthma) is almost always present. \n\nSkin lesions occur in up to 50%-70% of cases.\n\n Other commonly affected organs include the nervous system (mono- and polyneuropathy), heart, kidneys, and abdominal viscera.",
-    "questionId": 90387,
-    "options": [
-      {
-        "answer": "Allergic bronchopulmonary aspergellosis",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Pancoast tumor",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Paragoniums westermani infection",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Cystic fibrosis",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Churg-Strauss syndrome",
-        "correctAnswer": true
-      }
-    ]
-  },
-  {
-    "background": "A vascular surgeon is preparing to harvest the **longest vein in the body** to use as a conduit for peripheral **arterial bypass** procedure.",
-    "question": "Where will she find and harvest this vein?",
-    "core": "The great saphenous vein can be found traveling up the medial side of the thigh.",
-    "explanation": "The **great saphenous vein** is the longest vein in the body and runs along the length of the leg. It can be found traveling up the medial side of the thigh.\nThe great saphenous vein originates at the medial aspect of the foot, courses anterior to the medial maleolus and travels up the **medial side of the leg** and thigh to just inferior to the pubic tubercle. \n\nThere it joins with the femoral vein in the region of the femoral triangle. \n\nThe great saphenous vein can be harvested for used in coronary artery bypass as well as a peripheral arterial bypass. The two methods of harvesting the vein include a long open incision from the groin to ankle as well as a minimally invasive endoscopic approach.",
-    "questionId": 90403,
-    "options": [
-      {
-        "answer": "popliteal fossa",
-        "correctAnswer": false
-      },
-      {
-        "answer": "posterior to medial malleolus",
-        "correctAnswer": false
-      },
-      {
-        "answer": "lateral aspect of the foot",
-        "correctAnswer": false
-      },
-      {
-        "answer": "femoral trangle",
-        "correctAnswer": false
-      },
-      {
-        "answer": "medial side of the thigh",
-        "correctAnswer": true
-      }
-    ]
-  },
-  {
-    "background": "A 46-year-old female presents with a primary complaint of **irregular menstrual bleeding** that has persisted for the last several months. \n\nHer medical history consists of 2 full-term pregnancies and **invasive ductal carcinoma of the breast** that was successfully treated one year ago.\n\n After an appropriate evaluation, she is given a diagnosis of **type 1 endometrioid adenocarcinoma.**",
-    "question": "Which of the following factors most likely increased this patient’s risk for developing this cancer?",
-    "core": "Tamoxifen has a stimulatory effect on the endometrium, leading to an increased risk of developing endometrial hyperplasia and eventually endometrial carcinoma.",
-    "explanation": "Tamoxifen is a selective estrogen receptor modulator (SERM) used in the treatment of estrogen receptor positive breast cancer. It has a stimulatory effect on the endometrium, leading to an increased risk of developing endometrial hyperplasia and eventually endometrial carcinoma.\nTamoxifen is an estrogen agonist in endometrial tissue but an estrogen antagonist in the breast. Therefore, while tamoxifen's antagonist activity in the breast make it an effective agent in the treatment of breast cancer, its agonist effect in the endometrial tissue of the uterus can lead to excessive endometrial stimulation. A benefit of the estrogenic activity of tamoxifen in bone is an increase in bone mineral density, making tamoxifen a useful agent in the treatment of osteoporosis.",
-    "questionId": 90418,
-    "options": [
-      {
-        "answer": "The patient’s two previous pregnancies",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Combined oral contraceptive use from the age of 32 to 42",
-        "correctAnswer": false
-      },
-      {
-        "answer": "The patient is 46-years-old and has yet to enter menopause",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Administration of raloxifene in the treatment of her previous breast cancer",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Tamoxifen regimen used to treat her previous breast cancer",
-        "correctAnswer": true
-      }
-    ]
-  },
-  {
-    "background": "A 24-year-old male being treated for syphilis is given penicillin. Shortly after receiving the first dose the patient becomes dyspneic. Immediate assessment of the patient reveals a heart rate of 150 bpm and a blood pressure of 88/50.",
-    "question": "The first-line drug used in the treatment of this condition has what effect on alpha and beta autonomic receptors?",
-    "core": "Epinephrine is an alpha-1 and beta-1 agonist.",
-    "explanation": "This clinical scenario is consistent with anaphylactic shock, the treatment of which is intramuscular epinephrine in the lateral thigh. Epinephrine is an alpha-1 and beta-1 agonist.\nAnaphylaxis is a severe form of a type I hypersensitivity reaction. Bee stings are the most common cause of death from venomous insect/animal bites in the US, secondary to anaphylactic shock. Signs and symptoms include rash, dyspnea (secondary to laryngotracheal edema), and cardiovascular collapse. Treatment with epinephrine increases blood pressure (alpha-1 agonism).",
-    "questionId": 90463,
-    "options": [
-      {
-        "answer": "Alpha-1 agonism, no effect on beta-1",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Alpha-1 agonism, beta-1 antagonism",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Alpha-1 antagonism, beta-1 agonism",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Alpha-1 antagonism, beta-1 antagonism",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Alpha-1 agonism, beta-1 agonism",
-        "correctAnswer": true
-      }
-    ]
-  },
-  {
-    "background": "An experimental infusable drug, X729, is currently being studied to determine its pharmacokinetics. The drug was found to have a half life of 1.5 hours and is eliminated by first order kinetics.",
-    "question": "What is the minimum number of hours required to reach a steady state concentration of >90%?",
-    "core": "A drug infused at a constant rate reaches about 94% of steady state concentration after 4 half lives",
-    "explanation": "The minimum number of hours required to reach a steady state concentration of >90% is 6 hours (4 half lives). A drug infused at a constant rate reaches about 94% of steady state concentration after 4 half lives when it is eliminated by first order kinetics. A simplified example is as follows: if compound Y (half life of 1 hour) was infused at 100 mg/hr, then after 1 hour, 50% or 50 mg of the drug would be left in circulation. In the next hour, another 100 mg would be infused and a total of 150 mg (100 mg infused + 50 mg from the first hour) would have circulated, but since another hour or half life has passed the total amount remaining in circulation would be 75 mg or 75% of the infusable rate. The calculation is similar for the next two hours where it will reach 93.75% of the steady state concentration by the fourth hour.",
-    "questionId": 90476,
-    "options": [
-      {
-        "answer": "1.5",
-        "correctAnswer": false
-      },
-      {
-        "answer": "12",
-        "correctAnswer": false
-      },
-      {
-        "answer": "7.5",
-        "correctAnswer": false
-      },
-      {
-        "answer": "3",
-        "correctAnswer": false
-      },
-      {
-        "answer": "6 hours",
-        "correctAnswer": true
-      }
-    ]
-  },
-  {
-    "background": "A newborn is found to have cystic fibrosis during routine newborn screening. The parents, both biochemists, are curious about the biochemical basis of their newborn's condition. The pediatrician explains that the mutation causing cystic fibrosis affects the CFTR gene which codes for the CFTR channel.",
-    "question": "Which of the following correctly describes the pathogenesis of the most common CFTR mutation?",
-    "core": "The most common mutation in cystic fibrosis is deltaF508 which removes phenylalanine at the 508th position of the CFTR protein and causes defective post-translational folding and glycosylation.",
-    "explanation": "Cystic fibrosis is the most common lethal genetic disease of the white population. It is caused by an autosomal recessive defect in the CFTR gene on chromosome 7. The mutation causes defective post-translational folding and glycosylation, resulting in degradation of the CFTR channel before reaching the cell surface. The CFTR gene codes for the CFTR channel which actively secretes Cl- in the lung and GI tract and actively reabsorbs Cl- from sweat. This defective Cl- channel causes secretion of abnormally thick mucus that plugs the lungs, pancreas, and liver and leads to the variety of symptoms seen in CF including recurrent pulmonary infection, pancreatic insufficiency, and meconium ileus in newborns.",
-    "questionId": 90489,
-    "options": [
-      {
-        "answer": "defective post-translational hydroxylation of the CFTR channel",
-        "correctAnswer": false
-      },
-      {
-        "answer": "insufficient CFTR channel production",
-        "correctAnswer": false
-      },
-      {
-        "answer": "excess CFTR channel production",
-        "correctAnswer": false
-      },
-      {
-        "answer": "defective post-translational phosphorylation of the CFTR channel",
-        "correctAnswer": false
-      },
-      {
-        "answer": "defective post-translational glycosylation of the CFTR channel",
-        "correctAnswer": true
-      }
-    ]
-  },
-  {
-    "background": "Have a look at this pedigree:\n\n<img src=\"file:///data/data/com.mcqs.anita.mcqs_android_coding/files/images/Slide20403.gif\" onclick=\"showAndroidImage(this.src)\">",
-    "question": "Given the pattern of inheritance shown in the pedigree, where might you find the disease gene in question?",
-    "core": "Because mitochondria are present in the maternal egg, but are lost in the sperm, mitochondrial genes are inherited almost exclusively from the maternal side.",
-    "explanation": "The pedigree illustrates maternal inheritance of a mitochondrial gene. The mitochondrial genome is comprised of circular DNA that encodes genes important for energy and metabolism. Because mitochondria are present in the maternal egg, but are lost in the sperm, mitochondrial genes are inherited almost exclusively from the maternal side. As mitochondria are involved with energy production, mitochondrial disease often leads to problems with metabolism. One well-known mitochondrial disease is Leber's Hereditary Optic Neuropathy, which causes progressive loss of retinal ganglion cells.",
-    "questionId": 90533,
-    "options": [
-      {
-        "answer": "On linear DNA in the mitochondrion",
-        "correctAnswer": false
-      },
-      {
-        "answer": "On double stranded DNA in the nucleus",
-        "correctAnswer": false
-      },
-      {
-        "answer": "On single-stranded DNA in the cytoplasm",
-        "correctAnswer": false
-      },
-      {
-        "answer": "On helical RNA in the cytoplasm",
-        "correctAnswer": false
-      },
-      {
-        "answer": "On circular DNA in the mitochondrion",
-        "correctAnswer": true
-      }
-    ],
-    "images": [
-      "http://hihg.med.miami.edu/code/http/modules/education/Design/images/Slide20403.gif"
-    ]
-  },
-  {
-    "background": "A twenty-six year old male presents  after a motorcycle  accident. The patient is awake and alert, and reports pain in his abdomen and pelvis and a pelvic fracture is suspected.  \nThe attending physician  notes the presence of blood on his **external urethral meatus**  and is concerned that the urethra may be damaged at the bulb of the penis at the level of the  urethra adjacent to the pelvic fracture fragment.",
-    "question": "Where would urine likely **accumulate** in this case ?",
-    "core": "Damage to the urethra in the bulb of the penis typically results in the extravasation of urine into the superficial perineal space.",
-    "explanation": "On examination, patients with injuries to the urethra distal to the urogenital diaphragm and not contained by the Buck fascia typically have a **butterfly hematoma**, which forms as blood collects in the **superficial perineum**.\n\n Scrotal enlargement is also common in this injury, as extravasated fluids are bound by only the **Colles fascia**.",
-    "questionId": 90547,
-    "options": [
-      {
-        "answer": "the rectovesical pouch",
-        "correctAnswer": false
-      },
-      {
-        "answer": "pouch of Douglas",
-        "correctAnswer": false
-      },
-      {
-        "answer": "ischio-rectal  fossa",
-        "correctAnswer": false
-      },
-      {
-        "answer": "pudendal cavity",
-        "correctAnswer": false
-      },
-      {
-        "answer": "superficial perineal space",
-        "correctAnswer": true
-      }
-    ]
-  },
-  {
-    "background": "When a protein is being synthesized by the ribosome it is typically docked onto  **translocons**. \n\nThe ribosome and its associated enzymes then transfer an amino acid from the transfer RNA to an elongating length of protein in a process called **translation**.",
-    "question": "Where in the cell does this **process occur**",
-    "core": "Ribosomes attached to the rough endoplasmic reticulum (RER) are essential for protein-secreting cells.",
-    "explanation": "The translocons are tiny docking stations on the rough ER surface that lock onto ribosomes. When a ribosome begins making proteins, the translocon opens enough for the newly created protein to feed into the pore. The new protein passes into the pore in a linear or helical form, because the pore is too small to allow a folded protein to pass within. The translocon pore only opens if it recognizes a special sequence of amino acids that ribosomes use to start a newly created protein\n\n<img src=\"file:///data/data/com.mcqs.anita.mcqs_android_coding/files/images/secretion.gif\" onclick=\"showAndroidImage(this.src)\">\nThe translocon controls whether the new protein will be incorporated into the plasma membrane or will be stored in soluble form within the ER. The proteins that enter the tight confines of the ER membranes get bent and folded into their characteristic final shapes. These shapes result in part from atomic bonds between different portions of the protein molecule. The ER performs quality control by transporting abnormal or misshaped proteins back into the cell body where they are recycled. Stored proteins travel into another cell organelle, called the Golgi apparatus, and eventually exit the cell. When the ribosome finishes synthesizing a protein, the translocon ejects the ribosome and plugs up the pore\n\nAll proteins, whether they are used in a cell or secreted, are synthesized at cellular structures called ribosomes. If the protein is to be used with the cell, the ribosome remains in the cytosol and the completed protein is released into the cytosol. But if a protein is destined for secretion, the very first amino acids in the polypeptide chain are a special sequence called the signal sequence. Shortly after the synthesis of this sequence is completed, the synthesis stops until the ribosome docks at the rough endoplasmic reticulum.\n\nOnce docked, the synthesis continues, with the new protein threading into the rough endoplasmic reticulum. The signal sequence is then cleaved from the polypeptide chain. Often, too, further enzymes cut the protein in other places. Most secreted proteins are modified before secretion.\n\nNext, vesicles containing the protein bud from the rough endoplasmic reticulum and move too nearby the nearby Golgi apparatus. This is comprised of a stack of large, flattened vesicles. It is often likened to a stack of pita breads. The vesicles from the rough endoplasmic reticulum fuse with one end, adding their proteins to the first flattened vesicle. In turn, small vesicles bud from this structure and transfer the protein to the next layer of the stack. This continues until the protein winds up at the opposite end of the Golgi apparatus.\n\nOnce the protein has moved through the entire Golgi apparatus, secretion vesicles containing the protein bud off. These vesicles move to the plasma membrane, attach to the membrane, and then release their contents into the extracellular fluid through the process of exocytosis. Often a signal is required to initiate the release.",
-    "questionId": 90560,
-    "options": [
-      {
-        "answer": "Cell membrane",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Nucleus",
-        "correctAnswer": false
-      },
-      {
-        "answer": "lysosome",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Cytosol",
-        "correctAnswer": false
-      },
-      {
-        "answer": "rough endoplasmic reticulum",
-        "correctAnswer": true
-      }
-    ],
-    "images": [
-      "http://courses.washington.edu/conj/cell/secretion.gif"
-    ]
-  },
-  {
-    "background": "The **ELN gene** encodes a protein that is one of the two components of **elastic fibers**.",
-    "question": "Which of the following is likely to be caused by a defect in this gene?",
-    "core": "Normally, fibrillin binds to individual tropoelastin molecules to form the protein elastin, which is defective in Marfan syndrome.",
-    "explanation": "> The encoded protein elastin  is rich in hydrophobic amino acids such as glycine and proline, which form mobile hydrophobic regions bounded by **crosslinks between lysine residues**\n\nMultiple transcript variants encoding different isoforms have been found for this gene.\n\nThe other name for elastin is tropoelastin.\n\nThe characterization of disorder is consistent with an entropy-driven mechanism of elastic recoil. It is concluded that conformational disorder is a constitutive feature of elastin structure and function.\n\n> Deletions and mutations in this gene are associated with supravalvular aortic stenosis (SVAS) and the autosomal dominant cutis laxa.\n\n Other associated defects in elastin include Marfan syndrome, emphysema caused by α1-antitrypsin deficiency, atherosclerosis, Buschke-Ollendorff syndrome, Menkes syndrome, pseudoxanthoma elasticum, and Williams syndrome",
-    "questionId": 90573,
-    "options": [
-      {
-        "answer": "Guillain-Barre syndrome",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Wolff-Parkinson White Syndrome",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Sudden Infant Death Syndrome",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Ehlers-Danlos syndrome",
-        "correctAnswer": false
-      },
-      {
-        "answer": "supravalvular aortic stenosis",
-        "correctAnswer": true
-      }
-    ]
-  },
-  {
-    "background": "A 13-year-old boy presents to his pediatrician for a routine visit. He states that he has been in good health with the exception of **repeated staphylococcal infections** despite adequate treatment. \n\nOn exam, the pediatrician observes a **partial albinism** , as well as **nystagmus**. \n\nThe pediatrician subsequently order a peripheral blood smear which showed **giant granules in neutrophils** on a peripheral blood smear.",
-    "question": "Which of the following is the most likely mode of inheritance of this patient's condition?",
-    "core": "These features are characteristic of Chediak-Higashi syndrome is characterized by recurrent staphylococci/streptococci infections,    partial albinism, and peripheral neuropathy",
-    "explanation": "This patient is presenting with **Chediak-Higashi syndrome (CHS)** which is characterized by *recurrent staphylococci/streptococci infections, partial albinism,  and peripheral neuropathy* (ex: nystagmus). \n\n> CHS is caused by a defect in the LYST gene.\n\nCHS is an autosomal recessive immunodeficiency which causes **phagocyte dysfunction**. It is caused by a defect in the lysosomal trafficking regulator (LYST) gene, which leads to microtubule dysfunction in phagocytes. \n\nPatient's often present with the \"3 P's\": *Pyogenic infections (strep/staph), Partial albinism, and Peripheral neuropathy*. \n\nGiant granules will often be observed in neutrophils on a peripheral blood smear.\n\nReust reviews the evaluation of primary immunodeficiency diseases in children. He states when an immunodeficiency disease is suspected, initial laboratory screening should include a complete blood count with differential and measurement of serum immunoglobulin and complement levels. \n\n> The presence of lymphocytopenia on complete blood count suggests a T-cell disorder, whereas a finding of neutropenia suggests a phagocytic disorder.",
-    "questionId": 90587,
-    "options": [
-      {
-        "answer": "Autosomal dominant",
-        "correctAnswer": false
-      },
-      {
-        "answer": "X-linked dominant",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Maternal inheritance",
-        "correctAnswer": false
-      },
-      {
-        "answer": "X-linked recessive",
-        "correctAnswer": false
-      },
-      {
-        "answer": "autosomal recessive",
-        "correctAnswer": true
-      }
-    ]
-  },
-  {
-    "background": "A 31 year old male lecturer presented with an **inability  to elevate his arm greater than 90 degrees** due to weakness after a lateral ligament repair of the ankle .\n\nThe surgical procedure was carried out under general anaesthesia and required non-weight bearing mobilisation with elbow-crutches  in the early post-operative period. \n\n On examination he was noted to have **excessive lateral translation of the  scapula** which was in a  **high position** with the upper medial corner rotated laterally and the inferior angle medially. \n\nThe right serratus anterior  muscle was noted to be  flaccid.",
-    "question": "Which of the following nerves was likely to be damaged post-surgery?",
-    "core": "An injury to the long thoracic nerve (external respiratory nerve of Bell; posterior thoracic nerve)   causes paralysis of the serratus anterior which results in winging of the  scapula.",
-    "explanation": "The **long thoracic nerve** innervates the serratus anterior muscle, which- among its other functions- upwardly rotates the scapula allowing the arms to reach a 180 degree position. \n\n\nThis nerve characteristically arises from the anterior rami of three spinal nerve roots: the fifth, sixth, and seventh cervical nerves (C5-C7) although the root from C7 may be absent. The roots from C5 and C6 pierce through the scalenus medius, while the C7 root passes in front of the muscle.\n\nThe nerve descends behind (posterior to) the brachial plexus and the axillary artery and vein, resting on the outer surface of the serratus anterior. It extends along the side of the thorax to the lower border of that muscle, supplying filaments to each of its digitations (finger-like projections).",
-    "questionId": 90600,
-    "options": [
-      {
-        "answer": "third intercostal nerve",
-        "correctAnswer": false
-      },
-      {
-        "answer": "fourth  intercostal nerve",
-        "correctAnswer": false
-      },
-      {
-        "answer": "short subscapular nerve",
-        "correctAnswer": false
-      },
-      {
-        "answer": "axillary nerve",
-        "correctAnswer": false
-      },
-      {
-        "answer": "posterior thoracic nerve",
-        "correctAnswer": true
-      }
-    ]
-  },
-  {
-    "background": "A 2-year-old infant is brought to your office by his mother, who says she has been noticing copious amounts of blood in his stool for the past 2 days. The patient is tachycardic but has not been experiencing any pain.",
-    "question": "Which embryological structure is responsible for this clinical presentation?",
-    "core": "Meckel's Diverticulum is a remnant of the vitelline duct and often contains ectopic gastric mucosa which can cause bleeding and perforation",
-    "explanation": "This patient likely has a lower GI bleed from a Meckel's Diverticulum. This true diverticulum is a remnant of the vitelline duct and often contains ectopic gastric mucosa which can cause bleeding and perforation. The bleeding is often painless. The ductus venosus is a shunt that bypasses the liver and carries blood from the umbilical vein directly to the IVC. Its remnant is the ligamentum venosum. The ductus arteriosus is a shunt that bypasses the lungs to carry blood from the pulmonary artery to the aortic arch. Its remnant is the ligamentum arteriosum. The urachus becomes the median umbilical ligament. The 2 umbilical arteries becomes the medial umbilical ligaments. The vitelline duct is a connection with the yolk stalk and bowel, but normally obliterates during week 7 of development.",
-    "questionId": 91844,
-    "options": [
-      {
-        "answer": "Ductus Arteriosus",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Ductus Venosus",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Umbilical Artery",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Urachus",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Vitelline Duct",
-        "correctAnswer": true
-      }
-    ]
-  },
-  {
-    "background": "A 54 year old female has had a long standing  complaint of **waxy patches and streaks on the skin**. \n\nHer physician believes that she suffers from a **localized form a  scleroderma**  that only affects the skin without any internal organ involvement.",
-    "question": "Which antibody is most **specific** for  **this form of limited cutaneous systemic sclerosis**  ?",
-    "core": "**Anticentromere antibodies** (ACAs) are found in roughly 60% to 80% of patients with lcSSc and only rarely in patients with dcSSc.",
-    "explanation": "The more common form of the disease, localized scleroderma, only affects the skin without any internal organ involvement. It often appears in the form of waxy patches (morphea) , or streaks on the skin \n\n It is not uncommon for this less-severe form of scleroderma to regress or stop progressing without treatment\n\n\nAnticentromere antibody, also known as ACA (positive in 30% of SSc patients), is present in patients with limited SSc; they have a **low frequency of lung, heart, and renal disease**, although up to 30% of this subgroup may have the serious complication of **pulmonary arterial hypertension**\n\nSerologic testing for autoantibodies can be helpful in diagnosing and classifying systemic sclerosis.\n\nHowever, none of the serologic tests is sensitive enough to independently exclude disease.\n\n>  **Antinuclear antibody** (ANA) is positive in 60% to 80% of patients with scleroderma. \n\n> **Anticentromere antibodies** (ACAs) are found in roughly 60% to 80% of patients with **lcSSc** and only rarely in patients with dcSSc. \n\n> Antibodies to **topoisomerase-1** (Scl-70 antibodies) are present in about 30% of patients with dcSSc. \n\nThe presence of either ACA or anti-Scl-70 is highly specific (95%-99%) for the diagnosis of lcSSc and dcSSc, respectively. These antibodies are only rarely present in healthy subjects and in patients with other rheumatologic diseases. \n\n> The presence of ACA or anti-Scl-70 antibodies is also highly specific for underlying systemic sclerosis in patients presenting initially with isolated **Raynaud's phenomenon** and therefore may be helpful when Raynaud's phenomenon is the initial manifestation",
-    "questionId": 103540,
-    "options": [
       {
         "answer": "anti-RNA polymerase III",
         "correctAnswer": false
@@ -1077,11 +432,7 @@
         "correctAnswer": false
       },
       {
-        "answer": "Anti Jo1",
-        "correctAnswer": false
-      },
-      {
-        "answer": "topoisomerase-1",
+        "answer": "Rheumatoid factor",
         "correctAnswer": false
       },
       {
@@ -1106,11 +457,11 @@
         "correctAnswer": false
       },
       {
-        "answer": "Anti Jo1",
+        "answer": "Rheumatoid factor",
         "correctAnswer": false
       },
       {
-        "answer": "ANCA",
+        "answer": "Anti Jo1",
         "correctAnswer": false
       },
       {
@@ -1120,10 +471,10 @@
     ]
   },
   {
-    "background": "Serologic testing for **autoantibodies**   can be helpful in diagnosing and classifying systemic sclerosis.",
-    "question": "Which antibody **when negative**  constitutes  a distinct subset of SSc with less vasculopathy, a male predisposition and  more frequent lower gastrointestinal involvements   ?",
-    "core": "SSc patients who are ANA negative constitute a distinct subset of SSc with less vasculopathy, a greater proportion of males and  more frequent lower gastrointestinal involvement.",
-    "explanation": "Antinuclear antibodies (ANAs) are found in patients whose immune system is predisposed to cause inflammation against their own body tissues\n\nSSc patients who are ANA negative constitute a distinct subset of SSc with less vasculopathy, a greater proportion of males and possibly, more frequent lower gastrointestinal involvement. Seminars in Arthritis and Rheumatism, 11/28/2014.\n\nSerologic testing for autoantibodies can be helpful in diagnosing and classifying systemic sclerosis.\n\nHowever, none of the serologic tests is sensitive enough to independently exclude disease.\n\n>  **Antinuclear antibody** (ANA) is positive in 60% to 80% of patients with scleroderma. \n\n> **Anticentromere antibodies** (ACAs) are found in roughly 60% to 80% of patients with **lcSSc** and only rarely in patients with dcSSc. \n\n> Antibodies to **topoisomerase-1** (Scl-70 antibodies) are present in about 30% of patients with dcSSc. \n\nThe presence of either ACA or anti-Scl-70 is highly specific (95%-99%) for the diagnosis of lcSSc and dcSSc, respectively. These antibodies are only rarely present in healthy subjects and in patients with other rheumatologic diseases. \n\n> The presence of ACA or anti-Scl-70 antibodies is also highly specific for underlying systemic sclerosis in patients presenting initially with isolated **Raynaud's phenomenon** and therefore may be helpful when Raynaud's phenomenon is the initial manifestation",
+    "background": "A 49-year-old man, full-time ceramic sculptor, presented with increasing numbers of **firm indurated plaques** that produced a band-like tightening on his abdomen, which diminished his appetite and impaired his ability to breathe. His disease progressed to involve his upper thighs and lower legs, limiting his ability to walk. \n\nHe also complained of  **extensive  esophageal reflux** but **no history suggestive of Raynaud's phenomenon**.\n\n On physical examination, the upper extremities demonstrated diffuse firm, indurated plaques from the dorsal hands to the shoulders . \n\n> There was extensive **tightening and induration of the skin** on the abdomen, back upper buttock, and the lower extremities from the hips down to the dorsal feet, with sparing of his face.\n\nHe was suspected of having a **distinct subset of scleroderma** characterised by  the *absence of  vasculopathy* , a *male predisposition* and  more frequent *lower gastrointestinal involvements* .",
+    "question": "---\n\n###Which antibody **when negative**   , helps identify this  distinct subset of scleroderma  ?",
+    "core": "SSc patients who are ` ANA negative`  constitute a distinct subset of SSc with less vasculopathy, a greater proportion of males and  more frequent lower gastrointestinal involvement.",
+    "explanation": "Serologic testing for **autoantibodies**   can be helpful in diagnosing and classifying systemic sclerosis.\n\nAntinuclear antibodies (ANAs) are found in patients whose immune system is predisposed to cause inflammation against their own body tissues\n\n\n\nSerologic testing for autoantibodies can be helpful in diagnosing and classifying systemic sclerosis.\n\nHowever, none of the serologic tests is sensitive enough to independently exclude disease.\n\n>  **Antinuclear antibody** (ANA) is positive in 60% to 80% of patients with scleroderma. \n\n> **Anticentromere antibodies** (ACAs) are found in roughly 60% to 80% of patients with **lcSSc** and only rarely in patients with dcSSc. \n\n> Antibodies to **topoisomerase-1** (Scl-70 antibodies) are present in about 30% of patients with dcSSc. \n\nThe presence of either ACA or anti-Scl-70 is highly specific (95%-99%) for the diagnosis of lcSSc and dcSSc, respectively. These antibodies are only rarely present in healthy subjects and in patients with other rheumatologic diseases. \n\n> The presence of ACA or anti-Scl-70 antibodies is also highly specific for underlying systemic sclerosis in patients presenting initially with isolated **Raynaud's phenomenon** and therefore may be helpful when Raynaud's phenomenon is the initial manifestation",
     "questionId": 103616,
     "options": [
       {
@@ -1135,11 +486,11 @@
         "correctAnswer": false
       },
       {
-        "answer": "anti-RNA polymerase III",
+        "answer": "ANCA",
         "correctAnswer": false
       },
       {
-        "answer": "ANCA",
+        "answer": "Anti Jo1",
         "correctAnswer": false
       },
       {
@@ -1160,15 +511,15 @@
         "correctAnswer": false
       },
       {
-        "answer": "anti-RNA polymerase III",
+        "answer": "topoisomerase-1",
+        "correctAnswer": false
+      },
+      {
+        "answer": "Anti Ro",
         "correctAnswer": false
       },
       {
         "answer": "Antinuclear antibody",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Anti centromere",
         "correctAnswer": false
       },
       {
@@ -1185,11 +536,7 @@
     "questionId": 103711,
     "options": [
       {
-        "answer": "Anti Ro",
-        "correctAnswer": false
-      },
-      {
-        "answer": "ANCA",
+        "answer": "Antifibroblast Antibodies",
         "correctAnswer": false
       },
       {
@@ -1197,7 +544,11 @@
         "correctAnswer": false
       },
       {
-        "answer": "Antinuclear antibody",
+        "answer": "topoisomerase-1",
+        "correctAnswer": false
+      },
+      {
+        "answer": "Anti Ro",
         "correctAnswer": false
       },
       {
@@ -1208,13 +559,13 @@
   },
   {
     "background": "A 16-year-old athletic female who has a past medical history of asthma requiring bronchodilators as needed, presents with **shortness of breath with exercise**. \n\nSymptoms usually occur 15 minutes after exercise, are worse with intense physical activity, and cause her to stop running. \n\nShe undergoes a cardiopulmonary **exercise stress test** with incremental increase in either speed or incline every minute as tolerated. \n\nThe results reveal a significant decrease in FEV1 after exercise.",
-    "question": "What is the likely diagnosis?",
+    "question": "---\n\n###What is the likely diagnosis?",
     "core": "Exercise-induced bronchospasm typically causes a decrease in FEV1 after exercise.",
-    "explanation": "Exercise-induced bronchospasm typically causes a decrease in FEV1 after exercise.",
+    "explanation": "Bronchial provocation tests\ncan be used to identify provoked decreases in forced\nexpiratory volume in one second (FEV1). \n\nThere are two main types of bronchial provocation tests: direct and\nindirect.\n\n Most pulmonary function laboratories can perform\ndirect challenges, such as **methacholine challenge**. \n\nSome are also equipped to perform indirect challenges,\nsuch as an **exercise challenge test**, which can accurately\ndiagnose exercise induced bronchospasm. \n\nIn addition, indirect challenges can be\nperformed with a handheld spirometer at the location in\nwhich the athlete develops symptoms.\n\n>  Direct challenges have a lower sensitivity than indirect challenges therefore,\nindirect challenge is the preferred diagnostic test for **exercise-induced bronchospasm**",
     "questionId": 104257,
     "options": [
       {
-        "answer": "Cardiomyopathy",
+        "answer": "Exercise-induced vocal cord dysfunction",
         "correctAnswer": false
       },
       {
@@ -1226,7 +577,7 @@
         "correctAnswer": false
       },
       {
-        "answer": "Exercise-induced vocal cord dysfunction",
+        "answer": "Restrictive lung disease due to thoracic cage abnormality",
         "correctAnswer": false
       },
       {
@@ -1243,7 +594,7 @@
     "questionId": 104290,
     "options": [
       {
-        "answer": "Exercise-induced vocal cord dysfunction",
+        "answer": "Deconditioned athlete",
         "correctAnswer": false
       },
       {
@@ -1255,7 +606,7 @@
         "correctAnswer": false
       },
       {
-        "answer": "Deconditioned athlete",
+        "answer": "Exercise-induced vocal cord dysfunction",
         "correctAnswer": false
       },
       {
@@ -1272,11 +623,7 @@
     "questionId": 104311,
     "options": [
       {
-        "answer": "Cardiomyopathy",
-        "correctAnswer": false
-      },
-      {
-        "answer": "Respiratory muscle weakness",
+        "answer": "Exercise-induced vocal cord dysfunction",
         "correctAnswer": false
       },
       {
@@ -1284,11 +631,131 @@
         "correctAnswer": false
       },
       {
-        "answer": "Exercise-induced vocal cord dysfunction",
+        "answer": "Restrictive lung disease due to thoracic cage abnormality",
+        "correctAnswer": false
+      },
+      {
+        "answer": "Respiratory muscle weakness",
         "correctAnswer": false
       },
       {
         "answer": "Exercise-induced asthma",
+        "correctAnswer": true
+      }
+    ]
+  },
+  {
+    "background": "A male lecturer is explaining that the dopamine receptor action is mainly through G proteins. Five subtypes of dopamine receptors have been identified, labelled D1 through D5. All of them function as G protein-coupled receptors, meaning that they exert their effects via a complex second messenger system. Dopamine receptors can be divided into two families, known as D1-like and D2-like. <p>The ultimate effect of D1-like receptors can be excitation (via opening of sodium channels) or inhibition (via opening of potassium channels); the ultimate effect of D2-like receptors is usually inhibition of the target neuron. Consequently, it is incorrect to describe dopamine itself as either excitatory or inhibitory. <p>He goes on to explain that there is a secondary mechanism mode of action of dopamine receptors that works through an",
+    "question": "<br>What type of ion mechanism is the lecturer describing?",
+    "core": "Ion channels maintain  a resting membrane potential and  shape  action potentials and other electrical  signals by gating the flow of ions across the cell membrane",
+    "explanation": "Dopamine receptors can act through G protein-independent mechanisms via interactions with ion channels.\n\nIon channels are pore-forming membrane proteins whose functions include establishing a resting membrane potential, shaping action potentials and other electrical signals by gating the flow of ions across the cell membrane, controlling the flow of ions across secretory and epithelial cells, and regulating cell volume. <p>Ion channels are present in the membranes of all cells.",
+    "questionId": 135505,
+    "options": [
+      {
+        "answer": "Ion Valve",
+        "correctAnswer": false
+      },
+      {
+        "answer": "Ion Gateway",
+        "correctAnswer": false
+      },
+      {
+        "answer": "Ion Bridge",
+        "correctAnswer": false
+      },
+      {
+        "answer": "Ion Tunnel",
+        "correctAnswer": false
+      },
+      {
+        "answer": "Ion Channel",
+        "correctAnswer": true
+      }
+    ]
+  },
+  {
+    "background": "A lecturer is explaining that the dopamine receptor action is mainly through G proteins. dopamine receptors can be divided into two families, known as D1-like and D2-like.<p> He explains that there is a secondary mechanism mode of action of dopamine receptors that works through an ion mechanism.",
+    "question": "<br>What receptors fit in the D2 family of receptors?",
+    "core": "Dopamine receptors can be divided into two families, known as the D1 Like (D1 and D5) family and the D2 Like (D2, D3 and D4) family.",
+    "explanation": "The D1-like family is made up of the D1 and D5 receptor subtypes. Activation of D1-like family receptors is coupled to the G protein Gsα, which subsequently activates adenylyl cyclase, increasing the intracellular concentration of the second messenger cyclic adenosine monophosphate (cAMP). D1 is encoded by the dopamine receptor D1 gene (DRD1). D5 is encoded by the dopamine receptor D5 gene (DRD5). <p>The D2-like family is made up of the D2, D3 and D4 receptor subtype. Activation of D2-like family receptors is coupled to the G protein Giα, which directly inhibits the formation of cAMP by inhibiting the enzyme adenylyl cyclase. D2 is encoded by the dopamine receptor D2 gene (DRD2), of which there are two forms: D2Sh (short) and D2Lh (long). <p>The D2Sh form is pre-synaptically situated, having modulatory functions (namely autoreceptors, which regulate neurotransmission by feed-back mechanisms, affecting synthesis, storage, and release of dopamine into the synaptic cleft).<p> D3 is encoded by the dopamine receptor D3 gene (DRD3). Maximum expression of dopamine D3 receptors is noted in the islands of Calleja and nucleus accumbens.<p> D4 is encoded by the dopamine receptor D4 gene (DRD4). The D4 receptor gene displays polymorphisms that differ in a variable number tandem repeat present within the coding sequence of exon 3. <p>Dopamine receptors control neural signalling that modulates many important behaviours, such as spatial working memory. Although dopamine receptors are widely distributed in the brain, different areas have different receptor types densities, reflecting different functional roles.",
+    "questionId": 135529,
+    "options": [
+      {
+        "answer": "D1 and D3",
+        "correctAnswer": false
+      },
+      {
+        "answer": "D1 and D4",
+        "correctAnswer": false
+      },
+      {
+        "answer": "D1, D2 and D3",
+        "correctAnswer": false
+      },
+      {
+        "answer": "D1 and D5",
+        "correctAnswer": false
+      },
+      {
+        "answer": "D2, D3 and D4",
+        "correctAnswer": true
+      }
+    ]
+  },
+  {
+    "background": "A lecturer is speaking about catecholamines and describes how they are derived from the amino acid tyrosine. The most abundant catecholamines are epinephrine, norepinephrine and dopamine.<p> Catecholamine-secreting cells use several reactions to convert tyrosine serially to L-DOPA and then to dopamine, which may be further converted to norepinephrine or even further converted to epinephrine depending on cell type. <p>With regard to the central nervous system the catecholamine dopamine is largely produced in two distinct areas of the brainstem.",
+    "question": "In which two areas of the brainstem is the catecholamine dopamine largely produced?",
+    "core": "Dopamine is largely produced in the substantia nigra and the ventral tegmental area of the brainstem",
+    "explanation": "A catecholamine (CA) is a monoamine, an organic compound that has a catechol (benzene with two hydroxyl side groups) and a side-chain amine. Catecholamines derive from the amino acid tyrosine. Catecholamines are water-soluble and are 50%-bound to plasma proteins when they circulate in the bloodstream. <p>In the human body, the most abundant catecholamines are epinephrine (adrenaline), norepinephrine (noradrenaline) and dopamine, all of which are produced from phenylalanine and tyrosine.",
+    "questionId": 135619,
+    "options": [
+      {
+        "answer": "Corpora Quadrigemina and Ventral Tegmental area",
+        "correctAnswer": false
+      },
+      {
+        "answer": "Oculomotor Nuclei and the Substantia nigra",
+        "correctAnswer": false
+      },
+      {
+        "answer": "Crus cerebri and the midbrain tegmentum",
+        "correctAnswer": false
+      },
+      {
+        "answer": "Oculomotor Nuclei and the inferior colliculus",
+        "correctAnswer": false
+      },
+      {
+        "answer": "Substantia nigra and the ventral tegmental area",
+        "correctAnswer": true
+      }
+    ]
+  },
+  {
+    "background": "In H. pylori infection, various cytokines  induce an  inflammatory responses in the gastroduodenal mucosa.",
+    "question": "Which cytokines have this effect ?",
+    "core": "In H. pylori infection, various chemokines, especially interleukin (IL)-8, induce inflammatory responses in the gastroduodenal mucosa",
+    "explanation": "Cytokines are very important in the host defense system, and play a critical role in protection against bacterial and viral infections.\n\n Cytokines are also involved in the pathogenesis and development of symptoms in infections. \nIn H. pylori infection, various chemokines, especially interleukin (IL)-8, induce inflammatory responses in the gastroduodenal mucosa. Furthermore, IL-6, IL-7, tumor necrosis factor (TNF)-alpha, and interferon (IFN)-gamma are involved in both protection and pathogenesis. \n\nIn influenza virus infection, IFN-alpha/beta, IFN-gamma, and IL-6 play protective roles. \n\nIn EMCV infection, IL-6 and TNF-alpha play important roles as a protective and exacerbative factor in acute myocarditis, respectively. \n\nFurthermore, in HSV infection, the production of inflammatory cytokines is closely correlated with the pathogenesis of herpetic keratitis, and IFN-gamma plays an important role in enhancing viral clearance from the cornea and trigeminal ganglions.",
+    "questionId": 135725,
+    "options": [
+      {
+        "answer": "Interferons",
+        "correctAnswer": false
+      },
+      {
+        "answer": "heavy chains",
+        "correctAnswer": false
+      },
+      {
+        "answer": "Collectins",
+        "correctAnswer": false
+      },
+      {
+        "answer": "Tumor necrosis factors",
+        "correctAnswer": false
+      },
+      {
+        "answer": "Interleukins",
         "correctAnswer": true
       }
     ]

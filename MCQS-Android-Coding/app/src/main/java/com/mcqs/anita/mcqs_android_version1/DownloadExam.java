@@ -195,7 +195,6 @@ public class DownloadExam extends AppCompatActivity {
 
     private class DownloadImages extends AsyncTask<Question, Integer, Integer> {
         Question myQ;
-
         protected Integer doInBackground(Question... urls) {
 
             myQ = urls[0];
