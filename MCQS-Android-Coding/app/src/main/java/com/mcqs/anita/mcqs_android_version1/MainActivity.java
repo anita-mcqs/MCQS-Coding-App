@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private Button startQuiz;
     private Button downloadExam;
     private TextView actionBarTitle;
+    private ImageView downloadIcon;
     private String myJSONString = "";
 
     @Override
@@ -26,9 +28,10 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar);
         actionBarTitle = (TextView) findViewById(R.id.action_bar_text);
+        downloadIcon = (ImageView) findViewById(R.id.imageViewDownloadIcon);//download icon in action bar
         actionBarTitle.setText(R.string.title_activity_main);
         startQuiz = (Button) findViewById(R.id.buttonStartQuiz);
-        downloadExam = (Button) findViewById(R.id.buttonDownloadExam);
+     //   downloadExam = (Button) findViewById(R.id.buttonDownloadExam);
 
         startQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        downloadExam.setOnClickListener(new View.OnClickListener() {
+        downloadIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent chooseExam = new Intent(MainActivity.this, ChooseExam.class);

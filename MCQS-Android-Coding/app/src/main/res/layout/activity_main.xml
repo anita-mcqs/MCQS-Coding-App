@@ -20,25 +20,25 @@
         android:text="Start Quiz"
         android:background="#607D8B"
         android:id="@+id/buttonStartQuiz"
+        android:layout_marginTop="83dp"
         android:layout_below="@+id/imageViewLogo"
-        android:layout_marginTop="51dp"
-        android:layout_alignEnd="@+id/imageViewLogo"
-        android:layout_alignRight="@+id/imageViewLogo"
+        android:layout_alignLeft="@+id/imageViewLogo"
         android:layout_alignStart="@+id/imageViewLogo"
-        android:layout_alignLeft="@+id/imageViewLogo"/>
+        android:layout_alignRight="@+id/imageViewLogo"
+        android:layout_alignEnd="@+id/imageViewLogo" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Download Packages"
-        android:id="@+id/buttonDownloadExam"
-        android:background="#607D8B"
-        android:layout_below="@+id/buttonStartQuiz"
-        android:layout_alignStart="@+id/buttonStartQuiz"
-        android:layout_alignLeft="@+id/buttonStartQuiz"
-        android:layout_marginTop="37dp"
-        android:layout_alignEnd="@+id/buttonStartQuiz"
-        android:layout_alignRight="@+id/buttonStartQuiz" />
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Download Packages"-->
+        <!--android:id="@+id/buttonDownloadExam"-->
+        <!--android:background="#607D8B"-->
+        <!--android:layout_below="@+id/buttonStartQuiz"-->
+        <!--android:layout_alignStart="@+id/buttonStartQuiz"-->
+        <!--android:layout_alignLeft="@+id/buttonStartQuiz"-->
+        <!--android:layout_marginTop="37dp"-->
+        <!--android:layout_alignEnd="@+id/buttonStartQuiz"-->
+        <!--android:layout_alignRight="@+id/buttonStartQuiz" />-->
 
     <TextView
         android:layout_width="wrap_content"

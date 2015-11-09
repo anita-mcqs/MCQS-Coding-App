@@ -76,6 +76,7 @@ public class ViewQuestion extends AppCompatActivity  {
     private int count=1;
     private int jsonArraySize1;
     private int myCount=3;
+    private ImageView downloadIcon;
     private Question displayQ = new Question();
     private List<Question> qList;
     private List<Question> finalList;
@@ -91,7 +92,15 @@ public class ViewQuestion extends AppCompatActivity  {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar);
         actionBarTitle = (TextView) findViewById(R.id.action_bar_text);
+        downloadIcon = (ImageView) findViewById(R.id.imageViewDownloadIcon);//download icon in action bar
         actionBarTitle.setText(R.string.title_activity_view_question);
+        downloadIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent chooseExam = new Intent(ViewQuestion.this, ChooseExam.class);
+                startActivity(chooseExam);
+            }
+        });
         finalList = new ArrayList<Question>();
 
         checkFiles();//if there don't copy file
