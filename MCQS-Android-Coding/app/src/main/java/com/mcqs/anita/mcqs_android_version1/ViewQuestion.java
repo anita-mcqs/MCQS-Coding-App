@@ -97,7 +97,7 @@ public class ViewQuestion extends AppCompatActivity  {
         downloadIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent chooseExam = new Intent(ViewQuestion.this, ChooseExam.class);
+                Intent chooseExam = new Intent(ViewQuestion.this, LogIn.class);
                 startActivity(chooseExam);
             }
         });

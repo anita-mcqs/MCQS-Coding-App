@@ -1,15 +1,27 @@
 package com.mcqs.anita.mcqs_android_version1;
 
+import android.content.ContextWrapper;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -19,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView actionBarTitle;
     private ImageView downloadIcon;
     private String myJSONString = "";
+    private String questionIDTemp="";
+
+    private String myUserString="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
         downloadIcon = (ImageView) findViewById(R.id.imageViewDownloadIcon);//download icon in action bar
         actionBarTitle.setText(R.string.title_activity_main);
         startQuiz = (Button) findViewById(R.id.buttonStartQuiz);
+
+        checkFiles();
+        questionIDTemp = readFromFileID();
+        myUserString = readFromFileUser();
+        System.out.println("user details: " + myUserString);
+      //  checkFiles();
      //   downloadExam = (Button) findViewById(R.id.buttonDownloadExam);
 
         startQuiz.setOnClickListener(new View.OnClickListener() {
@@ -44,11 +65,174 @@ public class MainActivity extends AppCompatActivity {
         downloadIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent chooseExam = new Intent(MainActivity.this, ChooseExam.class);
-                startActivity(chooseExam);
+
+                //check if username/password/id is in user.txt file
+                //if so send user id to backend to download questions
+                if(myUserString.equals("[]")){
+
+                    System.out.println("not logged in!!");
+                    //go to log in page
+                    Intent chooseExam = new Intent(MainActivity.this, LogIn.class);
+                    startActivity(chooseExam);
+                }
+                else{
+                    //send user id to back end
+                    //download questions
+                    System.out.println("download!!!");
+
+                }
+
+
+                //if not - go to log in page
+
+
+
+
+
             }
         });
     }
+
+
+
+
+    private String readFromFileUser() {
+        String ret = "";
+        String toPath = "/data/data/" + getPackageName();
+        try {
+            InputStream inputStream = openFileInput("user.txt");
+            if ( inputStream != null ) {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String receiveString = "";
+                StringBuilder stringBuilder = new StringBuilder();
+                while ( (receiveString = bufferedReader.readLine()) != null ) {
+                    stringBuilder.append(receiveString);
+                }
+                inputStream.close();
+                ret = stringBuilder.toString();
+            }
+        }
+        catch (FileNotFoundException e) {
+            Log.e("login activity", "File not found: " + e.toString());
+            System.out.println("file user not found!!");
+        } catch (IOException e) {
+            Log.e("login activity", "Can not read file: " + e.toString());
+        }
+        return ret;
+    }
+
+
+
+    private String readFromFileID() {
+        String ret = "";
+        String toPath = "/data/data/" + getPackageName();
+        try {
+            InputStream inputStream = openFileInput("myQuestionIds.txt");
+            if ( inputStream != null ) {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String receiveString = "";
+                StringBuilder stringBuilder = new StringBuilder();
+                while ( (receiveString = bufferedReader.readLine()) != null ) {
+                    stringBuilder.append(receiveString);
+                }
+                inputStream.close();
+                ret = stringBuilder.toString();
+            }
+        }
+        catch (FileNotFoundException e) {
+            Log.e("login activity", "File not found: " + e.toString());
+        } catch (IOException e) {
+            Log.e("login activity", "Can not read file: " + e.toString());
+        }
+        return ret;
+    }
+
+
+
+
+    private void checkFiles(){
+
+        ContextWrapper contextWrapper = new ContextWrapper(getApplicationContext());
+        AssetManager assetMgr = getAssets();
+        InputStream in = null;
+        OutputStream out = null;
+        String toPath = "/data/data/" + getPackageName()+"/files/";
+        String toPathImages = "/data/data/" + getPackageName()+"/files/images";
+        Boolean fileThere = fileExistance("myJSON.txt");
+       // Boolean fileThere = fileExistance("user.txt");
+        Boolean fileIDThere = fileExistance("myQuestionIds.txt");
+        if(fileThere==true)
+        {
+             System.out.println("not empty");
+        }
+        else
+        {
+            copyAssetFolder(assetMgr, "json", toPath);
+            copyAssetFolder(assetMgr, "ids", toPath);
+            copyAssetFolder(assetMgr, "user", toPath);
+            copyAssetFolder(assetMgr, "myImages", toPathImages);
+        }
+
+    }
+
+    private static boolean copyAssetFolder(AssetManager assetManager,
+                                           String fromAssetPath, String toPath) {
+        try {
+            String[] files = assetManager.list(fromAssetPath);
+            new File(toPath).mkdirs();
+            boolean res = true;
+            for (String file : files)
+                if (file.contains("."))
+                    res &= copyAsset(assetManager,
+                            fromAssetPath + "/" + file,
+                            toPath + "/" + file);
+                else
+                    res &= copyAssetFolder(assetManager,
+                            fromAssetPath + "/" + file,
+                            toPath + "/" + file);
+            return res;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    private static boolean copyAsset(AssetManager assetManager,
+                                     String fromAssetPath, String toPath) {
+        InputStream in = null;
+        OutputStream out = null;
+        try {
+            String[] fileNames = assetManager.list(fromAssetPath);
+            in = assetManager.open(fromAssetPath);
+            new File(toPath).createNewFile();
+            out = new FileOutputStream(toPath);
+            copyFile(in, out);
+            in.close();
+            in = null;
+            out.flush();
+            out.close();
+            out = null;
+            return true;
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    private static void copyFile(InputStream in, OutputStream out) throws IOException {
+        byte[] buffer = new byte[1024];
+        int read;
+        while((read = in.read(buffer)) != -1){
+            out.write(buffer, 0, read);
+        }
+    }
+
+    private boolean fileExistance(String fname){
+        File file = getBaseContext().getFileStreamPath(fname);
+        return file.exists();
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

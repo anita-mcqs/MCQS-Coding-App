@@ -11,4 +11,5 @@
     <string name="exam_prompt">Choose a Package</string>
     <string name="hello_world">Hello world!</string>
     <string name="choose_package">Choose Package</string>
+    <string name="title_activity_log_in">Log In</string>
 </resources>
