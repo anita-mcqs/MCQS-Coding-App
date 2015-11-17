@@ -54,7 +54,7 @@ public class DownloadExam extends AppCompatActivity {
     Button downloadButton;
     Button quizButton;
     private String downloadedJSONTxt="";
-    private static String packageURL= "http://192.168.1.7:4444/question/exam/4";//PHP Exam      //test download JSON
+    private static String packageURL= "http://192.168.1.7:4444/question/exam/1";//PHP Exam      //test download JSON
     int id;
     private String questionIDTemp="";
     private ProgressBar spinner;

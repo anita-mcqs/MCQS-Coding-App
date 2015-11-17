@@ -47,10 +47,10 @@ public class MainActivity extends AppCompatActivity {
         actionBarTitle.setText(R.string.title_activity_main);
         startQuiz = (Button) findViewById(R.id.buttonStartQuiz);
 
-        checkFiles();
-        questionIDTemp = readFromFileID();
-        myUserString = readFromFileUser();
-        System.out.println("user details: " + myUserString);
+      //  checkFiles();
+      //  questionIDTemp = readFromFileID();
+      //  myUserString = readFromFileUser();
+       // System.out.println("user details: " + myUserString);
       //  checkFiles();
      //   downloadExam = (Button) findViewById(R.id.buttonDownloadExam);
 
@@ -66,21 +66,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //check if username/password/id is in user.txt file
-                //if so send user id to backend to download questions
-                if(myUserString.equals("[]")){
+                //check if cookie is in user.txt file
+                //if so send cookie to backend to download questions
+            //    if(myUserString.equals("[]")){
 
                     System.out.println("not logged in!!");
                     //go to log in page
+
                     Intent chooseExam = new Intent(MainActivity.this, LogIn.class);
                     startActivity(chooseExam);
-                }
-                else{
-                    //send user id to back end
+              //  }
+             //   else{
+                    //send cookie and question ids to back end
+                    //backend - check cookie validity - if OK - download if not go to logIn page
                     //download questions
-                    System.out.println("download!!!");
+                    //System.out.println("download!!!");
+                   // Intent chooseExam = new Intent(MainActivity.this, ChooseExam.class);
+                   // startActivity(chooseExam);
 
-                }
+               // }
 
 
                 //if not - go to log in page

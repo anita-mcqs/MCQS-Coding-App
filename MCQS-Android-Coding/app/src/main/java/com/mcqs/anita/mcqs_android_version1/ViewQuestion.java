@@ -62,6 +62,7 @@ public class ViewQuestion extends AppCompatActivity  {
     private Button imageButton;
     private Button questionButton;
     private MarkdownView explainText;
+    private int progressCount;
     private ScrollView explainScroll;
     private ScrollView backgroundScroll;
     private ScrollView parentScroll;
@@ -333,18 +334,46 @@ private void displayQuestions(Question myQ)
 
     progressBar.setMax(10);
 
-    int progressCount=0;
+progressCount=0;
     if(progressData.size()==10) {
         for (int i = 0; i < progressData.size(); i++) {
             boolean progress = progressData.get(i);
-            if(progress==true){
-                progressCount=progressCount+1;
+            if (progress == true) {
+                progressCount = progressCount + 1;
             }
 
         }
     }
-    System.out.println("Progress Data Count: " + progressCount);
-    progressBar.setProgress(progressCount);
+        progressBar.setProgress(progressCount);
+//        if(progressData.get(progressData.size()-1)==true&&progressCount<10){
+//            progressBar.setProgress(progressCount + 1);
+////            try {
+////                Thread.sleep(1000);
+////            } catch (InterruptedException e) {
+////                // TODO Auto-generated catch block
+////                e.printStackTrace();
+////            }
+//            progressBar.setProgress(progressCount);
+//        }
+//        else if(progressData.get(progressData.size()-1)==false&&progressCount>0){
+//            progressBar.setProgress(progressCount-1);
+////            try {
+////                Thread.sleep(1000);
+////            } catch (InterruptedException e) {
+////                // TODO Auto-generated catch block
+////                e.printStackTrace();
+////            }
+//            progressBar.setProgress(progressCount);
+//        }
+
+//    if(progressData.get(progressData.size())==true&&progressCount<10){
+//        progressBar.setProgress(progressCount+1);
+//    }
+//    else if(progressData.get(progressData.size())==false&&progressCount>0){
+//        progressBar.setProgress(progressCount-1);
+//    }
+    System.out.println("Progress Data Count: " + progressCount + " : "+ progressData.size());
+
 
     questionText = (MarkdownView) findViewById(R.id.textViewQuestion);
     optionOne = (Button) findViewById(R.id.buttonOption1);
@@ -416,6 +445,7 @@ private void displayQuestions(Question myQ)
                 }else{
                     progressData.add(true);
                 }
+                progressBar.setProgress(progressCount + 1);
 
             } else {
                 optionOne.setBackgroundColor(Color.parseColor("#F44336"));
@@ -426,6 +456,7 @@ private void displayQuestions(Question myQ)
                 }else{
                     progressData.add(false);
                 }
+                progressBar.setProgress(progressCount - 1);
             }
             disableOptionButtons();
             explanationButton.setEnabled(true);
@@ -450,6 +481,7 @@ private void displayQuestions(Question myQ)
                 }else{
                     progressData.add(true);
                 }
+                progressBar.setProgress(progressCount + 1);
 
             } else {
                 optionTwo.setBackgroundColor(Color.parseColor("#F44336"));
@@ -460,6 +492,7 @@ private void displayQuestions(Question myQ)
                 }else{
                     progressData.add(false);
                 }
+                progressBar.setProgress(progressCount - 1);
             }
             explanationButton.setEnabled(true);
             disableOptionButtons();
@@ -483,6 +516,7 @@ private void displayQuestions(Question myQ)
                 }else{
                     progressData.add(true);
                 }
+                progressBar.setProgress(progressCount + 1);
 
             }
             else{
@@ -494,6 +528,7 @@ private void displayQuestions(Question myQ)
                 }else{
                     progressData.add(false);
                 }
+                progressBar.setProgress(progressCount - 1);
             }
             explanationButton.setEnabled(true);
             disableOptionButtons();
@@ -517,6 +552,7 @@ private void displayQuestions(Question myQ)
                 }else{
                     progressData.add(true);
                 }
+                progressBar.setProgress(progressCount + 1);
             }
             else{
                 optionFour.setBackgroundColor(Color.parseColor("#F44336"));
@@ -527,6 +563,7 @@ private void displayQuestions(Question myQ)
                 }else{
                     progressData.add(false);
                 }
+                progressBar.setProgress(progressCount - 1);
             }
             explanationButton.setEnabled(true);
             disableOptionButtons();
@@ -550,6 +587,7 @@ private void displayQuestions(Question myQ)
                 }else{
                     progressData.add(true);
                 }
+                progressBar.setProgress(progressCount + 1);
             }
             else{
                 optionFive.setBackgroundColor(Color.parseColor("#F44336"));
@@ -560,6 +598,7 @@ private void displayQuestions(Question myQ)
                 }else{
                     progressData.add(false);
                 }
+                progressBar.setProgress(progressCount - 1);
             }
             explanationButton.setEnabled(true);
             disableOptionButtons();
