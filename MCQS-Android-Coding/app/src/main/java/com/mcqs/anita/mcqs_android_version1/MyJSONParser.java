@@ -1,5 +1,7 @@
 package com.mcqs.anita.mcqs_android_version1;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -40,6 +42,8 @@ public class MyJSONParser {
     HttpURLConnection conn = null;
     Integer result = 0;
     private String questionIDTemp="";
+    Context context;
+    private int status;
 
 
     // constructor
@@ -47,8 +51,17 @@ public class MyJSONParser {
 
     }
     // constructor
-    public MyJSONParser(String ids) {
+    public MyJSONParser(String ids, Context context) {
             questionIDTemp = ids;
+            this.context = context;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getJSONFromUrl(String url) {
@@ -75,13 +88,15 @@ public class MyJSONParser {
             conn.connect();
             OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
             wr.write(questionIDTemp);
+            System.out.println("temp"+questionIDTemp);
             wr.flush();
 
 
 
             int statusCode = conn.getResponseCode();
+            setStatus(conn.getResponseCode());
            // URL myURL2 = conn.getURL();
-          //  System.out.println("code: " + statusCode);
+            System.out.println("code: " + statusCode);
 
             /* 200 represents HTTP OK */
             if(statusCode == 200){
@@ -118,6 +133,14 @@ public class MyJSONParser {
                     conn.disconnect();
                 }
                 //String response = convertInputStreamToString(is);
+            }
+            else if(statusCode == 401){
+                //wrong log in details
+             //   System.exit(0);
+               // result = 0;
+               // System.out.println("401");
+             //   Intent chooseExam = new Intent(context, LogIn.class);
+            //    context.startActivity(chooseExam);
             }
             else{
                 result = 0;

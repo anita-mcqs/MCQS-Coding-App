@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Log In"
+        android:text="Download"
         android:id="@+id/textView3"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -86,5 +86,27 @@
         android:layout_alignEnd="@+id/button4"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Quiz"
+        android:id="@+id/button"
+        android:enabled="false"
+        android:background="#607D8B"
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/button5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/button5"
+        android:layout_alignEnd="@+id/button5" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar3"
+        android:layout_below="@+id/button4"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

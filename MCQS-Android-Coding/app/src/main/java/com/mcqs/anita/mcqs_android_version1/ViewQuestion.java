@@ -334,7 +334,7 @@ private void displayQuestions(Question myQ)
 
     progressBar.setMax(10);
 
-progressCount=0;
+    progressCount=0;
     if(progressData.size()==10) {
         for (int i = 0; i < progressData.size(); i++) {
             boolean progress = progressData.get(i);

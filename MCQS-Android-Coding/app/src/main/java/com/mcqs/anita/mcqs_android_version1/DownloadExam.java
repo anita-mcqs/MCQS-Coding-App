@@ -51,15 +51,19 @@ public class DownloadExam extends AppCompatActivity {
     TextView txtDescription;
     String description;
     String name;
+    String userJSON;
     Button downloadButton;
     Button quizButton;
     private String downloadedJSONTxt="";
-    private static String packageURL= "http://192.168.1.7:4444/question/exam/1";//PHP Exam      //test download JSON
+    private static String packageURL= "http://192.168.1.7:4444/question/exam/4";//PHP Exam      //test download JSON
     int id;
     private String questionIDTemp="";
     private ProgressBar spinner;
     private List<Question> qList;
     private List<Question> finalList;
+    String sendJSON="";
+    String downloadJSON="";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,23 +76,75 @@ public class DownloadExam extends AppCompatActivity {
         actionBarTitle.setText(R.string.title_activity_download_exam);
         finalList = new ArrayList<Question>();
         Intent i = getIntent();
+        userJSON = i.getStringExtra("details");
+        downloadJSON = i.getStringExtra("json");
+      //  name = i.getStringExtra("name");
+       // id = i.getIntExtra("id", 0);
 
-        name = i.getStringExtra("name");
-        id = i.getIntExtra("id", 0);
-        description = i.getStringExtra("description");
+      //  System.out.println(userJSON);
+        description = i.getStringExtra("name");
         spinner = (ProgressBar) findViewById(R.id.progressBar);
-        spinner.setVisibility(View.GONE);
+      //  spinner.setVisibility(View.GONE);
 
         txtName = (TextView) findViewById(R.id.textViewExamName);
         txtDescription = (TextView) findViewById(R.id.textViewExamDescription);
         downloadButton = (Button) findViewById(R.id.button);
         quizButton = (Button) findViewById(R.id.button3);
 
-        txtName.setText(name);
+        txtName.setText("Logged In");
         txtDescription.setText(description);
-        questionIDTemp = readFromFileID();
+       // questionIDTemp = readFromFileID();
+      //  sendJSON = "{\"ids\":"+questionIDTemp+userJSON;
+       // System.out.println("send"+sendJSON);
 
-        quizButton.setOnClickListener(new View.OnClickListener(){
+        spinner.setVisibility(View.VISIBLE);
+
+        String toPathImages = "/data/data/" + getPackageName()+"/files/images";
+        File imageFolder = new File(toPathImages);
+        File[] imageFiles = imageFolder.listFiles();
+        System.out.println("no of images!: " + imageFiles.length);
+        for(int j=0;j<imageFiles.length;j++){
+            imageFiles[j].delete();
+        }
+        try{
+        System.out.println("*******************************Logan Square**********************************");
+        qList = LoganSquare.parseList(downloadJSON, Question.class);
+        for (int k = 0; k < qList.size(); k++) {
+            System.out.println("QuestionId: " + qList.get(k).getQuestionId());
+            if (qList.get(k).getImages() != null) {
+                try {
+                    URL[] imageURLS = new URL[qList.get(k).getImages().length];
+                    for (int j = 0; j < qList.get(k).getImages().length; j++) {
+                        URL imageURL = new URL(qList.get(k).getImages()[j]);
+                        imageURLS[j] = imageURL;
+                    }
+                    new DownloadImages().execute(qList.get(k));
+                    //  finalList.add(qList.get(i));
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                finalList.add(qList.get(k));//add questions without images to final list
+            }
+        }
+        System.out.println("final List Download: " + finalList.size());
+    }
+
+    catch(IOException er){
+        er.printStackTrace();
+    }
+
+
+
+
+
+
+
+
+
+
+
+        quizButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -98,55 +154,55 @@ public class DownloadExam extends AppCompatActivity {
         });
 
 
-        downloadButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                spinner.setVisibility(View.VISIBLE);
-                try{
-                    downloadedJSONTxt = new DownloadQuestion().execute(packageURL).get();
-
-                    String toPathImages = "/data/data/" + getPackageName()+"/files/images";
-                    File imageFolder = new File(toPathImages);
-                    File[] imageFiles = imageFolder.listFiles();
-                    System.out.println("no of images!: "+ imageFiles.length);
-                    for(int i=0;i<imageFiles.length;i++){
-                        imageFiles[i].delete();
-                    }
-                    System.out.println("*******************************Logan Square**********************************");
-                    qList = LoganSquare.parseList(downloadedJSONTxt, Question.class);
-                    for (int i = 0; i < qList.size(); i++) {
-                         System.out.println("QuestionId: " + qList.get(i).getQuestionId());
-                        if (qList.get(i).getImages() != null) {
-                            try {
-                                URL[] imageURLS = new URL[qList.get(i).getImages().length];
-                                for (int j = 0; j < qList.get(i).getImages().length; j++) {
-                                    URL imageURL = new URL(qList.get(i).getImages()[j]);
-                                    imageURLS[j] = imageURL;
-                                }
-                                new DownloadImages().execute(qList.get(i));
-                                //  finalList.add(qList.get(i));
-                            } catch (MalformedURLException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            finalList.add(qList.get(i));//add questions without images to final list
-                        }
-                    }
-                    System.out.println("final List Download: " + finalList.size());
-                }
-                catch (InterruptedException e)
-                {
-                    e.printStackTrace();
-                }
-                catch(IOException er){
-                    er.printStackTrace();
-                }
-                catch (ExecutionException e)
-                {
-                    e.printStackTrace();
-                }
-            }
-        });
+//        downloadButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                spinner.setVisibility(View.VISIBLE);
+//                try{
+//                    downloadedJSONTxt = new DownloadQuestion().execute(packageURL).get();
+//
+//                    String toPathImages = "/data/data/" + getPackageName()+"/files/images";
+//                    File imageFolder = new File(toPathImages);
+//                    File[] imageFiles = imageFolder.listFiles();
+//                    System.out.println("no of images!: "+ imageFiles.length);
+//                    for(int i=0;i<imageFiles.length;i++){
+//                        imageFiles[i].delete();
+//                    }
+//                    System.out.println("*******************************Logan Square**********************************");
+//                    qList = LoganSquare.parseList(downloadedJSONTxt, Question.class);
+//                    for (int i = 0; i < qList.size(); i++) {
+//                         System.out.println("QuestionId: " + qList.get(i).getQuestionId());
+//                        if (qList.get(i).getImages() != null) {
+//                            try {
+//                                URL[] imageURLS = new URL[qList.get(i).getImages().length];
+//                                for (int j = 0; j < qList.get(i).getImages().length; j++) {
+//                                    URL imageURL = new URL(qList.get(i).getImages()[j]);
+//                                    imageURLS[j] = imageURL;
+//                                }
+//                                new DownloadImages().execute(qList.get(i));
+//                                //  finalList.add(qList.get(i));
+//                            } catch (MalformedURLException e) {
+//                                e.printStackTrace();
+//                            }
+//                        } else {
+//                            finalList.add(qList.get(i));//add questions without images to final list
+//                        }
+//                    }
+//                    System.out.println("final List Download: " + finalList.size());
+//                }
+//                catch (InterruptedException e)
+//                {
+//                    e.printStackTrace();
+//                }
+//                catch(IOException er){
+//                    er.printStackTrace();
+//                }
+//                catch (ExecutionException e)
+//                {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
     }
     private String readFromFileID() {
         String ret = "";
@@ -254,7 +310,7 @@ public class DownloadExam extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... urls){
-            MyJSONParser jsonParser = new MyJSONParser(questionIDTemp);
+            MyJSONParser jsonParser = new MyJSONParser(sendJSON, DownloadExam.this);
             String myJSON = jsonParser.getJSONFromUrl(urls[0]);
             FileOutputStream outputStream;
             if(myJSON==null){
