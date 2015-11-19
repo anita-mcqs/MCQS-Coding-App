@@ -94,6 +94,15 @@ public class LogIn extends AppCompatActivity {
         });
 
 
+        quizButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent startQuiz = new Intent(LogIn.this, ViewQuestion.class);
+                startActivity(startQuiz);
+            }
+        });
+
 
 
 
@@ -148,9 +157,16 @@ public class LogIn extends AppCompatActivity {
 
                     questionIDTemp = readFromFileID();
 
-                    userJSON = ", \"username\" : \""+ username + "\", \"password\" : \""+ password +"\"}";
+                    System.out.println("ids: "+questionIDTemp);
                    // System.out.println(temp);
-                    sendJSON = "{\"ids\":"+questionIDTemp+userJSON;
+                    if(questionIDTemp.equals("[]")){
+                        System.out.println("not ids!!");
+                        sendJSON = "{\"username\" : \""+ username + "\", \"password\" : \""+ password +"\"}";
+                    }else{
+                        userJSON = ", \"username\" : \""+ username + "\", \"password\" : \""+ password +"\"}";
+                        sendJSON = "{\"ids\":"+questionIDTemp+userJSON;
+                    }
+                   // sendJSON = "{\"ids\":"+questionIDTemp+userJSON;
                     spinner.setVisibility(View.VISIBLE);
                     try {
                         downloadedJSONTxt = new DownloadQuestion().execute(packageURL).get();
@@ -159,6 +175,7 @@ public class LogIn extends AppCompatActivity {
                             System.out.println("bad status!!!! 401!!!");
                             quizButton.setEnabled(false);
                             showError();
+
                             spinner.setVisibility(View.INVISIBLE);
                         }
                         else{
@@ -172,7 +189,7 @@ public class LogIn extends AppCompatActivity {
                             System.out.println("*******************************Logan Square**********************************");
                             qList = LoganSquare.parseList(downloadedJSONTxt, Question.class);
                             for (int i = 0; i < qList.size(); i++) {
-                                System.out.println("QuestionId: " + qList.get(i).getQuestionId());
+                                //System.out.println("QuestionId: " + qList.get(i).getQuestionId());
                                 if (qList.get(i).getImages() != null) {
                                     try {
                                         URL[] imageURLS = new URL[qList.get(i).getImages().length];
@@ -235,7 +252,7 @@ public class LogIn extends AppCompatActivity {
         });
     }
     private void showError() {
-        usernameEditText.setError("Password and username didn't match");
+        usernameEditText.setError("Password and username didn't match. Please re-enter");
     }
     //https://github.com/napcs/qedserver/blob/master/jetty/modules/jetty/src/test/java/org/mortbay/jetty/servlet/SessionTestClient.java
     private String readFromFileID() {
