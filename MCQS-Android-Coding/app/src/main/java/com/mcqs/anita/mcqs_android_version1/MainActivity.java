@@ -3,6 +3,7 @@ package com.mcqs.anita.mcqs_android_version1;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.net.Uri;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView downloadIcon;
     private String myJSONString = "";
     private String questionIDTemp="";
-
+    private TextView websiteLink;
     private String myUserString="";
 
     @Override
@@ -45,7 +46,18 @@ public class MainActivity extends AppCompatActivity {
         actionBarTitle = (TextView) findViewById(R.id.action_bar_text);
         downloadIcon = (ImageView) findViewById(R.id.imageViewDownloadIcon);//download icon in action bar
         actionBarTitle.setText(R.string.title_activity_main);
+        websiteLink = (TextView) findViewById(R.id.textView2);
         startQuiz = (Button) findViewById(R.id.buttonStartQuiz);
+
+        websiteLink.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("http://192.168.1.7:2010/"));
+                startActivity(intent);
+            }
+        });
 
       //  checkFiles();
       //  questionIDTemp = readFromFileID();
@@ -53,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
        // System.out.println("user details: " + myUserString);
       //  checkFiles();
      //   downloadExam = (Button) findViewById(R.id.buttonDownloadExam);
+
+
+
+
 
         startQuiz.setOnClickListener(new View.OnClickListener() {
             @Override

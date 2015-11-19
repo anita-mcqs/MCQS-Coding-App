@@ -58,6 +58,7 @@ public class LogIn extends AppCompatActivity {
     private List<Question> qList;
     private List<Question> finalList;
     private int logInStatus;
+    private TextView forgotPassword;
 
 
 
@@ -78,6 +79,7 @@ public class LogIn extends AppCompatActivity {
         signUp = (Button) findViewById(R.id.button5);
         usernameEditText = (EditText) findViewById(R.id.editText2);
         passwordEditText = (EditText) findViewById(R.id.editText3);
+        forgotPassword = (TextView) findViewById(R.id.textView6);
         quizButton = (Button) findViewById(R.id.button);
         spinner = (ProgressBar) findViewById(R.id.progressBar3);
         spinner.setVisibility(View.GONE);
@@ -93,6 +95,15 @@ public class LogIn extends AppCompatActivity {
             }
         });
 
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("http://192.168.1.7:2010/forgot-password"));
+                startActivity(intent);
+            }
+        });
 
         quizButton.setOnClickListener(new View.OnClickListener() {
 
@@ -252,7 +263,9 @@ public class LogIn extends AppCompatActivity {
         });
     }
     private void showError() {
-        usernameEditText.setError("Password and username didn't match. Please re-enter");
+        usernameEditText.setError("Incorrect Username and/or Password.");
+        usernameEditText.setText("");
+        passwordEditText.setText("");
     }
     //https://github.com/napcs/qedserver/blob/master/jetty/modules/jetty/src/test/java/org/mortbay/jetty/servlet/SessionTestClient.java
     private String readFromFileID() {
@@ -356,6 +369,15 @@ public class LogIn extends AppCompatActivity {
                 //all images downloaded
                 spinner.setVisibility(View.INVISIBLE);
                 quizButton.setEnabled(true);
+                AlertDialog alertDialog = new AlertDialog.Builder(
+                        LogIn.this).create();
+                alertDialog.setTitle("Questions Downloaded");
+                alertDialog.setMessage("Please click on Start Quiz to access your updated questions");
+                alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                alertDialog.show();
             }
         }
     }
