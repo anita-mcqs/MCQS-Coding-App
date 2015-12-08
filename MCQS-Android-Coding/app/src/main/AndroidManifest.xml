@@ -43,6 +43,10 @@
             android:name=".LogIn"
             android:label="@string/title_activity_log_in" >
         </activity>
+        <activity
+            android:name=".SelectQuiz"
+            android:label="@string/title_activity_select_quiz" >
+        </activity>
     </application>
 
 </manifest>

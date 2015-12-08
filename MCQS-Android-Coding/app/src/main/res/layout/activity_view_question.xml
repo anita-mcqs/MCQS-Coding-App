@@ -95,6 +95,17 @@
         android:visibility="invisible"
         android:id="@+id/imageView" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="2/50"
+        android:visibility="invisible"
+        android:id="@+id/textView8"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="2dp" />
+
 
 </RelativeLayout>
 

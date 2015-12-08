@@ -28,6 +28,7 @@ import java.io.OutputStream;
 public class MainActivity extends AppCompatActivity {
 
     private Button startQuiz;
+    private Button startExam;
     private Button downloadExam;
     private TextView actionBarTitle;
     private ImageView downloadIcon;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         actionBarTitle.setText(R.string.title_activity_main);
         websiteLink = (TextView) findViewById(R.id.textView2);
         startQuiz = (Button) findViewById(R.id.buttonStartQuiz);
+        startExam = (Button) findViewById(R.id.button6);
 
         websiteLink.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -67,6 +69,13 @@ public class MainActivity extends AppCompatActivity {
      //   downloadExam = (Button) findViewById(R.id.buttonDownloadExam);
 
 
+        startExam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent startQuiz = new Intent(MainActivity.this, SelectQuiz.class);
+                startActivity(startQuiz);
+            }
+        });
 
 
 
